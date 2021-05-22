@@ -271,7 +271,7 @@ header {
       transition: 1s all ease;
       display: flex;
       overflow: hidden;
-      max-height: 0; }
+      max-height: 0px; }
       .tips-item-content .tip-img {
         margin: 21px;
         width: 120px;
@@ -318,12 +318,16 @@ header {
         position: absolute;
         border-radius: 20px; }
         .tips-item-btn .btn-line:first-child {
-          transform: rotate(90deg); }
+          transform: rotate(90deg);
+          transition: .7s all ease; }
+        .tips-item-btn .btn-line.is-rotate:first-child {
+          transform: rotate(0deg);
+          transition: .7s all ease; }
 
 .open-tip {
   display: flex;
   transition: 1s all ease;
-  max-height: 1700px; }
+  max-height: 1770px; }
 
 * {
   margin: 0;

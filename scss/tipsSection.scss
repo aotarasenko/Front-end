@@ -50,7 +50,7 @@
             transition: 1s all ease;
             display: flex;
             overflow: hidden;
-            max-height: 0;
+            max-height: 0px;
 
             .tip-img{
                 margin: 21px;
@@ -112,6 +112,12 @@
 
                 &:first-child{
                     transform: rotate(90deg);
+                    transition: .7s all ease;
+                }
+
+                &.is-rotate:first-child{
+                    transform: rotate(0deg);
+                    transition: .7s all ease;
                 }
             }
         }
@@ -123,5 +129,5 @@
 .open-tip{
     display: flex;
     transition: 1s all ease;
-    max-height: 1700px;
+    max-height: 1770px;
 }
