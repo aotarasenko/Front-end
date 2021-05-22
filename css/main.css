@@ -327,7 +327,8 @@ header {
 .open-tip {
   display: flex;
   transition: 1s all ease;
-  max-height: 1770px; }
+  max-height: 1770px;
+  padding-bottom: 94px; }
 
 * {
   margin: 0;
@@ -366,6 +367,25 @@ header {
   .tab-item {
     height: 40px; }
   .skout-tips {
-    margin-top: 138px; } }
+    margin-top: 138px; }
+  .tips-item-number {
+    font-size: 110px;
+    line-height: 130px; }
+  .tips-item-title {
+    font-size: 24px;
+    line-height: 36px; }
+  .tips-item-content {
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%; }
+    .tips-item-content .tip-img {
+      width: 270px;
+      height: 270px;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-image: url("../images/tip1Big.png"); }
+    .tips-item-content .tip-text {
+      max-width: 464px;
+      max-height: 336px; } }
 
 /*# sourceMappingURL=main.css.map */
