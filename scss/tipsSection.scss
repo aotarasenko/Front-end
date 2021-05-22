@@ -1,5 +1,5 @@
 .skout-tips {
-
+    height: 1000px;
 }
 
 .tips {
@@ -17,12 +17,12 @@
         background-image: url('../images/skout-tips.svg');
         background-size: contain;
         background-repeat: no-repeat;
+        margin-bottom: 24px;
     }
 
 
     &-list{
-        
-        border: 1px solid #22BF95;
+        padding-bottom: 24px;
         
     }
 
@@ -30,34 +30,98 @@
     &-item{
         display: flex;
         justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+        border-top: 1px solid #22BF95;
+        border-bottom: 1px solid #22BF95;
+        padding: 3px 10px;
 
+        &-header{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
 
+        &-content{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: 1s all ease;
+            display: flex;
+            overflow: hidden;
+            max-height: 0;
+
+            .tip-img{
+                margin: 21px;
+                width: 120px;
+                height: 120px;
+                background-image: url('../images/Tip1.png');
+            }
+
+            .tip-text{
+                font-family: 'Aclonica';
+                font-style: normal;
+                font-weight: normal;
+                font-size: 14px;
+                line-height: 24px;
+                color: #191919;
+            }
+        }
+
+        &-number{
+            font-family: 'Actor';
+            font-style: normal;
+            font-weight: normal;
+            font-size: 40px;
+            line-height: 48px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+
+            color: #E5E5E5;
+        }
 
         &-title{
-            font-family: Aclonica;
+            font-family: 'Aclonica';
             font-style: normal;
             font-weight: normal;
             font-size: 16px;
             line-height: 24px;
             color: #191919;
+        }
 
-            // &::before{
-            //     display: inline;
-            //     font-family: Actor;
-            //     font-style: normal;
-            //     font-weight: normal;
-            //     font-size: 40px;
-            //     line-height: 48px;
-            //     letter-spacing: 2px;
-            //     text-transform: uppercase;
+        &-btn{
 
-            //     color: #E5E5E5;
-            // }
+            width: 14px;
+            height: 14px;
+            border: 2px solid #22BF95;
+            border-radius: 50%;
+            box-shadow: 0px 3px 6px rgba(127, 127, 127, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            cursor: pointer;
 
-            &::after{
+            .btn-line{
+                height: 1.6px;
+                width: 80%;
+                background-color: #22BF95;
+                position: absolute;
+                border-radius: 20px;
 
+                &:first-child{
+                    transform: rotate(90deg);
+                }
             }
         }
     }
+
+
 }
 
+.open-tip{
+    display: flex;
+    transition: 1s all ease;
+    max-height: 1700px;
+}

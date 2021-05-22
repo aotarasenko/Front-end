@@ -233,6 +233,9 @@ header {
   opacity: 0;
   transition: .7s all ease; }
 
+.skout-tips {
+  height: 1000px; }
+
 .tips {
   width: 100%;
   border-top: 2px solid #B2B2B2;
@@ -244,19 +247,83 @@ header {
     height: 18px;
     background-image: url("../images/skout-tips.svg");
     background-size: contain;
-    background-repeat: no-repeat; }
+    background-repeat: no-repeat;
+    margin-bottom: 24px; }
   .tips-list {
-    border: 1px solid #22BF95; }
+    padding-bottom: 24px; }
   .tips-item {
     display: flex;
-    justify-content: space-between; }
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    border-top: 1px solid #22BF95;
+    border-bottom: 1px solid #22BF95;
+    padding: 3px 10px; }
+    .tips-item-header {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline; }
+    .tips-item-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: 1s all ease;
+      display: flex;
+      overflow: hidden;
+      max-height: 0; }
+      .tips-item-content .tip-img {
+        margin: 21px;
+        width: 120px;
+        height: 120px;
+        background-image: url("../images/Tip1.png"); }
+      .tips-item-content .tip-text {
+        font-family: 'Aclonica';
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 24px;
+        color: #191919; }
+    .tips-item-number {
+      font-family: 'Actor';
+      font-style: normal;
+      font-weight: normal;
+      font-size: 40px;
+      line-height: 48px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #E5E5E5; }
     .tips-item-title {
-      font-family: Aclonica;
+      font-family: 'Aclonica';
       font-style: normal;
       font-weight: normal;
       font-size: 16px;
       line-height: 24px;
       color: #191919; }
+    .tips-item-btn {
+      width: 14px;
+      height: 14px;
+      border: 2px solid #22BF95;
+      border-radius: 50%;
+      box-shadow: 0px 3px 6px rgba(127, 127, 127, 0.3);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      cursor: pointer; }
+      .tips-item-btn .btn-line {
+        height: 1.6px;
+        width: 80%;
+        background-color: #22BF95;
+        position: absolute;
+        border-radius: 20px; }
+        .tips-item-btn .btn-line:first-child {
+          transform: rotate(90deg); }
+
+.open-tip {
+  display: flex;
+  transition: 1s all ease;
+  max-height: 1700px; }
 
 * {
   margin: 0;
@@ -293,6 +360,8 @@ header {
     height: 80px;
     top: 50px; }
   .tab-item {
-    height: 40px; } }
+    height: 40px; }
+  .skout-tips {
+    margin-top: 138px; } }
 
 /*# sourceMappingURL=main.css.map */
