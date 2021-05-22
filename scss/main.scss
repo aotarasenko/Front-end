@@ -1,0 +1,60 @@
+@import  
+        './_fonts' ,
+        './_variables',
+        './header.scss',
+        './tipsSection.scss';
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.wrapp{
+    max-width: 1440px;
+    min-width: 320px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.no-scroll{
+    overflow: hidden;
+}
+
+
+@media screen and (min-width: 992px){
+    .nav-menu-active{
+        display: none;
+    }
+
+    .nav-list{
+        position: static;
+        flex-direction: row;
+        background-color: rgba(0,0,0,0);
+        
+    }
+    .nav-link{
+        color: white;
+    }
+
+    .nav-controls{
+        flex-direction: row;
+        &-button{
+            color: white;
+            border-color: white;
+
+            &:first-child{
+                margin: 0 20px 0 0;
+            }
+        }
+    }
+    .tabs-nav{
+        height: 80px;
+        top: 50px;
+    }
+    .tab-item{
+        height: 40px;
+    }
+}
