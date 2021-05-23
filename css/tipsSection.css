@@ -1,10 +1,6 @@
-.skout-tips {
-  height: 1000px; }
-
 .tips {
   width: 100%;
   border-top: 2px solid #B2B2B2;
-  border-bottom: 2px solid #B2B2B2;
   margin-top: 54px;
   padding-top: 10px; }
   .tips-title {
@@ -28,7 +24,7 @@
       width: 100%;
       display: flex;
       justify-content: space-between;
-      align-items: baseline; }
+      align-items: center; }
     .tips-item-content {
       display: flex;
       flex-direction: column;
@@ -92,7 +88,10 @@
 .open-tip {
   display: flex;
   transition: 1s all ease;
-  max-height: 1770px;
+  max-height: 1500px;
   padding-bottom: 94px; }
+
+.no-displayed {
+  display: none; }
 
 /*# sourceMappingURL=tipsSection.css.map */
