@@ -92,6 +92,10 @@
                 align-items: center;
                 position: relative;
                 transition: .7s;
+                cursor: pointer;
+                &:hover{
+                    color: #22BF95;
+                }
             }
         }
     }

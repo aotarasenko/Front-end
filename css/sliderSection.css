@@ -72,7 +72,10 @@
         display: flex;
         align-items: center;
         position: relative;
-        transition: .7s; }
+        transition: .7s;
+        cursor: pointer; }
+        .slider-block .slider-controller .slider-list-item:hover {
+          color: #22BF95; }
   .slider-block .slide-content {
     margin-top: 32px; }
     .slider-block .slide-content .slide-title {
