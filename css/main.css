@@ -157,7 +157,7 @@ header {
   align-items: center;
   position: relative;
   top: 20px;
-  z-index: 0;
+  z-index: 999;
   height: 40px; }
   .tabs-nav-list {
     display: flex;
@@ -346,24 +346,26 @@ header {
 
 .slider {
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  padding: 24px 0; }
 
 .slider-block {
   background-image: url("../images/slider-img-1.jpg");
   background-size: cover;
   padding-bottom: 24px;
-  height: 720px; }
+  height: 100%;
+  max-height: 720px; }
   .slider-block .slider-controller {
     background-color: #fff;
     box-shadow: 0px 12px 24px #E5E5E5;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
+    border-radius: 5px;
     width: 100%;
     max-width: 442px;
     position: relative;
     display: flex;
     justify-content: flex-start;
-    padding: 40px 60px 40px 62px; }
+    padding: 40px 60px 40px 62px;
+    z-index: 0; }
     .slider-block .slider-controller .arrow-right {
       background-image: url("../images/arrowRight.png");
       width: 16px;
@@ -563,6 +565,101 @@ header {
 .greent-text {
   color: #22BF95; }
 
+.footer {
+  background: #F2F2F2; }
+  .footer-info {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 2px solid #7F7F7F; }
+    .footer-info .company-adrress {
+      display: flex;
+      flex-direction: column;
+      margin-top: 20px; }
+      .footer-info .company-adrress .footer-links {
+        border-top: 2px solid #22BF95;
+        padding-bottom: 20px; }
+  .footer .social-links-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+    .footer .social-links-block .links {
+      width: 100%;
+      display: flex;
+      justify-content: space-evenly;
+      margin-top: 22px; }
+      .footer .social-links-block .links * {
+        color: #7F7F7F;
+        font-size: 25px; }
+        .footer .social-links-block .links *:hover {
+          color: #22BF95; }
+    .footer .social-links-block .logo {
+      width: 169px;
+      height: 59px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-image: url("../images/output-onlinepngtools (7).png"); }
+  .footer-links {
+    display: flex;
+    flex-direction: column; }
+    .footer-links .call-number p:first-child {
+      font-family: 'Acme';
+      font-style: normal;
+      font-weight: normal;
+      font-size: 12px;
+      line-height: 20px;
+      letter-spacing: 2px;
+      color: #7F7F7F; }
+    .footer-links .call-number p:last-child {
+      font-family: 'Aclonica';
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 24px;
+      color: #7F7F7F; }
+  .footer-link {
+    text-decoration: none;
+    font-family: Acme;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: 2px;
+    color: #7F7F7F;
+    margin: 12px 0; }
+    .footer-link:hover {
+      color: #22BF95; }
+  .footer-info-title {
+    font-family: Aclonica;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 36px;
+    color: #7F7F7F; }
+  .footer .number {
+    font-family: Aclonica;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    color: #7F7F7F; }
+  .footer .adrress {
+    font-family: Aclonica;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 24px;
+    color: #7F7F7F; }
+  .footer .view-on-map {
+    font-family: Aclonica;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 20px;
+    text-decoration-line: underline;
+    color: #22BF95; }
+    .footer .view-on-map:hover {
+      color: #7F7F7F; }
+
 * {
   margin: 0;
   padding: 0;
@@ -580,6 +677,11 @@ body {
 
 .no-scroll {
   overflow: hidden; }
+
+@media screen and (max-width: 1150px) {
+  .slide-title {
+    font-size: 60px !important;
+    line-height: 90px !important; } }
 
 @media screen and (min-width: 992px) {
   .nav-menu-active {
@@ -637,12 +739,22 @@ body {
   .tips-title {
     width: 248px;
     height: 40px; }
+  .glossary-title {
+    height: 40px; }
+    .glossary-title img {
+      height: 100%;
+      width: 240px; }
+  .faqs-title {
+    height: 40px;
+    background-size: contain;
+    width: 240px; }
   .slider {
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
     width: 100%;
-    height: 100%; }
+    height: 90vh;
+    padding-bottom: 24px; }
   .slider-block {
     padding: 60px 0; }
     .slider-block .wrapp {
@@ -651,7 +763,8 @@ body {
       padding: 0; }
   .slider-controller {
     height: 100%;
-    margin-right: 130px; }
+    margin-right: 130px;
+    left: -12px; }
     .slider-controller .arrow-right,
     .slider-controller .arrow-left {
       width: 25px;
@@ -688,6 +801,37 @@ body {
   .answer-marker,
   .question-marker {
     font-size: 110px !important;
-    line-height: 130px !important; } }
+    line-height: 130px !important; }
+  .footer-info {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 51px 0; }
+    .footer-info .footer-links {
+      height: 100%; }
+    .footer-info .company-adrress {
+      width: 100%;
+      margin-left: 70px; }
+      .footer-info .company-adrress .footer-links {
+        flex-direction: row;
+        justify-content: space-between;
+        height: 123px; }
+        .footer-info .company-adrress .footer-links .number {
+          display: flex;
+          justify-content: flex-end; }
+        .footer-info .company-adrress .footer-links .adrress {
+          display: flex;
+          text-align: left;
+          margin-left: 30px; }
+      .footer-info .company-adrress .footer-links > * {
+        padding-top: 16px;
+        width: 100%; }
+  .company-adrress {
+    flex-direction: row; }
+  .social-links-block {
+    flex-direction: row !important; }
+    .social-links-block .links {
+      justify-content: flex-start !important; }
+      .social-links-block .links * {
+        margin-right: 52px; } }
 
 /*# sourceMappingURL=main.css.map */

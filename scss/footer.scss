@@ -1,0 +1,149 @@
+.footer{
+    background: #F2F2F2;
+   
+
+    &-info{
+        display: flex;
+        flex-direction: column;
+        border-bottom: 2px solid #7F7F7F;
+       
+        .company-adrress{
+            display: flex;
+            flex-direction: column;
+            margin-top: 20px;
+            .footer-links{
+                border-top: 2px solid #22BF95;
+                padding-bottom: 20px;
+            }
+        }
+    }
+
+    .social-links-block{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .links{
+            width: 100%;
+            display: flex;
+            justify-content: space-evenly;
+            margin-top: 22px;
+            *{
+                color: #7F7F7F;
+                font-size: 25px;
+                &:hover{
+                    color: #22BF95;
+                }
+            }
+        }
+
+        .logo{
+            width: 169px;
+            height: 59px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-image: url('../images/output-onlinepngtools\ \(7\).png');
+        }
+    }
+
+    &-links{
+        display: flex;
+        flex-direction: column;
+        
+      
+
+        .call-number{
+            
+            p:first-child{
+                font-family: 'Acme';
+                font-style: normal;
+                font-weight: normal;
+                font-size: 12px;
+                line-height: 20px;
+                letter-spacing: 2px;
+                color: #7F7F7F;
+            }
+            p:last-child{
+                font-family: 'Aclonica';
+                font-style: normal;
+                font-weight: normal;
+                font-size: 16px;
+                line-height: 24px;
+                color: #7F7F7F;
+            }
+        }
+
+        
+    }
+    &-link{
+        text-decoration: none;
+        font-family: Acme;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 20px;
+        letter-spacing: 2px;
+        color: #7F7F7F;
+        margin: 12px 0;
+
+        &:hover{
+            color: #22BF95;
+        }
+    }
+
+    &-info-title{
+        font-family: Aclonica;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 36px;
+        color: #7F7F7F;
+    }
+    .number{
+        font-family: Aclonica;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 24px;
+        color: #7F7F7F;
+    }
+    .adrress{
+        font-family: Aclonica;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 24px;
+        color: #7F7F7F;
+    }
+    .view-on-map{
+        font-family: Aclonica;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 20px;
+        text-decoration-line: underline;
+        color: #22BF95;
+        &:hover{
+            color: #7F7F7F;
+        }
+    }
+    
+}
+
+
+.footer-info {
+}
+.footer-links {
+}
+.footer-link {
+}
+.call-number {
+}
+.number {
+}
+.Footer-info-title {
+}
+.adrress {
+}
+.view-on-map {
+}

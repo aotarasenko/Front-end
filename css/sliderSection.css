@@ -10,24 +10,26 @@
 
 .slider {
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  padding: 24px 0; }
 
 .slider-block {
   background-image: url("../images/slider-img-1.jpg");
   background-size: cover;
   padding-bottom: 24px;
-  height: 720px; }
+  height: 100%;
+  max-height: 720px; }
   .slider-block .slider-controller {
     background-color: #fff;
     box-shadow: 0px 12px 24px #E5E5E5;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
+    border-radius: 5px;
     width: 100%;
     max-width: 442px;
     position: relative;
     display: flex;
     justify-content: flex-start;
-    padding: 40px 60px 40px 62px; }
+    padding: 40px 60px 40px 62px;
+    z-index: 0; }
     .slider-block .slider-controller .arrow-right {
       background-image: url("../images/arrowRight.png");
       width: 16px;

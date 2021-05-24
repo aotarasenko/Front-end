@@ -1,0 +1,96 @@
+.footer {
+  background: #F2F2F2; }
+  .footer-info {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 2px solid #7F7F7F; }
+    .footer-info .company-adrress {
+      display: flex;
+      flex-direction: column;
+      margin-top: 20px; }
+      .footer-info .company-adrress .footer-links {
+        border-top: 2px solid #22BF95;
+        padding-bottom: 20px; }
+  .footer .social-links-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+    .footer .social-links-block .links {
+      width: 100%;
+      display: flex;
+      justify-content: space-evenly;
+      margin-top: 22px; }
+      .footer .social-links-block .links * {
+        color: #7F7F7F;
+        font-size: 25px; }
+        .footer .social-links-block .links *:hover {
+          color: #22BF95; }
+    .footer .social-links-block .logo {
+      width: 169px;
+      height: 59px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-image: url("../images/output-onlinepngtools (7).png"); }
+  .footer-links {
+    display: flex;
+    flex-direction: column; }
+    .footer-links .call-number p:first-child {
+      font-family: 'Acme';
+      font-style: normal;
+      font-weight: normal;
+      font-size: 12px;
+      line-height: 20px;
+      letter-spacing: 2px;
+      color: #7F7F7F; }
+    .footer-links .call-number p:last-child {
+      font-family: 'Aclonica';
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 24px;
+      color: #7F7F7F; }
+  .footer-link {
+    text-decoration: none;
+    font-family: Acme;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: 2px;
+    color: #7F7F7F;
+    margin: 12px 0; }
+    .footer-link:hover {
+      color: #22BF95; }
+  .footer-info-title {
+    font-family: Aclonica;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 36px;
+    color: #7F7F7F; }
+  .footer .number {
+    font-family: Aclonica;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    color: #7F7F7F; }
+  .footer .adrress {
+    font-family: Aclonica;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 24px;
+    color: #7F7F7F; }
+  .footer .view-on-map {
+    font-family: Aclonica;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 20px;
+    text-decoration-line: underline;
+    color: #22BF95; }
+    .footer .view-on-map:hover {
+      color: #7F7F7F; }
+
+/*# sourceMappingURL=footer.css.map */

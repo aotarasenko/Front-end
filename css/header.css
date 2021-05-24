@@ -139,7 +139,7 @@ header {
   align-items: center;
   position: relative;
   top: 20px;
-  z-index: 0;
+  z-index: 999;
   height: 40px; }
   .tabs-nav-list {
     display: flex;
