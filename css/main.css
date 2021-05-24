@@ -242,7 +242,6 @@ header {
   width: 100%;
   border-top: 2px solid #B2B2B2;
   margin-top: 54px;
-  margin-bottom: 160px;
   padding-top: 10px; }
   .tips-title {
     width: 90px;
@@ -604,6 +603,7 @@ header {
       background-repeat: no-repeat;
       background-image: url("../images/output-onlinepngtools (7).png"); }
   .footer-links {
+    padding-top: 12px;
     display: flex;
     flex-direction: column; }
     .footer-links .call-number p:first-child {
@@ -670,7 +670,7 @@ header {
   padding: 0;
   box-sizing: border-box; }
 
-body {
+body, html {
   overflow-x: hidden;
   scroll-behavior: smooth; }
 
@@ -716,6 +716,8 @@ body {
     height: 40px; }
   .skout-tips {
     margin-top: 138px; }
+  .tips {
+    margin-bottom: 160px; }
   .tips-item-number {
     font-size: 110px;
     line-height: 130px; }
@@ -743,12 +745,15 @@ body {
     height: 35px; }
   .tips-title {
     width: 248px;
-    height: 40px; }
+    height: 40px;
+    margin-bottom: 100px; }
   .glossary-title {
     height: 40px; }
     .glossary-title img {
       height: 100%;
       width: 240px; }
+  .faqs {
+    margin-top: 160px; }
   .faqs-title {
     height: 40px;
     background-size: contain;
@@ -822,11 +827,17 @@ body {
         height: 123px; }
         .footer-info .company-adrress .footer-links .number {
           display: flex;
-          justify-content: flex-end; }
+          justify-content: flex-end;
+          font-size: 16px; }
         .footer-info .company-adrress .footer-links .adrress {
           display: flex;
           text-align: left;
-          margin-left: 30px; }
+          margin-left: 30px;
+          font-size: 16px; }
+        .footer-info .company-adrress .footer-links .view-on-map {
+          display: flex;
+          justify-content: flex-end;
+          font-size: 16px; }
       .footer-info .company-adrress .footer-links > * {
         padding-top: 16px;
         width: 100%; }

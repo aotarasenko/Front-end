@@ -14,11 +14,10 @@
     box-sizing: border-box;
 }
 
-body{
+body, html{
     overflow-x: hidden;
     scroll-behavior: smooth;
 }
-
 .wrapp{
     max-width: 1440px;
     min-width: 320px;
@@ -85,6 +84,9 @@ body{
         margin-top: 138px;
     }
 
+    .tips{
+        margin-bottom: 160px;
+    }
     .tips-item{
         
         &-number{
@@ -131,6 +133,7 @@ body{
     .tips-title{
         width: 248px;
         height: 40px;
+        margin-bottom: 100px;
     }
     .glossary-title{
         height: 40px;
@@ -138,6 +141,9 @@ body{
             height: 100%;
             width: 240px;
         }
+    }
+    .faqs{
+        margin-top: 160px;
     }
     .faqs-title{
         height: 40px;
@@ -238,11 +244,18 @@ body{
                 .number{
                     display: flex;
                     justify-content: flex-end;
+                    font-size: 16px;
                 }
                 .adrress{
                     display: flex;
                     text-align: left;
                     margin-left: 30px;
+                    font-size: 16px;
+                }
+                .view-on-map{
+                    display: flex;
+                    justify-content: flex-end;
+                    font-size: 16px;
                 }
             }
             .footer-links > *{

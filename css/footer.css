@@ -33,6 +33,7 @@
       background-repeat: no-repeat;
       background-image: url("../images/output-onlinepngtools (7).png"); }
   .footer-links {
+    padding-top: 12px;
     display: flex;
     flex-direction: column; }
     .footer-links .call-number p:first-child {
