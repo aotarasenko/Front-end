@@ -61,14 +61,16 @@ header{
         letter-spacing: 2px;
         justify-content: center;
 
-
+        &:hover{
+            color: #7F7F7F;
+        }
         &:hover::after,
         &:focus::after{
             content: '';
             display: flex;
             height: 2px;
             width: 40px;
-            background-color: white;
+            background-color: #7F7F7F;
             position: absolute;
             bottom: -7px;
             border-radius: 3px;
@@ -111,10 +113,14 @@ header{
         border-radius: 20px;
         text-decoration: none;
         color: #22BF95;
-        ;
+        
         padding: 8px 0;
         width: 90px;
         font-weight: 100;
+        &:hover{
+            color: #7F7F7F;
+            border-color: #7F7F7F;
+        }
         &:first-child{
             width: 180px;
             margin-bottom: 16px;

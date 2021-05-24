@@ -15,7 +15,8 @@
 .slider-block {
   background-image: url("../images/slider-img-1.jpg");
   background-size: cover;
-  padding-bottom: 24px; }
+  padding-bottom: 24px;
+  height: 720px; }
   .slider-block .slider-controller {
     background-color: #fff;
     box-shadow: 0px 12px 24px #E5E5E5;

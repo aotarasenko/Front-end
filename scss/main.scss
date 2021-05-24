@@ -3,13 +3,19 @@
         './_variables',
         './header.scss',
         './tipsSection.scss',
-        './sliderSection.scss';
+        './sliderSection.scss',
+        './faqs.scss';
 
 
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+body{
+    overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
 .wrapp{
@@ -37,6 +43,15 @@
     }
     .nav-link{
         color: white;
+
+        &:hover{
+            color: white;
+            &::after{
+                background-color: #fff;
+            }
+        }
+
+        
     }
 
     .nav-controls{
@@ -53,6 +68,7 @@
     .tabs-nav{
         height: 80px;
         top: 50px;
+        z-index: 999;
     }
     .tab-item{
         height: 40px;
@@ -146,10 +162,42 @@
     .slide-content{
         font-size: 24px !important;
         line-height: 36px !important;
+        z-index: 0;
+        position: absolute;
+        left: 50%;
+        max-width: 450px;
     }
     .slide-text{
-        max-width: 464px;
+        max-width: 335px;
     }
     
+    .faqs-list-item{
+        justify-content: space-between;
+    }
+    .faqs-item-title{
 
+        &::before,
+        &::after{
+            margin-right: 100px;
+        }
+
+    }
+    .question{
+        font-size: 24px;
+        line-height: 36px;
+    }
+    .get-answer-btn{
+        background-image: url('../images/faq-arrow-big.png') !important;
+        margin-right: 80px;
+        height: 15px !important;
+        width: 30px !important;
+    }
+    .answer{
+        padding-right: 20%;
+    }
+    .answer-marker,
+    .question-marker{
+        font-size: 110px !important;
+        line-height: 130px !important;
+    }
 }
