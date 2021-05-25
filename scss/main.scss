@@ -50,7 +50,11 @@ body, html{
     .nav-menu-active{
         display: none;
     }
-
+    .nav.fixed-block{
+        .nav-list{
+            width: 80%;
+        }
+    }
     .nav-list{
         position: static;
         flex-direction: row;
