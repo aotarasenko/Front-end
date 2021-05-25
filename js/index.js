@@ -36,7 +36,9 @@ window.addEventListener('scroll', () => {
     }else{
         navBlock.classList.remove('fixed-block');
     }
-    if(window.pageYOffset > 120) {
+    if(window.pageYOffset > 535 && window.innerWidth > 992) {
+        tabsNav.classList.add('fixed-tabs');
+    }else if(window.pageYOffset > 140 && window.innerWidth < 992){
         tabsNav.classList.add('fixed-tabs');
     }else{
         tabsNav.classList.remove('fixed-tabs')

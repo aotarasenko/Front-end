@@ -124,7 +124,8 @@ header {
   letter-spacing: 2px;
   color: #FFFFFF;
   display: flex;
-  justify-content: center; }
+  justify-content: center;
+  padding: 30px 0; }
   .header-title-content {
     display: flex;
     justify-content: center;

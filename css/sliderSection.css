@@ -60,7 +60,8 @@
         transition: .4s; }
     .slider-block .slider-controller .slider-list {
       display: flex;
-      flex-direction: column; }
+      flex-direction: column;
+      transition: .7s; }
       .slider-block .slider-controller .slider-list-item {
         list-style: none;
         font-family: 'Aclonica';
@@ -115,5 +116,10 @@
     position: absolute;
     left: -52px;
     transition: .7s; }
+
+.hidden-list {
+  transition: .7s;
+  max-width: 0px;
+  overflow: hidden; }
 
 /*# sourceMappingURL=sliderSection.css.map */

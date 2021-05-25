@@ -79,7 +79,7 @@
         .slider-list{
             display: flex;
             flex-direction: column;
-
+            transition: .7s;
             &-item{
                 list-style: none;
                 font-family: 'Aclonica';
@@ -152,3 +152,8 @@
 }
 
 
+.hidden-list{
+    transition: .7s;
+    max-width: 0px;
+    overflow: hidden;
+}

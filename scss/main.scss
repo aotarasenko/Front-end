@@ -37,6 +37,16 @@ body, html{
 }
 
 @media screen and (min-width: 992px){
+    .header-title{
+        padding: 180px 0;
+    }
+    .header-title-content{
+        font-size: 110px;
+        line-height: 130px;
+    }
+    .nav{
+        padding-top: 28px;
+    }
     .nav-menu-active{
         display: none;
     }
@@ -156,7 +166,7 @@ body, html{
         justify-content: flex-start;
         align-items: center;
         width: 100%;
-        height: 90vh;
+        height: 100%;
         padding-bottom: 24px;
     }
     .slider-block{
