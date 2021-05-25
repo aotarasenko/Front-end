@@ -85,3 +85,10 @@ rightSliderArrow.addEventListener('click', () => {
     changeSlide(currentSlide);
 });
 
+
+if(window.innerWidth < 992){
+    for (let i = 5; i < sliderListItem.length-6; i++) {
+        sliderListItem[i].style.display = 'none'
+        
+    }
+}

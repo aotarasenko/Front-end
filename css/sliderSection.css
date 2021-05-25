@@ -120,6 +120,7 @@
 .hidden-list {
   transition: .7s;
   max-width: 0px;
+  max-height: 0px;
   overflow: hidden; }
 
 /*# sourceMappingURL=sliderSection.css.map */
