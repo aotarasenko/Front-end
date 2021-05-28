@@ -1,0 +1,170 @@
+.footer {
+  background: #f2f2f2;
+  padding-bottom: 50px;
+
+  &-info {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 2px solid #7f7f7f;
+
+    .company-adrress {
+      display: flex;
+      flex-direction: column;
+      margin-top: 20px;
+      .footer-links {
+        border-top: 2px solid #22bf95;
+        padding-bottom: 20px;
+      }
+    }
+  }
+
+  .social-links-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .links {
+      width: 100%;
+      display: flex;
+      justify-content: space-evenly;
+      margin-top: 22px;
+      * {
+        color: #7f7f7f;
+        font-size: 25px;
+        &:hover {
+          color: #22bf95;
+        }
+      }
+    }
+
+    .logo {
+      max-width: 169px;
+      max-height: 66px;
+
+      img {
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+
+  &-links {
+    padding-top: 12px;
+    display: flex;
+    flex-direction: column;
+
+    .call-number {
+      span {
+        font-family: "Acme", "sans-serif";
+        font-size: 12px;
+        line-height: 20px;
+        letter-spacing: 2px;
+        color: #7f7f7f;
+      }
+      a {
+        font-family: "Aclonica", "sans-serif";
+        font-size: 16px;
+        line-height: 24px;
+        display: flex;
+        color: #7f7f7f;
+      }
+    }
+  }
+  a {
+    text-decoration: none;
+    font-family: "Acme", "sans-serif";
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: 2px;
+    color: #7f7f7f;
+    margin: 12px 0;
+    text-transform: uppercase;
+    
+    &:hover {
+      color: #22bf95;
+    }
+  }
+
+  &-info-title {
+    font-family: "Aclonica", "sans-serif";
+    font-size: 16px;
+    line-height: 36px;
+    color: #7f7f7f;
+  }
+  .number {
+    font-family: "Aclonica", "sans-serif";
+    font-size: 16px;
+    line-height: 24px;
+    color: #7f7f7f;
+  }
+  .adrress {
+    font-family: "Aclonica", "sans-serif";
+    font-size: 12px;
+    line-height: 24px;
+    color: #7f7f7f;
+  }
+  .view-on-map {
+    font-family: "Aclonica", "sans-serif";
+    font-size: 12px;
+    line-height: 20px;
+    text-decoration-line: underline;
+    color: #22bf95;
+    &:hover {
+      color: #7f7f7f;
+    }
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .footer-info {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 51px 0;
+    .footer-links {
+      height: 100%;
+    }
+    .company-adrress {
+      width: 100%;
+      margin-left: 70px;
+      .footer-links {
+        flex-direction: row;
+        justify-content: space-between;
+        height: 123px;
+        .number {
+          display: flex;
+          justify-content: flex-end;
+          font-size: 16px;
+        }
+        .adrress {
+          display: flex;
+          text-align: left;
+          margin-left: 30px;
+          font-size: 16px;
+        }
+        .view-on-map {
+          display: flex;
+          justify-content: flex-end;
+          font-size: 16px;
+        }
+      }
+      .footer-links > * {
+        padding-top: 16px;
+        width: 100%;
+      }
+    }
+  }
+  .company-adrress {
+    flex-direction: row;
+  }
+
+  .social-links-block {
+    flex-direction: row;
+
+    .links {
+      justify-content: flex-start;
+      * {
+        margin-right: 52px;
+      }
+    }
+  }
+}

@@ -1,0 +1,212 @@
+.glossary {
+  .wrapp {
+    border-top: 2px solid #b2b2b2;
+    padding-top: 12px;
+  }
+}
+
+.glossary-title {
+  width: 100%;
+  margin-bottom: 24px;
+  height: 18px;
+  box-sizing: border-box;
+  background-size: contain;
+  background-image: url("../images/skout-glossary.svg");
+  background-repeat: no-repeat;
+}
+
+.slider {
+  display: flex;
+  flex-direction: column;
+  padding: 24px 0;
+}
+
+.slider-block {
+  background-image: url("../images/slider-img-1.jpg");
+  background-size: cover;
+  padding-bottom: 24px;
+  height: 100%;
+
+  .slider-controller {
+    background-color: #fff;
+    box-shadow: 0 12px 24px #e5e5e5;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 442px;
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    padding: 40px 60px 40px 62px;
+    z-index: 0;
+
+    .arrow-right {
+      background-image: url("../images/arrowRight.png");
+      width: 16px;
+      height: 16px;
+      background-size: 100%;
+      background-position: center;
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      transition: 0.4s;
+      outline: none;
+      background-color: transparent;
+      border: none;
+      &:hover {
+        cursor: pointer;
+        opacity: 0.5;
+        transition: 0.4s;
+      }
+    }
+    .arrow-left {
+      outline: none;
+      border: none;
+      background-color: transparent;
+      background-image: url("../images/arrowRight.png");
+      transform: rotate(180deg);
+      width: 16px;
+      height: 16px;
+      background-size: 100%;
+      position: absolute;
+      right: 20px;
+      top: 50px;
+      transition: 0.4s;
+
+      &:hover {
+        cursor: pointer;
+        opacity: 0.5;
+        transition: 0.4s;
+      }
+    }
+
+    .slider-list {
+      display: flex;
+      flex-direction: column;
+      transition: 0.7s;
+      &-item {
+        list-style: none;
+        font-family: "Aclonica", "sans-serif";
+        font-size: 16px;
+        line-height: 32px;
+        color: #7f7f7f;
+        display: flex;
+        align-items: center;
+        position: relative;
+        transition: 0.7s;
+        cursor: pointer;
+        &:hover {
+          color: #22bf95;
+        }
+      }
+    }
+  }
+
+  .slide-content {
+    margin-top: 32px;
+    .slide-title {
+      font-family: "Actor", "sans-serif";
+      font-size: 32px;
+      line-height: 40px;
+      letter-spacing: 1.5px;
+      color: #1a1a1a;
+    }
+    .slide-text {
+      font-family: "Aclonica", "sans-serif";
+      font-size: 16px;
+      line-height: 24px;
+      color: #191919;
+      position: relative;
+      padding-left: 16px;
+      margin-top: 24px;
+
+      &::before {
+        content: "";
+        height: 48px;
+        width: 2px;
+        background-color: #22bf95;
+        position: absolute;
+        left: 0;
+      }
+    }
+  }
+}
+
+.current-slide-item {
+  &::before {
+    content: "";
+    display: flex;
+    height: 2px;
+    width: 46px;
+    background-color: #22bf95;
+    position: absolute;
+    left: -52px;
+    transition: 0.7s;
+  }
+  transition: 0.7s;
+}
+
+.hidden-list {
+  transition: 0.7s;
+  max-width: 0;
+  max-height: 0;
+  overflow: hidden;
+}
+
+@media screen and (min-width: 1150px) {
+  .glossary-title {
+    height: 40px;
+    img {
+      height: 100%;
+      width: 240px;
+    }
+  }
+  .slide-title {
+    font-size: 60px;
+    line-height: 90px;
+  }
+  .slider {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    max-height: 540px;
+    padding-bottom: 24px;
+  }
+  .slider-block {
+    padding: 60px 0;
+    .wrapp {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  .slider-controller {
+    margin-right: 130px;
+    left: -12px;
+    height: 570px;
+    .arrow-right,
+    .arrow-left {
+      width: 25px;
+      height: 25px;
+    }
+  }
+  .slide-title {
+    font-size: 90px;
+    line-height: 120px;
+    text-transform: uppercase;
+    position: relative;
+    left: -70px;
+  }
+  .slide-content {
+    font-size: 24px;
+    line-height: 36px;
+    z-index: 0;
+    position: absolute;
+    left: 50%;
+    max-width: 450px;
+  }
+  .slide-text {
+    max-width: 335px;
+  }
+}
