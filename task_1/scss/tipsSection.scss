@@ -16,8 +16,7 @@
   &-list {
     padding-bottom: 24px;
     counter-reset: section;
-    li{
-      
+    li {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -27,17 +26,17 @@
       padding: 3px 10px;
       cursor: pointer;
 
-      .tips-item-header{
+      .tips-item-header {
         width: 100%;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        span{
+        span {
           width: 100%;
           display: flex;
           align-items: center;
           justify-content: start;
-          &::before{
+          &::before {
             counter-increment: section;
             content: counter(section);
             font-family: "Actor", "sans-serif";
@@ -52,37 +51,35 @@
         }
       }
 
-      
-
       .tips-item-content {
         display: flex;
         flex-direction: column;
         align-items: center;
         transition: 1s max-height ease;
-        display: flex;
         overflow: hidden;
         max-height: 0;
-  
+
+        &::before {
+          content: "";
+          display: flex;
+          width: 270px;
+          height: 270px;
+          background-size: contain;
+          background-image: url("../images/tip1Big.png");
+          background-repeat: no-repeat;
+          margin-bottom: 22px;
+        }
         .tip-text {
           font-family: "Aclonica", "sans-serif";
           font-size: 14px;
           line-height: 24px;
           color: #191919;
-
-          &::before{
-            content: '';
-            display: flex;
-            max-width: 270px;
-            max-height: 270px;
-            background-image: url('../images/Tip1.png');
-          }
         }
       }
     }
   }
 
   &-item {
-    
     &-title {
       font-family: "Aclonica", "sans-serif";
       font-size: 16px;
@@ -129,10 +126,16 @@
   transition: 1s all ease;
   max-height: 1500px !important;
   padding-bottom: 94px;
+  padding: 12px;
 }
 
 .no-displayed {
   display: none;
+}
+.hide-pseudo {
+  &::before {
+    content: none !important;
+  }
 }
 
 @media screen and (min-width: 992px) {
@@ -159,18 +162,9 @@
     }
 
     &-content {
-      flex-direction: row;
+      flex-direction: row !important;
       justify-content: space-evenly;
       width: 100%;
-
-      .tip-img {
-        width: 270px;
-        height: 270px;
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-image: url("../images/tip1Big.png");
-        align-self: flex-end;
-      }
 
       .tip-text {
         width: 464px;

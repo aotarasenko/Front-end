@@ -1,6 +1,6 @@
 const getAnswerBtn = document.querySelectorAll(".faqs-list li");
 const answerBlocks = document.querySelectorAll(".answer");
-const answerArrow = document.querySelectorAll('.get-answer-btn');
+const answerArrow = document.querySelectorAll(".get-answer-btn");
 
 for (let i = 0; i < getAnswerBtn.length; i++) {
   getAnswerBtn[i].addEventListener("click", () => {

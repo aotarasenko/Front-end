@@ -22,7 +22,9 @@ burgerMenu.addEventListener("click", () => {
 });
 
 window.addEventListener("scroll", () => {
-  let computedOffset = (parseInt(getComputedStyle(header).height) - parseInt(getComputedStyle(tabsNav).top));
+  let computedOffset =
+    parseInt(getComputedStyle(header).height) -
+    parseInt(getComputedStyle(tabsNav).top);
   if (window.pageYOffset > 1) {
     navBlock.classList.add("fixed-block");
   } else {
