@@ -1,3 +1,5 @@
+@import './variables';
+
 header {
   width: 100%;
   height: auto;
@@ -55,13 +57,13 @@ header {
         width: 100%;
         font-family: "Acme", sans-serif;
         text-decoration: none;
-        color: #22bf95;
+        color: $mainGreen;
         font-size: 12px;
         letter-spacing: 2px;
         justify-content: center;
 
         &:hover {
-          color: #7f7f7f;
+          color: $mainGray;
         }
         &:hover::after,
         &:focus::after {
@@ -69,7 +71,7 @@ header {
           display: flex;
           height: 2px;
           width: 40px;
-          background-color: #7f7f7f;
+          background-color: $mainGray;
           position: absolute;
           bottom: -7px;
           border-radius: 3px;
@@ -103,18 +105,18 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid #22bf95;
+    border: 2px solid $mainGreen;
 
     border-radius: 20px;
     text-decoration: none;
-    color: #22bf95;
+    color: $mainGreen;
 
     padding: 8px 0;
     width: 90px;
     font-weight: 100;
     &:hover {
-      color: #7f7f7f;
-      border-color: #7f7f7f;
+      color: $mainGray;
+      border-color: $mainGray;
     }
     &:first-child {
       width: 180px;
@@ -190,7 +192,7 @@ header {
     box-shadow: 0 12px 24px 0 #f2f2f2;
     background-color: white;
     height: 100%;
-    border-top: 3px solid #22bf95;
+    border-top: 3px solid $mainGreen;
   }
   .tab-item {
     font-family: "Acme", "san-serif";
@@ -201,7 +203,7 @@ header {
     text-transform: uppercase;
     text-decoration: none;
     display: flex;
-    color: #7f7f7f;
+    color: $mainGray;
     justify-content: center;
     align-items: center;
     height: 20px;
@@ -212,7 +214,7 @@ header {
     }
 
     &:hover {
-      color: #22bf95;
+      color: $mainGreen;
     }
   }
 }
@@ -229,22 +231,22 @@ header {
   display: flex;
   justify-content: space-between;
   * {
-    color: #7f7f7f;
+    color: $mainGray;
   }
 
   *:not(.nav-logo):hover {
-    color: #22bf95;
+    color: $mainGreen;
   }
   .nav-controls > * {
-    border: 2px solid #7f7f7f;
+    border: 2px solid $mainGray;
     border-radius: 20px;
   }
   .nav-controls > *:hover {
-    border: 2px solid #22bf95;
+    border: 2px solid $mainGreen;
   }
 }
 .nav.fixed-block > .nav-menu-active > * {
-  background-color: #7f7f7f;
+  background-color: $mainGray;
 }
 
 .fixed-tabs {

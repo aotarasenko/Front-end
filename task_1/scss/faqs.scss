@@ -1,3 +1,5 @@
+@import './_variables';
+
 .faqs-section {
   margin-top: 24px;
   .wrapp {
@@ -125,7 +127,7 @@
   text-align: center;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: #22bf95;
+  color: $mainGreen;
   text-decoration: none;
   margin: 20px 0 24px 0;
   &:hover {
@@ -139,7 +141,7 @@
 }
 
 .greent-text {
-  color: #22bf95;
+  color: $mainGreen;
 }
 
 @media screen and (min-width: 992px) {

@@ -1,3 +1,5 @@
+@import './_variables';
+
 .glossary {
   .wrapp {
     border-top: 2px solid #b2b2b2;
@@ -88,14 +90,14 @@
         font-family: "Aclonica", "sans-serif";
         font-size: 16px;
         line-height: 32px;
-        color: #7f7f7f;
+        color: $mainGray;
         display: flex;
         align-items: center;
         position: relative;
         transition: 0.7s;
         cursor: pointer;
         &:hover {
-          color: #22bf95;
+          color: $mainGreen;
         }
       }
     }
@@ -123,7 +125,7 @@
         content: "";
         height: 48px;
         width: 2px;
-        background-color: #22bf95;
+        background-color: $mainGreen;
         position: absolute;
         left: 0;
       }
@@ -137,7 +139,7 @@
     display: flex;
     height: 2px;
     width: 46px;
-    background-color: #22bf95;
+    background-color: $mainGreen;
     position: absolute;
     left: -52px;
     transition: 0.7s;
