@@ -12,7 +12,6 @@
     .company-adrress {
       display: flex;
       flex-direction: column;
-      margin-top: 20px;
       .footer-links {
         border-top: 2px solid $mainGreen;
         padding-bottom: 20px;
@@ -149,7 +148,7 @@
           font-size: 16px;
         }
       }
-      .footer-links > * {
+      .footer-links >* {
         padding-top: 16px;
         width: 100%;
       }
