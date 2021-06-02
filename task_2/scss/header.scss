@@ -83,7 +83,6 @@ header {
   line-height: 56px;
   text-align: center;
   letter-spacing: 2px;
-  color: #ffffff;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -127,6 +126,8 @@ header {
       color: #ffffff;
       text-align: left;
       display: flex;
+      text-transform: none;
+      max-width: 670px;
       &::before{
         content: '';
         position: relative;
@@ -149,9 +150,7 @@ header {
       min-height: 40px;
       margin: 48px 0;
       @include primary-button($mainGreen, transparent, white);
-      @media screen and (min-width: 992px) {
-        margin: 0 120px;
-      }
+      
     }
   }
 }

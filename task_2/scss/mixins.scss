@@ -3,11 +3,12 @@
     font-size: 42px;
     line-height: 1.2;
     color: #191919;
+    text-align: center;
 }
-@mixin section-sub-title {
+@mixin section-sub-text {
     font-family: 'Aclonica', sans-serif;
     font-size: 16px;
-    line-height: 1.2px;
+    line-height: 24px;
     color: #191919;
 }
 @mixin primary-button($color, $borderColor, $background) {
@@ -24,7 +25,8 @@
     letter-spacing: 2px;
     font-family: 'Acme', sans-serif;
     transition: .6s box-shadow ease;
-
+    width: 200px;
+    height: 40px;
     &:hover{
         box-shadow: 0px 12px 18px rgba(127, 127, 127, 0.5);
         transition: .6s box-shadow ease;

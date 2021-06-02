@@ -23,12 +23,20 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-
+    @media screen and (min-width: 992px) {
+      flex-direction: row;
+    }
     .links {
       width: 100%;
       display: flex;
       justify-content: space-evenly;
       margin-top: 22px;
+      @media screen and (min-width: 992px) {
+        justify-content: flex-start;
+        a{
+          margin-right: 52px;
+        }
+      }
       * {
         color: $mainGray;
         font-size: 25px;
@@ -156,16 +164,5 @@
   }
   .company-adrress {
     flex-direction: row;
-  }
-
-  .social-links-block {
-    flex-direction: row;
-
-    .links {
-      justify-content: flex-start;
-      * {
-        margin-right: 52px;
-      }
-    }
   }
 }
