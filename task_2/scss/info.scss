@@ -4,7 +4,7 @@
     align-items: center;
     flex-direction: column;
     padding: 50px 0;
-    @media screen and (min-width: 992px) {
+    @include desktop-size{
         flex-direction: row;
     }
 
@@ -14,7 +14,7 @@
         background: url(../images/alert-img.png) no-repeat center;
         background-size: contain;
         margin-bottom: 50px;
-        @media screen and (min-width: 992px) {
+        @include desktop-size {
             min-width: 600px;
         }
 
@@ -43,16 +43,16 @@
             align-items: center;
             flex-direction: column;
             row-gap: 25px;
-            @media screen and (min-width: 992px) {
+            @include desktop-size {
                 flex-direction: row;
                 justify-content: space-between;
-    
             }
+
             .primary-btn:first-child{
-                @include primary-button($mainGreen, $mainGreen, #fff);
+                @include primary-button($color-green, $color-green, #fff);
             }
             .primary-btn:last-child{
-                @include primary-button(#fff, transparent, $mainGreen);
+                @include primary-button(#fff, transparent, $color-green);
                 width: 170px;
             }
         }

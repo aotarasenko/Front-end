@@ -1,0 +1,37 @@
+.slider-section{
+    background: url('../images/BG.png') center no-repeat;
+    background-size: cover;
+    height: 100vh;
+    
+    .wrapp{
+        .slider-block {
+            padding-top: 120px;
+            .slider-block-title {
+                @include section-title;
+                font-weight: 100;
+            }
+            .slide{
+                
+                .slide-text {
+                    @include section-sub-text;
+                }
+            }
+            
+        }
+        .section-title {
+            font-family: 'Acme', sans-serif;
+            font-size: 18px;
+            line-height: 24px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #191919;
+        }
+        .slide-title {
+        }
+        
+        .primary-btn {
+            @include primary-button(#fff, transparent, $color-green);
+        }
+    }
+
+}

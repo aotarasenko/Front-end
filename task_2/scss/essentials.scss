@@ -23,7 +23,7 @@
             width: 100%;
             box-shadow: 0px 12px 24px rgba(127, 127, 127, 0.3);
             border-radius: 5px;
-            border-left: 5px solid $mainGreen;
+            border-left: 5px solid $color-green;
             padding: 34px 44px 30px 50px;
             position: relative;
             @media screen and (min-width: 992px) {
@@ -33,15 +33,23 @@
             .essentials-description{
                 h3{
                     font-family: 'Aclonica', sans-serif;
-                    font-size: 24px;
-                    line-height: 36px;
-                    color: $mainBlack;
+                    font-size: 16px;
+                    line-height: 24px;
+                    color: $color-black;
+                    @media screen and (min-width: 992px) {
+                        font-size: 24px;
+                        line-height: 36px;
+                    }
                 }
                 p{
                     font-family: 'Aclonica', sans-serif;
-                    font-size: 13px;
-                    line-height: 24px;
-                    color: $mainBlack;
+                    font-size: 12px;
+                    line-height: 20px;
+                    color: $color-black;
+                    @media screen and (min-width: 992px) {
+                        font-size: 13px;
+                        line-height: 24px;
+                    }
                 }
             }
             
@@ -62,7 +70,7 @@
                     font-size: 13px;
                     line-height: 24px;
                     display: flex;
-                    border: 1px solid $mainGray;
+                    border: 1px solid $color-gray;
                     border-radius: 5px;
                     background-color: white;
                     position: inherit;
@@ -93,7 +101,7 @@
     }
 
     .primaty-btn{
-        @include primary-button(#fff, transparent, $mainGreen);
+        @include primary-button(#fff, transparent, $color-green);
         margin-top: 40px;
         margin-bottom: 50px;
         @media screen and (min-width: 992px) {

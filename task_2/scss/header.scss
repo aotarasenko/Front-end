@@ -52,13 +52,13 @@ header {
         width: 100%;
         font-family: "Acme", sans-serif;
         text-decoration: none;
-        color: $mainGreen;
+        color: $color-green;
         font-size: 12px;
         letter-spacing: 2px;
         justify-content: center;
 
         &:hover {
-          color: $mainGray;
+          color: $color-gray;
         }
         &:hover::after,
         &:focus::after {
@@ -66,7 +66,7 @@ header {
           display: flex;
           height: 2px;
           width: 40px;
-          background-color: $mainGray;
+          background-color: $color-gray;
           position: absolute;
           bottom: -7px;
           border-radius: 3px;
@@ -88,7 +88,7 @@ header {
   flex-direction: column;
   padding: 0 20px;
   text-transform: uppercase;
-  @media screen and (min-width: 992px) {
+  @include desktop-size {
     padding: 108px 0;
   }
 
@@ -99,8 +99,7 @@ header {
     min-width: 142px;
     font-size: 40px;
     margin: 30px 0;
-    
-    @media screen  and (min-width: 992px) {
+    @include desktop-size {
       padding: 0 120px;
       font-size: 110px;
       line-height: 130px;
@@ -114,7 +113,7 @@ header {
     align-items: center;
     flex-direction: column;
     margin-top: 24px;
-    @media screen and (min-width: 992px) {
+    @include desktop-size {
       flex-direction: row;
       margin-top: 120px;
     }
@@ -139,7 +138,7 @@ header {
         margin-right: 30px;
       }
 
-      @media screen and (min-width: 992px) {
+      @include desktop-size {
         font-size: 20px;
         line-height: 26px;
       }
@@ -149,7 +148,7 @@ header {
       min-width: 200px;
       min-height: 40px;
       margin: 48px 0;
-      @include primary-button($mainGreen, transparent, white);
+      @include primary-button($color-green, transparent, white);
       
     }
   }
@@ -172,7 +171,7 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  @media screen and (min-width: 992px) {
+  @include desktop-size {
     flex-direction: row;
   }
   
@@ -181,28 +180,28 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid $mainGreen;
+    border: 2px solid $color-green;
     border-radius: 20px;
     text-decoration: none;
-    color: $mainGreen;
+    color: $color-green;
     padding: 8px 0;
     width: 90px;
     font-weight: 100;
-    @media screen and (min-width: 992px) {
+    @include desktop-size {
       color: white;
       border-color: white;
     }
 
     &:hover {
-      color: $mainGray;
-      border-color: $mainGray;
+      color: $color-gray;
+      border-color: $color-gray;
     }
 
     &:first-child {
       width: 180px;
       margin-bottom: 16px;
       text-transform: uppercase;
-      @media screen and (min-width: 992px) {
+      @include desktop-size {
         margin: 0 20px 0 0;
       }
     }
@@ -243,22 +242,22 @@ header {
   display: flex;
   justify-content: space-between;
   * {
-    color: $mainGray;
+    color: $color-gray;
   }
 
   *:not(.nav-logo):hover {
-    color: $mainGreen;
+    color: $color-green;
   }
   .nav-controls > * {
-    border: 2px solid $mainGray;
+    border: 2px solid $color-gray;
     border-radius: 20px;
   }
   .nav-controls > *:hover {
-    border: 2px solid $mainGreen;
+    border: 2px solid $color-green;
   }
 }
 .nav.fixed-block > .nav-menu-active > * {
-  background-color: $mainGray;
+  background-color: $color-gray;
 }
 
 .nav-menu-active.open {
