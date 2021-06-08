@@ -1,10 +1,5 @@
 header {
-  background: linear-gradient(
-    101deg,
-    rgba(9, 9, 121, 1) 0%,
-    rgba(0, 224, 255, 1) 0%,
-    rgba(34, 191, 86, 1) 100%
-  );
+  @include gradient-background;
 }
 
 .nav {
