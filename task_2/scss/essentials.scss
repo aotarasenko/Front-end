@@ -1,112 +1,112 @@
 .essentials {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &-title {
+    @include section-title;
+    align-self: start;
+  }
+
+  &-list {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-top: 84px;
+    gap: 30px;
 
-    &-title {
-        @include section-title;
-        align-self: start;
-    }
+    li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: row;
+      width: 100%;
+      box-shadow: 0px 12px 24px rgba(127, 127, 127, 0.3);
+      border-radius: 5px;
+      border-left: 5px solid $color-green;
+      padding: 34px 44px 30px 50px;
+      position: relative;
+      @include desktop-size {
+        max-width: 500px;
+      }
 
-    &-list {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-evenly;
-        margin-top: 84px;
-        gap: 30px;
-
-        li {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-direction: row;
-            width: 100%;
-            box-shadow: 0px 12px 24px rgba(127, 127, 127, 0.3);
-            border-radius: 5px;
-            border-left: 5px solid $color-green;
-            padding: 34px 44px 30px 50px;
-            position: relative;
-            @media screen and (min-width: 992px) {
-                max-width: 500px;
-            }
-
-            .essentials-description {
-                h3 {
-                    font-family: 'Aclonica', sans-serif;
-                    font-size: 16px;
-                    line-height: 24px;
-                    color: $color-black;
-                    @media screen and (min-width: 992px) {
-                        font-size: 24px;
-                        line-height: 36px;
-                    }
-                }
-                p {
-                    font-family: 'Aclonica', sans-serif;
-                    font-size: 12px;
-                    line-height: 20px;
-                    color: $color-black;
-                    @media screen and (min-width: 992px) {
-                        font-size: 13px;
-                        line-height: 24px;
-                    }
-                }
-            }
-
-            .info-icon {
-                background-image: url('../images/i-icon.svg');
-                background-repeat: no-repeat;
-                background-position: center;
-                position: absolute;
-                bottom: 15px;
-                right: 15px;
-                width: 23px;
-                height: 23px;
-                cursor: pointer;
-
-                &:hover::before {
-                    content: 'Based on the 2018 Verizon Data Breach Report';
-                    font-family: 'Aclonica', sans-serif;
-                    font-size: 13px;
-                    line-height: 24px;
-                    display: flex;
-                    border: 1px solid $color-gray;
-                    border-radius: 5px;
-                    background-color: white;
-                    position: inherit;
-                    top: -30px;
-                    left: -300px;
-                    width: 350px;
-                    color: #7f7f7f;
-                    transition: 0.7s ease;
-                    z-index: 999;
-                }
-            }
-            &:nth-child(1)::after {
-                @include tip-img('../images/tip1.svg');
-            }
-
-            &:nth-child(2)::after {
-                @include tip-img('../images/tip2.svg');
-            }
-
-            &:nth-child(3)::after {
-                @include tip-img('../images/tip3.svg');
-            }
-
-            &:nth-child(4)::after {
-                @include tip-img('../images/tip4.svg');
-            }
+      .essentials-description {
+        h3 {
+          font-family: 'Aclonica', sans-serif;
+          font-size: 16px;
+          line-height: 24px;
+          color: $color-black;
+          @include desktop-size {
+            font-size: 24px;
+            line-height: 36px;
+          }
         }
-    }
-
-    .primaty-btn {
-        @include primary-button(#fff, transparent, $color-green);
-        margin-top: 40px;
-        margin-bottom: 50px;
-        @media screen and (min-width: 992px) {
-            margin-top: 80px;
-            margin-bottom: 100px;
+        p {
+          font-family: 'Aclonica', sans-serif;
+          font-size: 12px;
+          line-height: 20px;
+          color: $color-black;
+          @include desktop-size {
+            font-size: 13px;
+            line-height: 24px;
+          }
         }
+      }
+
+      .info-icon {
+        background-image: url('../images/i-icon.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+        position: absolute;
+        bottom: 15px;
+        right: 15px;
+        width: 23px;
+        height: 23px;
+        cursor: pointer;
+
+        &:hover::before {
+          content: 'Based on the 2018 Verizon Data Breach Report';
+          font-family: 'Aclonica', sans-serif;
+          font-size: 13px;
+          line-height: 24px;
+          display: flex;
+          border: 1px solid $color-gray;
+          border-radius: 5px;
+          background-color: white;
+          position: inherit;
+          top: -30px;
+          left: -300px;
+          width: 350px;
+          color: #7f7f7f;
+          transition: 0.7s ease;
+          z-index: 999;
+        }
+      }
+      &:nth-child(1)::after {
+        @include tip-img('../images/tip1.svg');
+      }
+
+      &:nth-child(2)::after {
+        @include tip-img('../images/tip2.svg');
+      }
+
+      &:nth-child(3)::after {
+        @include tip-img('../images/tip3.svg');
+      }
+
+      &:nth-child(4)::after {
+        @include tip-img('../images/tip4.svg');
+      }
     }
+  }
+
+  .primaty-btn {
+    @include primary-button(#fff, transparent, $color-green);
+    margin-top: 40px;
+    margin-bottom: 50px;
+    @include desktop-size {
+      margin-top: 80px;
+      margin-bottom: 100px;
+    }
+  }
 }
