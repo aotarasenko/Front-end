@@ -20,6 +20,16 @@ $(document).ready(function(){
         dots: false,
     });
 
+    $('.partners-slider').slick({
+        nextArrow: false,
+        prevArrow: false,
+        autoPlay: false,
+        slidesToScroll: 1,
+        slidesToShow: 1,
+        swipe: true,
+        dots: true,
+    });
+
     if(window.matchMedia('(min-width: 992px)').matches){
         $('.plans-list').slick('unslick');
     }
