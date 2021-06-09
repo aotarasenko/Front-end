@@ -1,21 +1,21 @@
-.essentials{
+.essentials {
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    &-title{
+    &-title {
         @include section-title;
         align-self: start;
     }
 
-    &-list{
+    &-list {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-evenly;
         margin-top: 84px;
         gap: 30px;
 
-        li{
+        li {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -30,8 +30,8 @@
                 max-width: 500px;
             }
 
-            .essentials-description{
-                h3{
+            .essentials-description {
+                h3 {
                     font-family: 'Aclonica', sans-serif;
                     font-size: 16px;
                     line-height: 24px;
@@ -41,7 +41,7 @@
                         line-height: 36px;
                     }
                 }
-                p{
+                p {
                     font-family: 'Aclonica', sans-serif;
                     font-size: 12px;
                     line-height: 20px;
@@ -52,8 +52,8 @@
                     }
                 }
             }
-            
-            .info-icon{
+
+            .info-icon {
                 background-image: url('../images/i-icon.svg');
                 background-repeat: no-repeat;
                 background-position: center;
@@ -64,7 +64,7 @@
                 height: 23px;
                 cursor: pointer;
 
-                &:hover::before{
+                &:hover::before {
                     content: 'Based on the 2018 Verizon Data Breach Report';
                     font-family: 'Aclonica', sans-serif;
                     font-size: 13px;
@@ -77,30 +77,30 @@
                     top: -30px;
                     left: -300px;
                     width: 350px;
-                    color: #7F7F7F;
-                    transition: .7s  ease;
+                    color: #7f7f7f;
+                    transition: 0.7s ease;
                     z-index: 999;
                 }
             }
-            &:nth-child(1)::after{
-                @include tip-img ('../images/tip1.svg');
+            &:nth-child(1)::after {
+                @include tip-img('../images/tip1.svg');
             }
 
-            &:nth-child(2)::after{
-                @include tip-img ('../images/tip2.svg');
+            &:nth-child(2)::after {
+                @include tip-img('../images/tip2.svg');
             }
 
-            &:nth-child(3)::after{
-                @include tip-img ('../images/tip3.svg');
+            &:nth-child(3)::after {
+                @include tip-img('../images/tip3.svg');
             }
 
-            &:nth-child(4)::after{
-                @include tip-img ('../images/tip4.svg');
+            &:nth-child(4)::after {
+                @include tip-img('../images/tip4.svg');
             }
         }
     }
 
-    .primaty-btn{
+    .primaty-btn {
         @include primary-button(#fff, transparent, $color-green);
         margin-top: 40px;
         margin-bottom: 50px;
@@ -108,6 +108,5 @@
             margin-top: 80px;
             margin-bottom: 100px;
         }
-        
     }
 }

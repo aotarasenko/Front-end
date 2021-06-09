@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).ready(function () {
     $('.slider').slick({
         nextArrow: false,
         prevArrow: false,
@@ -8,7 +8,7 @@ $(document).ready(function(){
         slidesToShow: 1,
         swipe: true,
         dots: true,
-    });
+    })
 
     $('.plans-list').slick({
         nextArrow: false,
@@ -18,7 +18,7 @@ $(document).ready(function(){
         slidesToShow: 1.1,
         swipe: true,
         dots: false,
-    });
+    })
 
     $('.partners-slider').slick({
         nextArrow: false,
@@ -28,14 +28,14 @@ $(document).ready(function(){
         slidesToShow: 1,
         swipe: true,
         dots: true,
-    });
+    })
 
-    if(window.matchMedia('(min-width: 992px)').matches){
-        $('.plans-list').slick('unslick');
+    if (window.matchMedia('(min-width: 992px)').matches) {
+        $('.plans-list').slick('unslick')
     }
 
-    const slickButtons = document.querySelectorAll('.slick-dots li button');
+    const slickButtons = document.querySelectorAll('.slick-dots li button')
     for (let i = 0; i < slickButtons.length; i++) {
-      slickButtons[i].textContent = '';
+        slickButtons[i].textContent = ''
     }
-});
+})
