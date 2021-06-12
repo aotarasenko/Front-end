@@ -151,7 +151,7 @@ header {
 .visible-list {
   left: 0;
   transition: 0.7s all ease;
-  height: 100vh;
+  height: calc(100vh - 62px);
 }
 
 .logo-content {
@@ -169,7 +169,7 @@ header {
     flex-direction: row;
   }
 
-  &-button {
+  button {
     font-family: 'Acme', 'san-serif';
     display: flex;
     justify-content: center;
@@ -180,6 +180,8 @@ header {
     color: $color-green;
     padding: 8px 0;
     width: 90px;
+    background-color: transparent;
+    cursor: pointer;
     font-weight: 100;
     @include desktop-size {
       color: white;
