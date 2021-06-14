@@ -5,13 +5,13 @@
   &-info {
     display: flex;
     flex-direction: column;
-    border-bottom: 2px solid $color-gray;
+    border-bottom: 2px solid $color-text-secondary;
 
     .company-adrress {
       display: flex;
       flex-direction: column;
       .footer-links {
-        border-top: 2px solid $color-green;
+        border-top: 2px solid $color-primary;
         padding-bottom: 20px;
       }
     }
@@ -25,10 +25,10 @@
       flex-direction: row;
     }
     .links {
+      height: 100%;
       width: 100%;
       display: flex;
       justify-content: space-evenly;
-      margin-top: 22px;
       @include desktop-size {
         justify-content: flex-start;
         a {
@@ -36,22 +36,19 @@
         }
       }
       * {
-        color: $color-gray;
+        color: $color-text-secondary;
         font-size: 25px;
         &:hover {
-          color: $color-green;
+          color: $color-primary;
         }
       }
     }
 
     .logo {
-      max-width: 169px;
-      max-height: 66px;
-
-      img {
-        height: 100%;
-        width: 100%;
-      }
+      width: 169px;
+      height: 66px;
+      background-image: url('../images/output-onlinepngtools\ \(7\).png');
+      background-size: cover;
     }
   }
 
@@ -66,14 +63,14 @@
         font-size: 12px;
         line-height: 20px;
         letter-spacing: 2px;
-        color: $color-gray;
+        color: $color-text-secondary;
       }
       a {
         font-family: 'Aclonica', 'sans-serif';
         font-size: 16px;
         line-height: 24px;
         display: flex;
-        color: $color-gray;
+        color: $color-text-secondary;
       }
     }
   }
@@ -83,12 +80,12 @@
     font-size: 12px;
     line-height: 20px;
     letter-spacing: 2px;
-    color: $color-gray;
+    color: $color-text-secondary;
     margin: 12px 0;
     text-transform: uppercase;
 
     &:hover {
-      color: $color-green;
+      color: $color-primary;
     }
   }
 
@@ -96,28 +93,28 @@
     font-family: 'Aclonica', 'sans-serif';
     font-size: 16px;
     line-height: 36px;
-    color: $color-gray;
+    color: $color-text-secondary;
   }
   .number {
     font-family: 'Aclonica', 'sans-serif';
     font-size: 16px;
     line-height: 24px;
-    color: $color-gray;
+    color: $color-text-secondary;
   }
   .adrress {
     font-family: 'Aclonica', 'sans-serif';
     font-size: 12px;
     line-height: 24px;
-    color: $color-gray;
+    color: $color-text-secondary;
   }
   .view-on-map {
     font-family: 'Aclonica', 'sans-serif';
     font-size: 12px;
     line-height: 20px;
     text-decoration-line: underline;
-    color: $color-green;
+    color: $color-primary;
     &:hover {
-      color: $color-gray;
+      color: $color-text-secondary;
     }
   }
 }

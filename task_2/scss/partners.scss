@@ -42,7 +42,7 @@
           width: 100%;
           height: 5px;
           border-radius: 3px;
-          background-color: $color-green;
+          background-color: $color-primary;
         }
       }
     }
@@ -78,7 +78,7 @@
     font-family: 'Actor', sans-serif;
     font-size: 12px;
     line-height: 20px;
-    color: $color-gray;
+    color: $color-text-secondary;
     text-align: center;
     @include desktop-size {
       font-size: 24px;
@@ -95,7 +95,7 @@
       text-align: center;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: $color-gray;
+      color: $color-text-secondary;
       text-transform: uppercase;
       @include desktop-size {
         text-align: right;

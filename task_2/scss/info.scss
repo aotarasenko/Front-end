@@ -54,10 +54,10 @@
       }
 
       .primary-btn:first-child {
-        @include primary-button($color-green, $color-green, #fff);
+        @include primary-button($color-primary, $color-primary, $color-white);
       }
       .primary-btn:last-child {
-        @include primary-button(#fff, transparent, $color-green);
+        @include primary-button($color-white, transparent, $color-primary);
         width: 170px;
       }
     }

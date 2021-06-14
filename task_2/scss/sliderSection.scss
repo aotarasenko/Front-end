@@ -33,7 +33,7 @@
             line-height: 24px;
             letter-spacing: 2px;
             text-transform: uppercase;
-            color: $color-black;
+            color: $color-text-primary;
           }
           .slide-text {
             @include section-sub-text;
@@ -80,14 +80,14 @@
                 display: block;
                 width: 6px;
                 height: 6px;
-                background-color: $color-green;
+                background-color: $color-primary;
                 border-radius: 50%;
               }
             }
           }
           li.slick-active {
             button {
-              border: 1px solid $color-green;
+              border: 1px solid $color-primary;
             }
           }
         }
@@ -95,7 +95,7 @@
     }
 
     .primary-btn {
-      @include primary-button(#fff, transparent, $color-green);
+      @include primary-button($color-white, transparent, $color-primary);
       @include desktop-size {
         margin-left: 100px;
       }

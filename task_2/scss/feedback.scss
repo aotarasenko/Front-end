@@ -82,7 +82,7 @@
   }
 
   div {
-    color: #fff;
+    color: $color-white;
 
     .get-feedback {
       display: flex;
@@ -101,7 +101,7 @@
       line-height: 24px;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: #ffffff;
+      color: $color-white;
       border-bottom: 2px solid rgba(255, 255, 255, 0.5);
     }
     span {
@@ -110,7 +110,7 @@
       line-height: 36px;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: #ffffff;
+      color: $color-white;
       @include desktop-size {
         margin-right: 104px;
       }
@@ -119,7 +119,7 @@
     button {
       width: 35px;
       height: 35px;
-      border: 2px solid #fff;
+      border: 2px solid $color-white;
       border-radius: 50%;
       background-color: transparent;
       background-image: url('../images/arrowButton.svg');
