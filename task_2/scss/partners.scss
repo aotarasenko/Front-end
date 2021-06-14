@@ -1,5 +1,8 @@
 .partners-section {
-  padding-top: 200px;
+  @include desktop-size{
+    padding-top: 200px;
+  }
+  
 }
 .partners-slider {
   .slick-dots {

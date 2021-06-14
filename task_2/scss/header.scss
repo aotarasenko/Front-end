@@ -3,7 +3,7 @@ header {
 }
 
 .nav {
-  transition: 0.5s ease;
+  transition: 0.6s ease;
   height: 62px;
   display: flex;
   align-items: center;
@@ -30,7 +30,7 @@ header {
     position: absolute;
     top: 63px;
     left: -100%;
-    transition: 0.7s all ease;
+    transition: 0.6s all ease;
     background-color: $color-white;
     z-index: 9999;
 
@@ -65,7 +65,7 @@ header {
           position: absolute;
           bottom: -7px;
           border-radius: 3px;
-          transition: 0.4s background-color ease;
+          transition: 0.6s background-color ease;
         }
       }
     }
@@ -150,7 +150,7 @@ header {
 
 .visible-list {
   left: 0;
-  transition: 0.7s all ease;
+  transition: 0.6s all ease;
   height: calc(100vh - 62px);
 }
 
@@ -217,7 +217,7 @@ header {
     background-color: $color-white;
     width: 100%;
     transform: rotate(0deg);
-    transition: 0.7s all ease;
+    transition: 0.6s all ease;
     position: relative;
   }
 
@@ -234,7 +234,7 @@ header {
   z-index: 99999;
   background-color: $color-white;
   box-shadow: 0 12px 24px #e5e5e5;
-  transition: 0.5s all;
+  transition: 0.6s all;
   display: flex;
   justify-content: space-between;
   * {
@@ -259,21 +259,21 @@ header {
 .nav-menu-active.open {
   div:first-child {
     transform: rotate(45deg);
-    transition: 0.7s transform ease;
+    transition: 0.6s transform ease;
     position: relative;
     top: 8px;
   }
 
   div:last-child {
     transform: rotate(-45deg);
-    transition: 0.7s transform ease;
+    transition: 0.6s transform ease;
     top: -8px;
     position: relative;
   }
 
   div:nth-child(2) {
     opacity: 0;
-    transition: 0.7s opacity ease;
+    transition: 0.6s opacity ease;
   }
 }
 
@@ -287,14 +287,14 @@ header {
   .nav.fixed-block {
     .nav-list {
       width: 90%;
-      transition: 0.7s all ease;
+      transition: 0.6s all ease;
     }
   }
   .nav-list {
     position: static;
     flex-direction: row;
     background-color: rgba(0, 0, 0, 0);
-    transition: 0.7s all ease;
+    transition: 0.6s all ease;
     li {
       a {
         color: white;
