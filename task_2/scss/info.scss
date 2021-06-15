@@ -9,7 +9,9 @@
   }
 
   .info-img {
-    height: 600px;
+    max-width: 650px;
+    max-height: 600px;
+    height:100%;
     width: 100%;
     background: url(../images/alert-img.png) no-repeat center;
     background-size: contain;
@@ -40,7 +42,7 @@
     }
     .info-text {
       @include section-sub-text;
-      margin-top: 43px;
+      margin-top: 40px;
       margin-bottom: 100px;
     }
     div {
