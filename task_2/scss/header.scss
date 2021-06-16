@@ -212,7 +212,7 @@ header {
   height: 18px;
   transform: rotate(0deg);
 
-  &::before{
+  &::before {
     content: '';
     position: absolute;
     top: 0;
@@ -222,7 +222,7 @@ header {
     transform: rotate(0deg);
   }
 
-  &::after{
+  &::after {
     content: '';
     position: absolute;
     top: 18px;
@@ -239,8 +239,6 @@ header {
     transform: rotate(0deg);
     transition: 0.6s all ease;
     position: relative;
-
-    
   }
 
   &:hover {
@@ -284,17 +282,15 @@ header {
     top: 8px;
     transition: 0.6s transform ease;
     opacity: 0;
-
-    
   }
 
-  &::before{
+  &::before {
     opacity: 1;
     transition: 0.6s transform ease;
     transform: rotate(45deg);
     top: 6px;
   }
-  &::after{
+  &::after {
     opacity: 1;
     transition: 0.6s transform ease;
     transform: rotate(-45deg);

@@ -54,39 +54,41 @@
         }
       }
 
-      &:nth-child(1){
+      &:nth-child(1) {
         .info-icon {
           @include info-icon;
-          &:hover{
+          &:hover {
             @include info-icon-content('gjrjghjkrghkjd');
           }
         }
       }
-      &:nth-child(2){
+      &:nth-child(2) {
         .info-icon {
           @include info-icon;
-          &:hover{
+          &:hover {
             @include info-icon-content('grkjehgjkerhg');
           }
         }
       }
-      &:nth-child(3){
+      &:nth-child(3) {
         .info-icon {
           @include info-icon;
-          &:hover{
+          &:hover {
             @include info-icon-content('gergrjghjrehjgkerhgjkerghkerjgh');
           }
         }
       }
-      &:nth-child(4){
+      &:nth-child(4) {
         .info-icon {
           @include info-icon;
-          &:hover{
-            @include info-icon-content('111111111111111111111111ghreghjghwejwwrgjkwregkhjrghrghwjgwhjkrgkwjehghwjrghrkgwhekg');
+          &:hover {
+            @include info-icon-content(
+              '111111111111111111111111ghreghjghwejwwrgjkwregkhjrghrghwjgwhjkrgkwjehghwjrghrkgwhekg'
+            );
           }
         }
       }
-      
+
       &:nth-child(1)::after {
         @include tip-img('../images/tip1.svg');
       }

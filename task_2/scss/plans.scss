@@ -18,11 +18,12 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      list-style: none;
-      background-color: $color-white;
       padding: 12px 20px;
       margin: 0 20px;
       border-radius: 5px;
+      list-style: none;
+      background-color: $color-white;
+
       @include desktop-size {
         padding: 40px 60px;
         width: 70%;
@@ -58,8 +59,8 @@
           flex-direction: row;
           justify-content: flex-start;
           align-items: center;
-          border-top: 1px solid #f2f2f2;
           padding: 10px 16px;
+          border-top: 1px solid #f2f2f2;
           font-family: 'Aclonica', sans-serif;
           font-size: 13px;
           line-height: 24px;
@@ -68,12 +69,12 @@
 
           &::before {
             content: '';
+            margin-right: 20px;
+            width: 38px;
+            height: 37px;
             -webkit-mask: url('../images/CheckMark-Line-F.svg');
             mask: url('../images/CheckMark-Line-F.svg');
             background-repeat: no-repeat;
-            width: 38px;
-            height: 37px;
-            margin-right: 20px;
             background-color: $color-text-secondary;
           }
         }
@@ -81,14 +82,14 @@
           opacity: 1;
           &::before {
             content: '';
+            margin-right: 20px;
+            width: 38px;
+            height: 37px;
             mask: url('../images/CheckMark-Line-T.svg');
             -webkit-mask: url('../images/CheckMark-Line-T.svg');
             background-repeat: no-repeat;
             background-color: $color-primary;
-            width: 38px;
-            height: 37px;
             background-size: cover;
-            margin-right: 20px;
             opacity: 1;
           }
         }
