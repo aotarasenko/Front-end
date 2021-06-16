@@ -20,7 +20,7 @@
 }
 @mixin tip-img($imgUrl) {
   content: url($imgUrl);
-  margin-left: 25px;
+  margin-left: 30px;
 }
 @mixin primary-button($color, $borderColor, $background) {
   box-shadow: 0px 6px 12px rgba(127, 127, 127, 0.3);
@@ -67,6 +67,37 @@
     rgba(0, 224, 255, 1) 0%,
     rgba(34, 191, 86, 1) 100%
   );
+}
+@mixin info-icon{
+  background-image: url('../images/i-icon.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  width: 23px;
+  height: 23px;
+  cursor: pointer;
+  
+}
+@mixin info-icon-content($content) {
+  &::after{
+    content: $content;
+    font-family: 'Aclonica', sans-serif;
+    font-size: 13px;
+    line-height: 24px;
+    display: flex;
+    border: 1px solid $color-text-secondary;
+    border-radius: 5px;
+    padding: 4px 8px;
+    background-color: white;
+    position: inherit;
+    top: -30px;
+    right: 0;
+    color: $color-text-secondary;
+    transition: 0.6s ease;
+    z-index: 999;
+  }
 }
 
 @mixin desktop-size {

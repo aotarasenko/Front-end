@@ -84,7 +84,7 @@ header {
   padding: 0 20px;
   text-transform: uppercase;
   @include desktop-size {
-    padding: 108px 0;
+    padding: 100px 0;
   }
 
   &-content {
@@ -279,7 +279,7 @@ header {
 
 @include desktop-size {
   .nav {
-    padding-top: 28px;
+    padding-top: 30px;
   }
   .nav-menu-active {
     display: none;

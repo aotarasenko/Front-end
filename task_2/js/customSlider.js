@@ -30,7 +30,8 @@ $(document).ready(function () {
         dots: true,
     })
 
-    if (window.matchMedia('(min-width: 992px)').matches) {
+
+    if (window.matchMedia('(min-width: 1024px)').matches) {
         $('.plans-list').slick('unslick')
     }
 
