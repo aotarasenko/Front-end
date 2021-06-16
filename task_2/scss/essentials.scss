@@ -87,24 +87,6 @@
         }
       }
       
-        // &:hover::before {
-        //   content: 'Based ';
-        //   font-family: 'Aclonica', sans-serif;
-        //   font-size: 13px;
-        //   line-height: 24px;
-        //   display: flex;
-        //   border: 1px solid $color-text-secondary;
-        //   border-radius: 5px;
-        //   padding: 4px 8px;
-        //   background-color: white;
-        //   position: inherit;
-        //   top: -30px;
-        //   right: 0;
-        //   color: $color-text-secondary;
-        //   transition: 0.6s ease;
-        //   z-index: 999;
-        // }
-      
       &:nth-child(1)::after {
         @include tip-img('../images/tip1.svg');
       }
