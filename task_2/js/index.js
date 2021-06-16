@@ -2,6 +2,9 @@ const burgerMenu = document.querySelector('.nav-menu-active')
 const menuList = document.querySelector('.nav-list')
 const header = document.querySelector('header')
 const navBlock = document.querySelector('.nav')
+const partnersSliderButtons = document.querySelectorAll('.partners-slider > .slick-dots li')
+
+console.log(partnersSliderButtons);
 
 burgerMenu.addEventListener('click', () => {
     menuList.classList.toggle('visible-list')

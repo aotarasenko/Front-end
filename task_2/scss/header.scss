@@ -43,7 +43,7 @@ header {
         text-transform: uppercase;
         display: flex;
         position: relative;
-        z-index: 999999;
+        z-index: 9999;
         width: 100%;
         font-family: 'Acme', sans-serif;
         text-decoration: none;
@@ -207,10 +207,30 @@ header {
 .nav-menu-active {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   width: 24px;
   height: 18px;
   transform: rotate(0deg);
+
+  &::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    height: 2px;
+    background-color: $color-white;
+    width: 100%;
+    transform: rotate(0deg);
+  }
+
+  &::after{
+    content: '';
+    position: absolute;
+    top: 18px;
+    height: 2px;
+    background-color: $color-white;
+    width: 100%;
+    transform: rotate(0deg);
+  }
 
   div {
     height: 2px;
@@ -219,6 +239,8 @@ header {
     transform: rotate(0deg);
     transition: 0.6s all ease;
     position: relative;
+
+    
   }
 
   &:hover {
@@ -257,23 +279,26 @@ header {
 }
 
 .nav-menu-active.open {
-  div:first-child {
-    transform: rotate(45deg);
-    transition: 0.6s transform ease;
+  div {
     position: relative;
     top: 8px;
-  }
-
-  div:last-child {
-    transform: rotate(-45deg);
     transition: 0.6s transform ease;
-    top: -8px;
-    position: relative;
+    opacity: 0;
+
+    
   }
 
-  div:nth-child(2) {
-    opacity: 0;
-    transition: 0.6s opacity ease;
+  &::before{
+    opacity: 1;
+    transition: 0.6s transform ease;
+    transform: rotate(45deg);
+    top: 6px;
+  }
+  &::after{
+    opacity: 1;
+    transition: 0.6s transform ease;
+    transform: rotate(-45deg);
+    top: 6px;
   }
 }
 

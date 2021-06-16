@@ -1,6 +1,6 @@
 .footer {
-  background: #f2f2f2;
   padding-bottom: 50px;
+  background: #f2f2f2;
 
   &-info {
     display: flex;
@@ -25,10 +25,10 @@
       flex-direction: row;
     }
     .links {
-      height: 100%;
-      width: 100%;
       display: flex;
       justify-content: space-evenly;
+      height: 100%;
+      width: 100%;
       @include desktop-size {
         justify-content: flex-start;
         a {
@@ -65,22 +65,22 @@
         color: $color-text-secondary;
       }
       a {
+        display: flex;
         font-family: 'Aclonica', 'sans-serif';
         font-size: 16px;
         line-height: 24px;
-        display: flex;
         color: $color-text-secondary;
       }
     }
   }
   a {
+    margin: 12px 0;
     text-decoration: none;
     font-family: 'Acme', 'sans-serif';
     font-size: 12px;
     line-height: 20px;
     letter-spacing: 2px;
     color: $color-text-secondary;
-    margin: 12px 0;
     text-transform: uppercase;
 
     &:hover {
