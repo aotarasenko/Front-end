@@ -220,6 +220,7 @@ header {
     background-color: $color-white;
     width: 100%;
     transform: rotate(0deg);
+    transition: .6s top, transform ease;
   }
 
   &::after {
@@ -230,6 +231,7 @@ header {
     background-color: $color-white;
     width: 100%;
     transform: rotate(0deg);
+    transition: .6s top, transform ease;
   }
 
   div {
@@ -271,28 +273,35 @@ header {
   .nav-controls > *:hover {
     border: 2px solid $color-primary;
   }
-}
-.nav.fixed-block > .nav-menu-active > * {
-  background-color: $color-text-secondary;
+
+  .nav-menu-active{
+    div{
+      background-color: $color-text-secondary;
+
+      &::before, &::after{
+        background-color: $color-text-secondary !important;
+      }
+    }
+  }
 }
 
 .nav-menu-active.open {
   div {
     position: relative;
     top: 8px;
-    transition: 0.6s transform ease;
+    transition: 0.6s transform, top ease;
     opacity: 0;
   }
 
   &::before {
     opacity: 1;
-    transition: 0.6s transform ease;
+    transition: 0.6s transform, top ease;
     transform: rotate(45deg);
     top: 6px;
   }
   &::after {
     opacity: 1;
-    transition: 0.6s transform ease;
+    transition: 0.6s transform, top ease;
     transform: rotate(-45deg);
     top: 6px;
   }

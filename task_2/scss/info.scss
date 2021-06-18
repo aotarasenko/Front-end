@@ -3,6 +3,7 @@
   justify-content: space-evenly;
   align-items: center;
   flex-direction: column;
+  column-gap: 30px;
   margin-top: 40px;
   @include desktop-size {
     flex-direction: row;
