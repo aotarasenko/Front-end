@@ -62,7 +62,7 @@
       }
       .primary-btn:last-child {
         @include primary-button($color-white, transparent, $color-primary);
-        width: 170px;
+        min-width: 170px;
       }
     }
   }

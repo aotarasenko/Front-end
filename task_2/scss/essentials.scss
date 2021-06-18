@@ -34,17 +34,17 @@
       .essentials-description {
         &-title {
           font-family: 'Aclonica', sans-serif;
-          font-size: 16px;
+          $font-medium;
           line-height: 24px;
           color: $color-text-primary;
           @include desktop-size {
-            font-size: 24px;
+            $font-large;
             line-height: 36px;
           }
         }
         p {
           font-family: 'Aclonica', sans-serif;
-          font-size: 12px;
+          $font-small;
           line-height: 20px;
           color: $color-text-primary;
           @include desktop-size {

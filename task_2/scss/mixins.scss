@@ -1,6 +1,6 @@
 @mixin section-title {
   font-family: 'Aclonica', sans-serif;
-  font-size: 16px;
+  $font-medium;
   line-height: 24px;
   color: $color-text-primary;
   @include desktop-size {
@@ -10,11 +10,11 @@
 }
 @mixin section-sub-text {
   font-family: 'Aclonica', sans-serif;
-  font-size: 12px;
+  $font-small;
   line-height: 20px;
   color: $color-text-primary;
   @include desktop-size {
-    font-size: 16px;
+    $font-medium;
     line-height: 24px;
   }
 }
@@ -22,14 +22,14 @@
   box-shadow: 0px 6px 12px rgba(127, 127, 127, 0.3);
   border-radius: 20px;
   border: 1px solid $borderColor;
-  width: 200px;
-  height: 40px;
+  min-width: 200px;
+  min-height: 40px;
   color: $color;
   background-color: $background;
   outline: none;
   cursor: pointer;
   text-transform: uppercase;
-  font-size: 12px;
+  $font-small;
   line-height: 24px;
   letter-spacing: 2px;
   font-family: 'Acme', sans-serif;
@@ -43,17 +43,16 @@
   &::after {
     content: '';
     display: block;
+    margin-bottom: 30px;
+    min-width: 100px;
+    min-height: 150px;
+    max-width: 470px;
+    height: 100%;
     width: 100%;
-    height: 150px;
-    margin: 30px;
     background-image: url($imgUrl);
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
-    @include desktop-size {
-      height: 262px;
-      max-width: 350px;
-    }
   }
 }
 @mixin gradient-background {
