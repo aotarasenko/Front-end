@@ -75,10 +75,10 @@
       }
 
       .pop-info {
-        display: none;
         position: absolute;
         top: 120px;
         right: 40px;
+        display: none;
         z-index: 999;
         max-width: 250px;
         border: 1px solid $color-text-secondary;
