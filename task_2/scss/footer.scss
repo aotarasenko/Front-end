@@ -36,7 +36,7 @@
       }
       * {
         color: $color-text-secondary;
-        $font-large;
+        font-size: $font-large;
         &:hover {
           color: $color-primary;
         }
@@ -58,7 +58,7 @@
     .call-number {
       span {
         font-family: 'Acme', 'sans-serif';
-        $font-small;
+        font-size: $font-small;
         line-height: 20px;
         letter-spacing: 2px;
         color: $color-text-secondary;
@@ -66,7 +66,7 @@
       a {
         display: flex;
         font-family: 'Aclonica', 'sans-serif';
-        $font-medium;
+        font-size: $font-medium;
         line-height: 24px;
         color: $color-text-secondary;
       }
@@ -76,7 +76,7 @@
     margin: 12px 0;
     text-decoration: none;
     font-family: 'Acme', 'sans-serif';
-    $font-small;
+    font-size: $font-small;
     line-height: 20px;
     letter-spacing: 2px;
     color: $color-text-secondary;
@@ -89,26 +89,26 @@
 
   &-info-title {
     font-family: 'Aclonica', 'sans-serif';
-    $font-medium;
+    font-size: $font-medium;
     line-height: 36px;
     color: $color-text-secondary;
   }
   .number {
     font-family: 'Aclonica', 'sans-serif';
-    $font-medium;
+    font-size: $font-medium;
     line-height: 24px;
     color: $color-text-secondary;
   }
   .adrress {
     font-family: 'Aclonica', 'sans-serif';
-    $font-small;
+    font-size: $font-small;
     line-height: 24px;
     color: $color-text-secondary;
     font-style: normal;
   }
   .view-on-map {
     font-family: 'Aclonica', 'sans-serif';
-    $font-small;
+    font-size: $font-small;
     line-height: 20px;
     text-decoration-line: underline;
     color: $color-primary;
@@ -132,18 +132,18 @@
         .number {
           display: flex;
           justify-content: flex-end;
-          $font-medium;
+          font-size: $font-medium;
         }
         .adrress {
           display: flex;
           text-align: left;
           margin-left: 30px;
-          $font-medium;
+          font-size: $font-medium;
         }
         .view-on-map {
           display: flex;
           justify-content: flex-end;
-          $font-medium;
+          font-size: $font-medium;
         }
       }
       .footer-links > * {

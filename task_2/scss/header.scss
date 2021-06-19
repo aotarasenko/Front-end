@@ -25,7 +25,7 @@ header {
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: $header-height;
+    height: calc(100vh - #{$header-height});
     justify-content: space-evenly;
     position: absolute;
     top: $header-height;
@@ -48,7 +48,7 @@ header {
         font-family: 'Acme', sans-serif;
         text-decoration: none;
         color: $color-primary;
-        $font-small;
+        font-size: $font-small;
         letter-spacing: 2px;
         justify-content: center;
 
@@ -115,7 +115,7 @@ header {
 
     &-description {
       font-family: 'Aclonica', sans-serif;
-      $font-medium;
+      font-size: $font-medium;
       line-height: 22px;
       color: $color-white;
       text-align: left;
@@ -140,8 +140,6 @@ header {
     }
 
     .primary-btn {
-      min-width: 200px;
-      min-height: 40px;
       margin: 50px 0;
       @include primary-button($color-primary, transparent, white);
     }
@@ -220,7 +218,7 @@ header {
     background-color: $color-white;
     width: 100%;
     transform: rotate(0deg);
-    transition: .6s top, transform, height ease;
+    transition: 0.6s top, transform, height ease;
   }
 
   &::after {
@@ -231,7 +229,7 @@ header {
     background-color: $color-white;
     width: 100%;
     transform: rotate(0deg);
-    transition: .6s top, transform ease;
+    transition: 0.6s top, transform ease;
   }
 
   div {
@@ -274,13 +272,13 @@ header {
     border: 2px solid $color-primary;
   }
 
-  .nav-menu-active{
-    div{
+  .nav-menu-active {
+    div {
       background-color: $color-text-secondary;
-
-      &::before, &::after{
-        background-color: $color-text-secondary;
-      }
+    }
+    &::before,
+    &::after {
+      background-color: $color-text-secondary;
     }
   }
 }

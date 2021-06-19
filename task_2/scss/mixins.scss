@@ -1,6 +1,6 @@
 @mixin section-title {
   font-family: 'Aclonica', sans-serif;
-  $font-medium;
+  font-size: $font-medium;
   line-height: 24px;
   color: $color-text-primary;
   @include desktop-size {
@@ -10,11 +10,11 @@
 }
 @mixin section-sub-text {
   font-family: 'Aclonica', sans-serif;
-  $font-small;
+  font-size: $font-small;
   line-height: 20px;
   color: $color-text-primary;
   @include desktop-size {
-    $font-medium;
+    font-size: $font-medium;
     line-height: 24px;
   }
 }
@@ -29,7 +29,7 @@
   outline: none;
   cursor: pointer;
   text-transform: uppercase;
-  $font-small;
+  font-size: $font-small;
   line-height: 24px;
   letter-spacing: 2px;
   font-family: 'Acme', sans-serif;

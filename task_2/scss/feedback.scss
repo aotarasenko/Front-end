@@ -83,7 +83,6 @@
   div {
     color: $color-white;
     width: 100%;
-    
 
     .get-feedback {
       display: flex;
@@ -96,7 +95,7 @@
       padding-bottom: 8px;
       border-bottom: 2px solid rgba(255, 255, 255, 0.5);
       font-family: 'Acme', sans-serif;
-      $font-small;
+      font-size: $font-small;
       line-height: 24px;
       letter-spacing: 2px;
       text-transform: uppercase;
@@ -104,9 +103,9 @@
     }
     span {
       margin-right: 20px;
-      width: 90%;
+      width: 80%;
       font-family: 'Aclonica', sans-serif;
-      $font-large;
+      font-size: $font-large;
       font-weight: 100;
       line-height: 36px;
       letter-spacing: 2px;

@@ -84,12 +84,12 @@
   blockquote {
     max-width: 570px;
     font-family: 'Actor', sans-serif;
-    $font-small;
+    font-size: $font-small;
     line-height: 20px;
     color: $color-text-secondary;
     text-align: center;
     @include desktop-size {
-      $font-large;
+      font-size: $font-large;
       line-height: 36px;
       text-align: left;
       font-family: 'Aclonica', sans-serif;
@@ -98,7 +98,7 @@
     p {
       margin-top: 18px;
       font-family: 'Acme', sans-serif;
-      $font-small;
+      font-size: $font-small;
       line-height: 24px;
       text-align: center;
       letter-spacing: 2px;

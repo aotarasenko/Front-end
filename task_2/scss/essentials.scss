@@ -34,17 +34,17 @@
       .essentials-description {
         &-title {
           font-family: 'Aclonica', sans-serif;
-          $font-medium;
+          font-size: $font-medium;
           line-height: 24px;
           color: $color-text-primary;
           @include desktop-size {
-            $font-large;
+            font-size: $font-large;
             line-height: 36px;
           }
         }
         p {
           font-family: 'Aclonica', sans-serif;
-          $font-small;
+          font-size: $font-small;
           line-height: 20px;
           color: $color-text-primary;
           @include desktop-size {
@@ -54,11 +54,11 @@
         }
       }
 
-      img{
+      img {
         margin-left: 30px;
       }
 
-      .info-icon{
+      .info-icon {
         position: absolute;
         bottom: 15px;
         right: 15px;
@@ -69,13 +69,12 @@
         background-position: center;
         cursor: pointer;
 
-        &:hover + .pop-info{
+        &:hover + .pop-info {
           display: flex;
         }
-
       }
 
-      .pop-info{
+      .pop-info {
         display: none;
         position: absolute;
         top: 120px;
