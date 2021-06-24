@@ -4,7 +4,7 @@ const symbol = "$";
 
 pushButton.addEventListener("click", () => {
   let number = Math.round(Number(input.value));
-  if (isNaN(number)) {
+  if (isNaN(number) || number <= 0) {
     alert("Incorrect value");
   } else {
     for (let i = 1; number > 0; i++) {

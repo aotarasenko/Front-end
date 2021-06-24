@@ -58,14 +58,6 @@ class ATM {
   }
   //---------
 
-  getNote(noteIndex, out) {
-    let sumOfNotes = 0;
-
-    while (this.canAddNote(this.store[noteIndex], out)) {}
-
-    return sumOfNotes;
-  }
-
   // calculate current store amount
   calculateStoreMoney() {
     for (let i = 0; i < this.store.length; i++) {
@@ -82,7 +74,6 @@ class ATM {
           this.store[i].count--;
           this.outNotes.push(this.store[i].value);
         }
-      } else {
       }
     }
   }
@@ -114,7 +105,7 @@ class ATM {
       case -1:
         alert("ATM can`t give current amount");
         break;
-
+      // here can be some other error cases
       default:
         break;
     }
