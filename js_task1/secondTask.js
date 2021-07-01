@@ -42,6 +42,7 @@ function frequentNumber(topArray, bottomArray) {
   let count;
   let frequent = 0;
   for (let i = 1; i <= elementsCount; i++) {
+    // searching for required value
     count = 0;
     for (let j = 0; j < elementsCount; j++) {
       if (topArray[j] === i || bottomArray[j] === i) {
@@ -49,12 +50,13 @@ function frequentNumber(topArray, bottomArray) {
       }
     }
     if (count === elementsCount) {
+      // if we have required value in all positions
       frequent = i;
       return frequent;
     }
   }
 
-  return -1;
+  return -1; // if we can`t find required value
 }
 
 function frequentRow(elem, top, bottom) {
@@ -63,10 +65,10 @@ function frequentRow(elem, top, bottom) {
   let topCount = sameElementsCount(top, elem);
   let bottomCount = sameElementsCount(bottom, elem);
 
-  return topCount >= bottomCount ? top : bottom; 
+  return topCount >= bottomCount ? top : bottom;
 }
 
-function isArraysCompare(a, b) {  
+function isArraysCompare(a, b) {
   if (a.length !== b.length) {
     return false;
   }
@@ -80,7 +82,8 @@ function isArraysCompare(a, b) {
   return true;
 }
 
-function rotateDomino(top, bottom, number) { // hov much rotates i do
+function rotateDomino(top, bottom, number) {
+  // hov much rotates we do
   let rotatesCount = 0;
   for (let i = 0; i < bottom.length; i++) {
     if (bottom[i] !== number) {
@@ -103,9 +106,10 @@ generateButton.addEventListener("click", () => {
 checkButton.addEventListener("click", () => {
   let number = frequentNumber(firstArray, secondArray); // you can write here static array to check
   if (number !== -1) {
-    let requiredArray = frequentRow(number, firstArray, secondArray); 
+    let requiredArray = frequentRow(number, firstArray, secondArray);
     console.log("required", requiredArray);
-    if (!isArraysCompare(firstArray, requiredArray)) { //
+    if (!isArraysCompare(firstArray, requiredArray)) {
+      //
       console.log(rotateDomino(firstArray, requiredArray, number));
     } else {
       console.log(rotateDomino(secondArray, requiredArray, number));

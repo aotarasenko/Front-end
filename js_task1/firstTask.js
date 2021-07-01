@@ -1,7 +1,7 @@
 const input = document.querySelector(".first-task input");
 const pushButton = document.querySelector(".first-task button");
 const outArea = document.querySelector(".first-task .out-area");
-const symbol = " $ "; // out symbol
+const symbol = " $ "; // output symbol
 
 function outputLine(symbolCount) {
   outArea.innerHTML += `${symbol.repeat(symbolCount)} <br>`;
@@ -15,12 +15,10 @@ pushButton.addEventListener("click", () => {
   } else {
     for (let i = 1; number > 0; i++) {
       if (number <= i) {
-        // outArea.innerHTML += `${symbol.repeat(number)} <br>`;
         outputLine(number);
         outArea.innerHTML += `Rows: ${i}`;
         break;
       }
-      // outArea.innerHTML += `${symbol.repeat(i)} <br>`;
       outputLine(i);
       number -= i;
     }
