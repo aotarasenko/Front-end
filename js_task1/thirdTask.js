@@ -63,7 +63,7 @@ class ATM {
     for (let i = 0; i < this.store.length; i++) {
       this.maxStoreValue += this.store[i].count * this.store[i].value;
     }
-    console.log(this.maxStoreValue);
+    console.log("ATM contains: ", this.maxStoreValue, " money");
   }
   //
   calculateAmount() {
@@ -121,13 +121,13 @@ function randomValue(min, max) {
 }
 
 function getMoney(value) {
-  console.log(atm.maxStoreValue);
+  console.log("Max value :", atm.maxStoreValue);
   atm.setUserValue(value);
   atm.getMoney();
   console.log(atm.outNotes);
 
   atm.endSession();
-  console.log(atm.maxStoreValue);
+  console.log("Max value :", atm.maxStoreValue);
 }
 
 let atm = new ATM();
