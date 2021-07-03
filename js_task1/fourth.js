@@ -53,15 +53,6 @@ function getPair(number) {
   return;
 }
 
-function isPairExists(source, pair) {
-  pair.reverse();
-
-  if (isArraysCompare(source, pair)) {
-    return true;
-  }
-  return false;
-}
-
 function getFriendlyNumbers(start, end) {
   let pairsList = [];
 
