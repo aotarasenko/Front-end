@@ -3,19 +3,6 @@ const endOfRange = document.querySelector("#to");
 const searchButton = document.querySelector("button");
 const resualtArea = document.querySelector(".output");
 
-function isArraysCompare(a, b) {
-  if (a.length !== b.length) {
-    return false;
-  }
-
-  for (i = 0; i < a.length; i++) {
-    if (a[i] !== b[i]) {
-      return false;
-    }
-  }
-  return true;
-}
-
 function getDividers(number) {
   //get list of number dividers
   let dividersList = [];
