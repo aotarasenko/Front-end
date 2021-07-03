@@ -44,7 +44,7 @@ function getPair(number) {
   let firstSum = sumOfDividers(number);
   let secondDividers = sumOfDividers(firstSum);
 
-  if (firstSum < number) {
+  if (firstSum < number || firstSum === number) {
     return;
   } else if (secondDividers === number) {
     return [number, firstSum];
