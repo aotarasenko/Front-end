@@ -4,32 +4,35 @@ const input = document.querySelector("input"),
   outputSymbol = " $ ";
 
 function outputLine(symbolCount) {
-  let block = document.createElement("div");
-  block.innerHTML = `${outputSymbol.repeat(symbolCount)} <br>`;
-  outputArea.appendChild(block);
+  let outputRow = document.createElement("div");
+  let outputContent = document.createTextNode(
+    `${outputSymbol.repeat(symbolCount)}`
+  );
+  outputRow.appendChild(outputContent);
+  outputArea.appendChild(outputRow);
 }
 
 pushButton.addEventListener("click", () => {
   outputArea.innerHTML = "";
-  let number = Math.round(+input.value);
-  if (isNaN(number) || number <= 0) {
+  let userValue = Math.round(+input.value);
+  if (isNaN(userValue) || userValue <= 0) {
     alert("Incorrect value");
     return;
   }
   let i = 1;
   let linesCount = 0;
 
-  while (number > 0) {
-    if (number < i) {
-      outputLine(number);
+  while (userValue > 0) {
+    if (userValue < i) {
+      outputLine(userValue);
       break;
     } else {
       outputLine(i);
       linesCount++;
     }
-    number -= i;
+    userValue -= i;
     i++;
   }
 
-  outputArea.innerHTML += `Rows: ${linesCount}`;
+  outputArea.innerHTML += `Full rows: ${linesCount}`;
 });
