@@ -52,18 +52,23 @@ function getFriendlyNumbers(start, end) {
 }
 
 searchButton.addEventListener("click", () => {
-  let start = Math.round(Number(startOfRange.value));
-  let end = Math.round(Number(endOfRange.value));
+  let start = Math.round(+startOfRange.value);
+  let end = Math.round(+endOfRange.value);
 
   if (isNaN(start) || isNaN(end)) {
     alert("Incorrect value");
+    return;
   } else if (start >= end) {
     alert("Start of range must be less than end of range");
+    return;
   } else if (start <= 0 || end <= 0) {
     alert("Values must be more than zero");
-  } else {
-    let result = getFriendlyNumbers(start, end);
-
-    resualtArea.innerHTML = `${result.join("<br>")}`;
+    return;
   }
+  let result = getFriendlyNumbers(start, end);
+
+  let resultPairs = document.createElement("div");
+  resultPairs.textContent = `${result.join("<br>")}`;
+
+  resualtArea.appendChild(resultPairs);
 });

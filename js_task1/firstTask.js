@@ -1,6 +1,7 @@
 const input = document.querySelector("input"),
   pushButton = document.querySelector("button"),
   outputArea = document.querySelector(".output-area"),
+  app = document.querySelector(".first-task"),
   outputSymbol = " $ ";
 
 function outputLine(symbolCount) {
@@ -34,5 +35,8 @@ pushButton.addEventListener("click", () => {
     i++;
   }
 
-  outputArea.innerHTML += `Full rows: ${linesCount}`;
+  let rowsCount = document.createElement("div");
+  rowsCount.classList.add("info-area");
+  rowsCount.textContent = `Full rows: ${linesCount}`;
+  app.appendChild(rowsCount);
 });
