@@ -1,26 +1,35 @@
-const input = document.querySelector(".first-task input");
-const pushButton = document.querySelector(".first-task button");
-const outArea = document.querySelector(".first-task .out-area");
-const symbol = " $ "; // output symbol
+const input = document.querySelector("input"),
+  pushButton = document.querySelector("button"),
+  outputArea = document.querySelector(".output-area"),
+  outputSymbol = " $ ";
 
 function outputLine(symbolCount) {
-  outArea.innerHTML += `${symbol.repeat(symbolCount)} <br>`;
+  let block = document.createElement("div");
+  block.innerHTML = `${outputSymbol.repeat(symbolCount)} <br>`;
+  outputArea.appendChild(block);
 }
 
 pushButton.addEventListener("click", () => {
-  outArea.innerHTML = "";
-  let number = Math.round(Number(input.value));
+  outputArea.innerHTML = "";
+  let number = Math.round(+input.value);
   if (isNaN(number) || number <= 0) {
     alert("Incorrect value");
-  } else {
-    for (let i = 1; number > 0; i++) {
-      if (number <= i) {
-        outputLine(number);
-        outArea.innerHTML += `Rows: ${i}`;
-        break;
-      }
-      outputLine(i);
-      number -= i;
-    }
+    return;
   }
+  let i = 1;
+  let linesCount = 0;
+
+  while (number > 0) {
+    if (number < i) {
+      outputLine(number);
+      break;
+    } else {
+      outputLine(i);
+      linesCount++;
+    }
+    number -= i;
+    i++;
+  }
+
+  outputArea.innerHTML += `Rows: ${linesCount}`;
 });
