@@ -46,7 +46,7 @@ export default class ATM {
     console.log("ATM contains: ", this.maxStoreValue, " money");
   }
 
-  calculateAmountToOut() {
+  calculateAmountToOutput() {
     let i = 0;
     while (this.moneyToOut < this.userValue) {
       if (i === this.store.length) {
