@@ -9,10 +9,9 @@ let atm = new ATM();
 function getMoney(value) {
   atm.setUserValue(value);
   atm.getMoney();
-  console.log(atm.banknotesForOutput);
+  console.log(atm.banknotesForOutput.sort((a, b) => b - a));
 
   atm.endSession();
-  console.log("Max value :", atm.maxStoreValue);
 }
 
 getMoneyBtn.addEventListener("click", () => {

@@ -1,4 +1,4 @@
-import { randomValue } from "./helpers.js";
+import { randomValue } from "../helpers.js";
 
 export default class ATM {
   userValue = 0;
