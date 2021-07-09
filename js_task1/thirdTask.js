@@ -6,7 +6,7 @@ class ATM {
   userValue = 0;
   maxStoreValue = 0;
   moneyToOut = 0;
-  outNotes = [];
+  banknotesForOutput = [];
   // set random counts of notes
   store = [
     { value: 1000, count: randomValue(5, 12) },
@@ -22,41 +22,23 @@ class ATM {
   ];
 
   constructor() {
-    this.calculateStoreMoney(); //first time calculating store money
+    this.calculateStoreMoney(); // first time calculating store money
   }
 
-  //get value from user and remember it
-  setUserValue(value) {
-    this.userValue = value;
+  // get value from user and remember it
+  setUserValue(inputAmount) {
+    this.userValue = inputAmount;
   }
 
   getMoney() {
-    if (this.canGiveMoney()) {
-      this.calculateAmount();
+    let isAmountEnough = this.isAmountRequired();
+    if (isAmountEnough) {
+      this.calculateAmountToOut();
       return this.outNotes;
     } else {
       this.infoMessage(-1);
     }
   }
-
-  //-------
-  // get current atm data
-  getUserValue() {
-    return this.userValue;
-  }
-
-  getMaxStoreValue() {
-    return this.maxStoreValue;
-  }
-
-  getMoneyToOut() {
-    return this.moneyToOut;
-  }
-
-  getStore() {
-    return this.store;
-  }
-  //---------
 
   // calculate current store amount
   calculateStoreMoney() {
@@ -65,21 +47,25 @@ class ATM {
     }
     console.log("ATM contains: ", this.maxStoreValue, " money");
   }
-  //
-  calculateAmount() {
+
+  calculateAmountToOut() {
     for (let i = 0; i < this.store.length; i++) {
       if (this.store[i].count > 0) {
-        while (this.canAddNote(this.store[i].value, this.moneyToOut)) {
+        let isBanknoteValid = this.isBanknoteCanAdd(
+          this.store[i].value,
+          this.moneyToOut
+        );
+        if (isBanknoteValid) {
           this.moneyToOut += this.store[i].value;
+          this.banknotesForOutput.push(this.store[i].value);
           this.store[i].count--;
-          this.outNotes.push(this.store[i].value);
         }
       }
     }
   }
 
-  //is atm contains required amount of money
-  canGiveMoney() {
+  // is atm contains required amount of money
+  isAmountRequired() {
     if (this.maxStoreValue >= this.userValue) {
       return true;
     }
@@ -87,16 +73,16 @@ class ATM {
   }
 
   // can we add current note to result sum
-  canAddNote(note, out) {
+  isBanknoteCanAdd(note, out) {
     return note + out <= this.userValue;
   }
 
-  //refreshing atm values when session is end
+  // refreshing atm values when session is end
   endSession() {
     this.maxStoreValue -= this.moneyToOut;
     this.userValue = 0;
     this.moneyToOut = 0;
-    this.outNotes = [];
+    this.banknotesForOutput = [];
   }
 
   // get info message in current case
@@ -113,7 +99,7 @@ class ATM {
 }
 
 function randomValue(min, max) {
-  //get random value in range
+  // get random value in range
   min = Math.ceil(min);
   max = Math.floor(max);
 
@@ -124,7 +110,7 @@ function getMoney(value) {
   console.log("Max value :", atm.maxStoreValue);
   atm.setUserValue(value);
   atm.getMoney();
-  console.log(atm.outNotes);
+  console.log(atm.banknotesForOutput);
 
   atm.endSession();
   console.log("Max value :", atm.maxStoreValue);
@@ -133,14 +119,14 @@ function getMoney(value) {
 let atm = new ATM();
 
 getMoneyBtn.addEventListener("click", () => {
-  let userValue = Number(input.value);
+  let userValue = +input.value;
   if (isNaN(userValue) || userValue < 1) {
     alert("Incorrect value");
     return;
   }
 
   if (userValue % 1 > 0) {
-    if (confirm("ATM don`t give a penny, countinue?")) {
+    if (confirm("ATM don`t give a penny, continue?")) {
       getMoney(userValue);
     } else {
       return;

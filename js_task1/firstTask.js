@@ -1,5 +1,5 @@
 const input = document.querySelector("input"),
-  pushButton = document.querySelector("button"),
+  pushBtn = document.querySelector("button"),
   outputArea = document.querySelector(".output-area"),
   app = document.querySelector(".first-task"),
   outputSymbol = " $ ";
@@ -13,7 +13,7 @@ function outputLine(symbolCount) {
   outputArea.appendChild(outputRow);
 }
 
-pushButton.addEventListener("click", () => {
+pushBtn.addEventListener("click", () => {
   outputArea.innerHTML = "";
   let userValue = Math.round(+input.value);
   if (isNaN(userValue) || userValue <= 0) {

@@ -1,15 +1,14 @@
-const generateButton = document.querySelector(".generate-btn");
-const checkButton = document.querySelector(".check-btn");
+const generateBtn = document.querySelector(".generate-btn"),
+  checkBtn = document.querySelector(".check-btn"),
+  elementsCount = 6, // if we need moore domino, or less
+  minValue = 1,
+  maxValue = 3;
 
-const elementsCount = 6; // if we need moore domino, or less
-const minValue = 1;
-const maxValue = 3;
-
-let firstArray = [];
-let secondArray = [];
+let topArray = [],
+  bottomArray = [];
 
 function randomValue(min, max) {
-  //get random value in range
+  // get random value in range
   min = Math.ceil(min);
   max = Math.floor(max);
 
@@ -17,7 +16,7 @@ function randomValue(min, max) {
 }
 
 function randomArray(length) {
-  //get random array
+  // get random array
   let arr = [];
 
   for (let i = 0; i < length; i++) {
@@ -27,13 +26,8 @@ function randomArray(length) {
   return arr;
 }
 
-function isFullRow(array) {
-  // is full row with same elements
-  return sameElementsCount(array) === elementsCount;
-}
-
 function sameElementsCount(array, elem) {
-  //check count of same elements
+  // check count of same elements
   return array.filter((item) => item === elem).length;
 }
 
@@ -83,7 +77,7 @@ function isArraysCompare(a, b) {
 }
 
 function rotateDomino(top, bottom, number) {
-  // hov much rotates we do
+  // how much rotates we do
   let rotatesCount = 0;
   for (let i = 0; i < bottom.length; i++) {
     if (bottom[i] !== number) {
@@ -95,24 +89,24 @@ function rotateDomino(top, bottom, number) {
   return rotatesCount;
 }
 
-generateButton.addEventListener("click", () => {
-  firstArray = randomArray(elementsCount);
-  secondArray = randomArray(elementsCount);
+generateBtn.addEventListener("click", () => {
+  topArray = randomArray(elementsCount);
+  bottomArray = randomArray(elementsCount);
 
-  console.log("first", firstArray);
-  console.log("second", secondArray);
+  console.log("first", topArray);
+  console.log("second", bottomArray);
 });
 
-checkButton.addEventListener("click", () => {
-  let number = frequentNumber(firstArray, secondArray); // you can write here static array to check
+checkBtn.addEventListener("click", () => {
+  let number = frequentNumber(topArray, bottomArray); // you can write here static array to check
   if (number !== -1) {
-    let requiredArray = frequentRow(number, firstArray, secondArray);
-    console.log("required", requiredArray);
-    if (!isArraysCompare(firstArray, requiredArray)) {
-      //
-      console.log(rotateDomino(firstArray, requiredArray, number));
+    let requiredArray = frequentRow(number, topArray, bottomArray);
+    let isSameArrays = isArraysCompare(topArray, requiredArray);
+
+    if (!isSameArrays) {
+      console.log(rotateDomino(topArray, requiredArray, number));
     } else {
-      console.log(rotateDomino(secondArray, requiredArray, number));
+      console.log(rotateDomino(bottomArray, requiredArray, number));
     }
   } else {
     alert("Impossible");

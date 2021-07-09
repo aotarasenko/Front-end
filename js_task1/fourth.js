@@ -1,7 +1,7 @@
 const startOfRange = document.querySelector("#from");
 const endOfRange = document.querySelector("#to");
-const searchButton = document.querySelector("button");
-const resualtArea = document.querySelector(".output");
+const searchBtn = document.querySelector("button");
+const resualtArea = document.querySelector(".output-area");
 
 function getDividers(number) {
   //get list of number dividers
@@ -44,14 +44,15 @@ function getFriendlyNumbers(start, end) {
   let pairsList = [];
 
   for (let index = start; index < end; index++) {
-    if (getPair(index) !== undefined) {
+    let pair = getPair(index);
+    if (pair !== undefined) {
       pairsList.push(getPair(index));
     }
   }
   return pairsList;
 }
 
-searchButton.addEventListener("click", () => {
+searchBtn.addEventListener("click", () => {
   let start = Math.round(+startOfRange.value);
   let end = Math.round(+endOfRange.value);
 
