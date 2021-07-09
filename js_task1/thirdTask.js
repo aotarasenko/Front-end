@@ -49,7 +49,12 @@ class ATM {
   }
 
   calculateAmountToOut() {
-    for (let i = 0; i < this.store.length; i++) {
+    let i = 0;
+    let sum = 0;
+    while (this.moneyToOut < this.userValue) {
+      if (i === this.store.length) {
+        i = 0;
+      }
       if (this.store[i].count > 0) {
         let isBanknoteValid = this.isBanknoteCanAdd(
           this.store[i].value,
@@ -58,10 +63,14 @@ class ATM {
         if (isBanknoteValid) {
           this.moneyToOut += this.store[i].value;
           this.banknotesForOutput.push(this.store[i].value);
+          sum += this.store[i].value;
           this.store[i].count--;
         }
       }
+      i++;
     }
+
+    console.log(sum);
   }
 
   // is atm contains required amount of money
