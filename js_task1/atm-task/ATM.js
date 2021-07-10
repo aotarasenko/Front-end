@@ -31,7 +31,7 @@ export default class ATM {
   getMoney() {
     let isAmountEnough = this.isAmountRequired();
     if (isAmountEnough) {
-      this.calculateAmountToOut();
+      this.calculateAmountToOutput();
       return this.outNotes;
     } else {
       this.infoMessage(-1);
