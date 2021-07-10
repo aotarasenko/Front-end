@@ -2,7 +2,6 @@ import ATM from "./ATM.js";
 
 const input = document.querySelector("input");
 const getMoneyBtn = document.querySelector("button");
-const infoBlock = document.querySelector(".info");
 
 let atm = new ATM();
 
@@ -22,7 +21,8 @@ getMoneyBtn.addEventListener("click", () => {
   }
 
   if (userValue % 1 > 0) {
-    if (confirm("ATM don`t give a penny, continue?")) {
+    let isUserWantContinue = confirm("ATM don`t give a penny, continue?");
+    if (isUserWantContinue) {
       getMoney(userValue);
     } else {
       return;

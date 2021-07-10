@@ -4,7 +4,7 @@ const searchBtn = document.querySelector("button");
 const resualtArea = document.querySelector(".output-area");
 
 function getDividers(number) {
-  //get list of number dividers
+  // get list of number dividers
   let dividersList = [];
 
   for (let index = 1; index < number; index++) {

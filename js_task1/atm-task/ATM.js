@@ -3,7 +3,7 @@ import { randomValue } from "../helpers.js";
 export default class ATM {
   userValue = 0;
   maxStoreValue = 0;
-  moneyToOut = 0;
+  moneyToOutput = 0;
   banknotesForOutput = [];
   // set random counts of banknotes
   store = [
@@ -24,8 +24,8 @@ export default class ATM {
   }
 
   // get value from user and remember it
-  setUserValue(inputAmount) {
-    this.userValue = inputAmount;
+  setUserValue(inputUserAmount) {
+    this.userValue = inputUserAmount;
   }
 
   getMoney() {
@@ -48,17 +48,17 @@ export default class ATM {
 
   calculateAmountToOutput() {
     let i = 0;
-    while (this.moneyToOut < this.userValue) {
+    while (this.moneyToOutput < this.userValue) {
       if (i === this.store.length) {
         i = 0;
       }
       if (this.store[i].count > 0) {
-        let isBanknoteValid = this.isBanknoteCanAdd(
+        let isBanknoteValid = this.isBanknoteCanBeAdded(
           this.store[i].value,
-          this.moneyToOut
+          this.moneyToOutput
         );
         if (isBanknoteValid) {
-          this.moneyToOut += this.store[i].value;
+          this.moneyToOutput += this.store[i].value;
           this.banknotesForOutput.push(this.store[i].value);
           this.store[i].count--;
         }
@@ -76,27 +76,22 @@ export default class ATM {
   }
 
   // can we add current note to result sum
-  isBanknoteCanAdd(note, outputAmount) {
+  isBanknoteCanBeAdded(note, outputAmount) {
     return note + outputAmount <= this.userValue;
   }
 
   // refreshing atm values when session is end
   endSession() {
-    this.maxStoreValue -= this.moneyToOut;
+    this.maxStoreValue -= this.moneyToOutput;
     this.userValue = 0;
-    this.moneyToOut = 0;
+    this.moneyToOutput = 0;
     this.banknotesForOutput = [];
   }
 
   // get info message in current case
   infoMessage(type) {
-    switch (type) {
-      case -1:
-        alert("ATM can`t give current amount");
-        break;
-      // here can be some other error cases
-      default:
-        break;
+    if (type === -1) {
+      alert("ATM can`t give current amount");
     }
   }
 }

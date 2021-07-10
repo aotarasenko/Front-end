@@ -1,3 +1,5 @@
+import { randomValue, isArraysCompare } from "../helpers.js";
+
 const generateBtn = document.querySelector(".generate-btn"),
   checkBtn = document.querySelector(".check-btn"),
   elementsCount = 6, // if we need moore domino, or less
@@ -6,14 +8,6 @@ const generateBtn = document.querySelector(".generate-btn"),
 
 let topArray = [],
   bottomArray = [];
-
-function randomValue(min, max) {
-  // get random value in range
-  min = Math.ceil(min);
-  max = Math.floor(max);
-
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
 
 function randomArray(length) {
   // get random array
@@ -60,20 +54,6 @@ function frequentRow(elem, top, bottom) {
   let bottomCount = sameElementsCount(bottom, elem);
 
   return topCount >= bottomCount ? top : bottom;
-}
-
-function isArraysCompare(a, b) {
-  if (a.length !== b.length) {
-    return false;
-  }
-
-  for (i = 0; i < a.length; i++) {
-    if (a[i] !== b[i]) {
-      return false;
-    }
-  }
-
-  return true;
 }
 
 function rotateDomino(top, bottom, number) {
