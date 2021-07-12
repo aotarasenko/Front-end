@@ -1,10 +1,10 @@
-import { randomValue, isArraysCompare } from "../helpers.js";
+import { randomValue, isArraysEqual } from "../helpers.js";
 
 const generateBtn = document.querySelector(".generate-btn"),
   checkBtn = document.querySelector(".check-btn"),
   elementsCount = 6, // if we need moore domino, or less
   minValue = 1,
-  maxValue = 3;
+  maxValue = 6;
 
 let topArray = [],
   bottomArray = [];
@@ -81,7 +81,7 @@ checkBtn.addEventListener("click", () => {
   let number = frequentNumber(topArray, bottomArray); // you can write here static array to check
   if (number !== -1) {
     let requiredArray = frequentRow(number, topArray, bottomArray);
-    let isSameArrays = isArraysCompare(topArray, requiredArray);
+    let isSameArrays = isArraysEqual(topArray, requiredArray);
 
     if (!isSameArrays) {
       console.log(rotateDomino(topArray, requiredArray, number));
