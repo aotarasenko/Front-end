@@ -48,7 +48,6 @@ export default class ATM {
 
   calculateAmountToOutput() {
     let i = 0;
-    let minIndex = 0;
     while (this.moneyToOutput < this.userValue) {
       if (this.store[i].count > 0) {
         let isBanknoteValid = this.isBanknoteCanBeAdded(
