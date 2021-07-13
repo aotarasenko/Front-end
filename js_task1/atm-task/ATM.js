@@ -13,10 +13,10 @@ export default class ATM {
     { value: 100, count: randomValue(20, 30) },
     { value: 50, count: randomValue(40, 60) },
     { value: 20, count: randomValue(80, 120) },
-    { value: 10, count: randomValue(100, 120) },
-    { value: 5, count: randomValue(140, 170) },
-    { value: 2, count: randomValue(150, 200) },
-    { value: 1, count: randomValue(200, 220) },
+    { value: 10, count: randomValue(60, 80) },
+    { value: 5, count: randomValue(40, 70) },
+    { value: 2, count: randomValue(50, 60) },
+    { value: 1, count: randomValue(20, 30) },
   ];
 
   constructor() {
@@ -48,10 +48,8 @@ export default class ATM {
 
   calculateAmountToOutput() {
     let i = 0;
+    let minIndex = 0;
     while (this.moneyToOutput < this.userValue) {
-      if (i === this.store.length) {
-        i = 0;
-      }
       if (this.store[i].count > 0) {
         let isBanknoteValid = this.isBanknoteCanBeAdded(
           this.store[i].value,
@@ -61,9 +59,23 @@ export default class ATM {
           this.moneyToOutput += this.store[i].value;
           this.banknotesForOutput.push(this.store[i].value);
           this.store[i].count--;
+          if (i === this.store.length && this.store[i].count < 0) {
+            break;
+          }
+        } else if (!isBanknoteValid) {
+          i++;
         }
+      } else if (
+        this.moneyToOutput < this.userValue &&
+        this.store[this.store.length - 1].count === 0
+      ) {
+        break;
       }
-      i++;
+    }
+
+    if (this.moneyToOutput !== this.userValue) {
+      this.infoMessage(-2);
+      this.moneyToOutput = 0;
     }
   }
 
@@ -92,6 +104,8 @@ export default class ATM {
   infoMessage(type) {
     if (type === -1) {
       alert("ATM can`t give current amount");
+    } else if (type === -2) {
+      alert("Can`t get required banknotes");
     }
   }
 }

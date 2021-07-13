@@ -8,9 +8,11 @@ let atm = new ATM();
 function getMoney(value) {
   atm.setUserValue(value);
   atm.getMoney();
-  console.log(atm.banknotesForOutput.sort((a, b) => b - a));
+  atm.banknotesForOutput.sort((a, b) => b - a);
+  console.log(atm.banknotesForOutput);
 
   atm.endSession();
+  console.log(atm.maxStoreValue);
 }
 
 getMoneyBtn.addEventListener("click", () => {
