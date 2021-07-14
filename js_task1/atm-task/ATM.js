@@ -49,26 +49,26 @@ export default class ATM {
   calculateAmountToOutput() {
     let i = 0;
     while (this.moneyToOutput < this.userValue) {
-      if (this.store[i].count > 0) {
-        let isBanknoteValid = this.isBanknoteCanBeAdded(
-          this.store[i].value,
-          this.moneyToOutput
-        );
-        if (isBanknoteValid) {
+      if (i > this.store.length - 1) {
+        break;
+      }
+      let isBanknoteValid = this.isBanknoteCanBeAdded(
+        this.store[i].value,
+        this.moneyToOutput
+      );
+      if (isBanknoteValid) {
+        if (this.store[i].count > 0) {
           this.moneyToOutput += this.store[i].value;
           this.banknotesForOutput.push(this.store[i].value);
           this.store[i].count--;
-          if (i === this.store.length && this.store[i].count < 0) {
-            break;
-          }
-        } else if (!isBanknoteValid) {
+        } else {
           i++;
         }
-      } else if (
-        this.moneyToOutput < this.userValue &&
-        this.store[this.store.length - 1].count === 0
-      ) {
-        break;
+      } else if (!isBanknoteValid) {
+        if (i === this.store.length - 1 && this.store[i].count === 0) {
+          break;
+        }
+        i++;
       }
     }
 
