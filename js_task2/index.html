@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+      integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <title>ToDo Like App</title>
+  </head>
+  <body>
+    <section class="app">
+      <div class="container">
+        <header>
+          <a href="#" class="logo">Logo Placeholder</a>
+          <div class="account-actions">
+            <div>Wellcome, user</div>
+            <a href="#" class="log-out">Log Out</a>
+          </div>
+        </header>
+        <div class="page-name">
+          <i class="fas fa-user-friends"></i>
+          Customers
+        </div>
+        <div class="filter-section">
+          <form class="filter-form is-flex-row">
+            <fieldset>
+              <legend>Filter</legend>
+              <div class="filter-inputs">
+                <input type="text" placeholder="Company Name*" />
+                <input type="text" placeholder="Contact Name*" />
+                <input type="text" placeholder="Address*" />
+                <button class="filter-btn is-flex-row" type="button">
+                  Filter
+                </button>
+              </div>
+
+              <button class="add-note" name="add-item" type="button"></button>
+            </fieldset>
+          </form>
+        </div>
+
+        <div class="table">
+          <div class="table-heading is-flex-row">
+            <input type="checkbox" />
+            <div class="heading-item">Contact Name</div>
+            <div class="heading-item">Company Name</div>
+            <div class="heading-item">Address</div>
+            <div class="heading-item">City</div>
+            <div class="heading-item">Country</div>
+          </div>
+        </div>
+
+        <div class="output-data"></div>
+      </div>
+    </section>
+
+    <section class="modal-window is-hidden">
+      <form>
+        <input type="text" name="name" placeholder="Contact Name*" required />
+        <input
+          type="text"
+          name="company"
+          placeholder="Company Name*"
+          required
+        />
+
+        <input type="text" name="address" placeholder="Address*" required />
+        <input type="text" name="city" placeholder="City*" required />
+        <input type="text" name="country" placeholder="Country*" required />
+
+        <button class="close-modal-btn" type="button"></button>
+      </form>
+    </section>
+
+    <script src="./dist/all.js"></script>
+  </body>
+</html>

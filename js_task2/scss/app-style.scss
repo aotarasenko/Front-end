@@ -1,0 +1,216 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+  a {
+    @include app-font;
+    text-decoration: none;
+    color: $font-secondary;
+  }
+
+  .account-actions {
+    display: flex;
+    div {
+      display: flex;
+      @include app-font;
+      color: $font-secondary;
+
+      &::after {
+        content: '';
+        display: block;
+        margin: 0 8px;
+        width: 1.5px;
+        height: 100%;
+        background-color: $font-secondary;
+        opacity: 0.1;
+      }
+    }
+  }
+}
+
+.page-name {
+  padding: 12px;
+  background-color: $background-primary;
+  color: $white;
+  @include app-font;
+}
+
+.filter-section {
+  border-bottom: 1.5px solid rgba(128, 128, 128, 0.171);
+  padding: 12px;
+  .filter-form {
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    fieldset {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      width: 100%;
+      border: none;
+
+      legend {
+        @include app-font;
+        color: $font-secondary;
+      }
+
+      .filter-inputs {
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        width: 100%;
+        @include desktop-size {
+          flex-direction: row;
+        }
+        input {
+          padding: 10px 8px;
+          border: 2px solid rgba(214, 214, 214, 0.719);
+          border-radius: 2px;
+          outline: none;
+          margin-bottom: 12px;
+          width: 100%;
+          @include app-font;
+          @include desktop-size {
+            margin-right: 10px;
+            margin-bottom: 0;
+            width: auto;
+          }
+        }
+
+        .filter-btn {
+          border: none;
+          border-radius: 2px;
+          padding: 8px 16px;
+          outline: none;
+          @include app-font;
+          text-transform: uppercase;
+          background-color: $background-primary;
+          color: $white;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+
+    .add-note {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 40px;
+      height: 40px;
+      z-index: 100;
+      border: none;
+      outline: none;
+      border-radius: 50%;
+      background-color: $background-secondary;
+
+      @include desktop-size {
+        position: relative;
+        bottom: 0;
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        display: block;
+        width: 40%;
+        height: 1.5px;
+        background-color: $white;
+        transform: rotate(0deg);
+      }
+
+      &::after {
+        transform: rotate(90deg);
+      }
+    }
+  }
+}
+
+.table {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  .table-heading {
+    margin-bottom: 50px;
+    padding-right: 50px;
+    width: 100%;
+    justify-content: flex-start;
+    border-bottom: 1px solid gray;
+    @include app-font;
+    .heading-item {
+      display: flex;
+      justify-content: flex-start;
+      width: 100%;
+      padding: 12px;
+    }
+  }
+}
+
+.output-data {
+  .user-row {
+    justify-content: space-between;
+    border-bottom: 1px solid gray;
+    width: 100%;
+
+    &:hover {
+      background-color: lightgrey;
+      cursor: pointer;
+    }
+
+    .cell {
+      display: flex;
+      justify-content: flex-start;
+      flex: 1;
+      padding: 14px 8px;
+      width: 100%;
+      @include app-font;
+      white-space: pre-wrap;
+    }
+
+    .edit-item-btn {
+      position: relative;
+      border: none;
+      padding: 10px;
+      background-color: transparent;
+      color: gray;
+
+      &::after {
+        content: '\f304';
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 900;
+      }
+    }
+
+    .delete-item-btn {
+      border: none;
+      padding: 10px;
+      background-color: transparent;
+      color: gray;
+
+      &::after {
+        content: '\f2ed';
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 900;
+      }
+    }
+    .delete-item-btn:hover {
+      cursor: pointer;
+      color: $background-secondary;
+    }
+    .edit-item-btn:hover {
+      cursor: pointer;
+      color: $background-primary;
+    }
+  }
+}
