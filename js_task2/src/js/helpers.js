@@ -1,3 +1,5 @@
+import { checkedItems } from './_variables'
+
 export function setDataToObject(nodeList) {
   let i = 0
   for (const key in object) {

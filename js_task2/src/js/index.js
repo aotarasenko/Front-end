@@ -1,22 +1,17 @@
-import { setDataToObject, selectWholeTable } from './helpers.js'
+import '../scss/main.scss'
 import { renderCell, renderRow } from './renderFunctions'
-
-const addBtn = document.querySelector('.add-note'),
-  filterBtn = document.querySelector('.filter-btn'),
-  outputArea = document.querySelector('.output-data'),
-  modalWindow = document.querySelector('.modal-window'),
-  modalData = document.querySelectorAll(
-    '.modal-window > form > input[type="text"]'
-  ),
-  mainCheckbox = document.querySelector(
-    '.table-heading > input[type="checkbox"]'
-  ),
-  closeModalBtn = modalWindow.querySelector('.close-modal-btn')
-
-const bareUrl = 'db.json'
-
-let users = []
-let checkedItems = []
+import { setDataToObject, selectWholeTable } from './helpers'
+import {
+  bareUrl,
+  addBtn,
+  filterBtn,
+  outputArea,
+  modalWindow,
+  modalData,
+  closeModalBtn,
+  users,
+  checkedItems,
+} from './_variables.js'
 
 const getUsers = async () => {
   const res = await fetch(bareUrl, {
@@ -26,11 +21,15 @@ const getUsers = async () => {
     },
   })
 
-  let data = await res.json()
+  let resouce = await res.json()
 
-  return data['data']
+  return resouce['data']
 }
 
-window.addEventListener('DOMContentLoaded', async () => {
-  users = await getUsers()
+window.addEventListener('DOMContentLoaded', () => {
+  getUsers().then((data) => {
+    data.forEach((element) => {
+      outputArea.appendChild(renderRow(element))
+    })
+  })
 })

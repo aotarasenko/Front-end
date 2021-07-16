@@ -2,27 +2,21 @@
   "name": "js_task2",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "private": true,
   "scripts": {
-    "build": "webpack"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build" : "webpack",
+    "start": "webpack --watch"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/aotarasenko/TarasenkoAndrey-SummerWeekends.git"
-  },
+  "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/aotarasenko/TarasenkoAndrey-SummerWeekends/issues"
-  },
-  "homepage": "https://github.com/aotarasenko/TarasenkoAndrey-SummerWeekends#readme",
   "devDependencies": {
-    "clean-webpack-plugin": "^4.0.0-alpha.0",
+    "css-loader": "^6.0.0",
+    "mini-css-extract-plugin": "^2.1.0",
+    "node-sass": "^6.0.1",
+    "sass-loader": "^12.1.0",
     "webpack": "^5.44.0",
     "webpack-cli": "^4.7.2"
-  },
-  "dependencies": {
-    "@babel/core": "^7.14.6",
-    "babel-loader": "^8.2.2"
   }
 }

@@ -1,22 +1,22 @@
 const path = require('path')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-
+const miniCss = require('mini-css-extract-plugin')
 module.exports = {
-  entry: {
-    main: path.resolve(__dirname, './src/js/index.js'),
-  },
+  entry: './src/js/index.js',
   output: {
-    filename: 'index.bundle.js',
+    filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
   },
-  plugins: [new CleanWebpackPlugin()],
   module: {
     rules: [
       {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: ['babel-loader'],
+        test: /\.(s*)css$/,
+        use: [miniCss.loader, 'css-loader', 'sass-loader'],
       },
     ],
   },
+  plugins: [
+    new miniCss({
+      filename: 'style.css',
+    }),
+  ],
 }
