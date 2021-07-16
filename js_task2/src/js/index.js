@@ -1,35 +1,43 @@
 import '../scss/main.scss'
+import axios from 'axios'
+import { getUsers, addUserData } from './dataFunctions.js'
 import { renderCell, renderRow } from './renderFunctions'
 import { setDataToObject, selectWholeTable } from './helpers'
 import {
-  bareUrl,
+  baseUrl,
   addBtn,
   filterBtn,
   outputArea,
-  modalWindow,
-  modalData,
-  closeModalBtn,
   users,
+  mainCheckbox,
   checkedItems,
 } from './_variables.js'
-
-const getUsers = async () => {
-  const res = await fetch(bareUrl, {
-    method: 'GET',
-    headers: {
-      'Content-type': 'application-jsoon',
-    },
-  })
-
-  let resouce = await res.json()
-
-  return resouce['data']
-}
+import { addUser } from './eventFunctions'
 
 window.addEventListener('DOMContentLoaded', () => {
-  getUsers().then((data) => {
+  // getUsers(baseUrl).then((data) => {
+  //   data.forEach((element) => {
+  //     outputArea.appendChild(renderRow(element))
+  //   })
+  // })
+
+  axios.get(`${baseUrl}/data`).then((res) => {
+    let data = res.data
     data.forEach((element) => {
       outputArea.appendChild(renderRow(element))
     })
   })
+})
+
+addBtn.addEventListener('click', (Event) => {
+  Event.preventDefault()
+  addUser()
+})
+
+mainCheckbox.addEventListener('click', () => {
+  if (mainCheckbox.checked) {
+    selectWholeTable(true)
+  } else {
+    selectWholeTable(false)
+  }
 })

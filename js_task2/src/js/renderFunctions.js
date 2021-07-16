@@ -1,4 +1,9 @@
-import { addRowSelectionEvent } from './eventFunctions'
+import {
+  addRowSelectionEvent,
+  addDeleteRowEvent,
+  addEditRowEvent,
+} from './eventFunctions'
+import { deleteUserNote } from './dataFunctions'
 
 export const renderCell = (cellContent) => {
   const cell = document.createElement('div')
@@ -21,6 +26,9 @@ export const renderRow = (userNote) => {
     row.appendChild(renderCell(userNote[key]))
   }
   row.prepend(renderCheckbox())
+  row.appendChild(renderControlBtn('edit'))
+  row.appendChild(renderControlBtn('delete'))
+
   addRowSelectionEvent(row)
   return row
 }
@@ -30,4 +38,20 @@ export const renderCheckbox = () => {
   checkbox.type = 'checkbox'
 
   return checkbox
+}
+
+export const renderControlBtn = (type) => {
+  let btn = document.createElement('button')
+  btn.type = 'button'
+  if (type === 'edit') {
+    btn.classList.add('edit-item-btn')
+    btn.name = 'edit'
+    addEditRowEvent(btn)
+  } else {
+    btn.classList.add('delete-item-btn')
+    btn.name = 'delete'
+    addDeleteRowEvent(btn)
+  }
+
+  return btn
 }

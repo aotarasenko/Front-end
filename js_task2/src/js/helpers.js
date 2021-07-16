@@ -1,8 +1,10 @@
-import { checkedItems } from './_variables'
+import { checkedItems, userTemplate } from './_variables'
 
 export function setDataToObject(nodeList) {
   let i = 0
-  for (const key in object) {
+  let object = {}
+  Object.assign(object, userTemplate)
+  for (const key in userTemplate) {
     object[key] = nodeList[i].textContent
     i++
   }
