@@ -49,7 +49,7 @@ export default class ModalWindow {
     } else if (name === 'edit') {
       btn.classList.add('save-btn', 'edit-item')
       btn.textContent = 'SAVE'
-      btn.addEventListener('click', (Event) => {
+      btn.addEventListener('click', () => {
         this.getFormData()
         updateUserData(baseUrl, this.id, this.userToOutput)
         this.close()
