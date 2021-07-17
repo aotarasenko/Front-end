@@ -15,18 +15,7 @@ import {
 import { addUser } from './eventFunctions'
 
 window.addEventListener('DOMContentLoaded', () => {
-  // getUsers(baseUrl).then((data) => {
-  //   data.forEach((element) => {
-  //     outputArea.appendChild(renderRow(element))
-  //   })
-  // })
-
-  axios.get(`${baseUrl}/data`).then((res) => {
-    let data = res.data
-    data.forEach((element) => {
-      outputArea.appendChild(renderRow(element))
-    })
-  })
+  getUsers(baseUrl)
 })
 
 addBtn.addEventListener('click', (Event) => {

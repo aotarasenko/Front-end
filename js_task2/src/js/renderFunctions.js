@@ -3,7 +3,6 @@ import {
   addDeleteRowEvent,
   addEditRowEvent,
 } from './eventFunctions'
-import { deleteUserNote } from './dataFunctions'
 
 export const renderCell = (cellContent) => {
   const cell = document.createElement('div')

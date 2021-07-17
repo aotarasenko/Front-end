@@ -1,4 +1,3 @@
-import { setDataToObject } from './helpers'
 import { updateUserData, addUserData } from './dataFunctions'
 import { baseUrl, userTemplate } from './_variables'
 

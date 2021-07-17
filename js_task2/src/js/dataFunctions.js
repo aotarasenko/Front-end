@@ -1,5 +1,6 @@
-import { baseUrl } from './_variables'
+import { baseUrl, outputArea } from './_variables'
 import axios from 'axios'
+import { renderRow } from './renderFunctions'
 
 export const getUsers = async (baseUrl) => {
   axios.get(`${baseUrl}/data`).then((res) => {
@@ -11,9 +12,7 @@ export const getUsers = async (baseUrl) => {
 }
 
 export const deleteUserNote = async (baseUrl, userID) => {
-  axios.delete(`${baseUrl}/data/${userID}`).then((res) => {
-    console.log(res.data)
-  })
+  axios.delete(`${baseUrl}/data/${userID}`)
 }
 
 export const updateUserData = async (baseUrl, id, user) => {
@@ -21,7 +20,5 @@ export const updateUserData = async (baseUrl, id, user) => {
 }
 
 export const addUserData = async (baseUrl, user) => {
-  axios.post(`${baseUrl}/data`, user).then((res) => {
-    res.data
-  })
+  axios.post(`${baseUrl}/data`, user)
 }
