@@ -4,10 +4,11 @@ import {
   addEditRowEvent,
 } from './eventFunctions'
 
-export const renderCell = (cellContent) => {
+export const renderCell = (cellContent, cellName) => {
   const cell = document.createElement('div')
   cell.classList.add('cell')
   cell.textContent = cellContent
+  cell.setAttribute('name', cellName)
 
   return cell
 }
@@ -22,7 +23,7 @@ export const renderRow = (userNote) => {
       continue
     }
 
-    row.appendChild(renderCell(userNote[key]))
+    row.appendChild(renderCell(userNote[key], key))
   }
   row.prepend(renderCheckbox())
   row.appendChild(renderControlBtn('edit'))
