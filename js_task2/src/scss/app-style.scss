@@ -146,7 +146,7 @@ header {
     padding-right: 50px;
     width: 100%;
     justify-content: flex-start;
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid $color-neutral;
     @include app-font;
     .heading-item {
       display: flex;
@@ -160,7 +160,7 @@ header {
 .output-data {
   .user-row {
     justify-content: space-between;
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid $color-neutral;
     width: 100%;
 
     &:hover {
@@ -183,7 +183,7 @@ header {
       border: none;
       padding: 10px;
       background-color: transparent;
-      color: gray;
+      color: $color-neutral;
 
       &::after {
         content: '\f304';
@@ -196,7 +196,7 @@ header {
       border: none;
       padding: 10px;
       background-color: transparent;
-      color: gray;
+      color: $color-neutral;
 
       &::after {
         content: '\f2ed';
