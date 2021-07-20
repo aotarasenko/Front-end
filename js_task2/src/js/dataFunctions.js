@@ -1,24 +1,28 @@
-import { baseUrl, outputArea } from './_variables'
-import axios from 'axios'
-import { renderRow } from './renderFunctions'
+import { outputArea, users, numOfRows, paginationBox } from './_variables';
+import axios from 'axios';
+import { renderPageBtn, renderRow } from './renderFunctions';
 
-export const getUsers = async (baseUrl) => {
-  axios.get(`${baseUrl}/data`).then((res) => {
-    let data = res.data
-    data.forEach((element) => {
-      outputArea.appendChild(renderRow(element))
-    })
-  })
-}
+export const getUsers = (baseUrl) => {
+  users = axios.get(`${baseUrl}/data`).then((res) => {
+    users = res.data;
 
-export const deleteUserNote = async (baseUrl, userID) => {
-  axios.delete(`${baseUrl}/data/${userID}`)
-}
+    for (let i = 0; i < numOfRows; i++) {
+      outputArea.appendChild(renderRow(users[i]));
+    }
+    for (let i = 0; i < users.length / numOfRows; i++) {
+      paginationBox.appendChild(renderPageBtn(i));
+    }
+  });
+};
 
-export const updateUserData = async (baseUrl, id, user) => {
-  axios.put(`${baseUrl}/data/${id}`, user)
-}
+export const deleteUserNote = (baseUrl, userID) => {
+  axios.delete(`${baseUrl}/data/${userID}`);
+};
 
-export const addUserData = async (baseUrl, user) => {
-  axios.post(`${baseUrl}/data`, user)
-}
+export const updateUserData = (baseUrl, id, user) => {
+  axios.put(`${baseUrl}/data/${id}`, user);
+};
+
+export const addUserData = (baseUrl, user) => {
+  axios.post(`${baseUrl}/data`, user);
+};

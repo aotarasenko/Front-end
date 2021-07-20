@@ -40,9 +40,13 @@
             <fieldset>
               <legend>Filter</legend>
               <div class="filter-inputs">
-                <input type="text" placeholder="Company Name*" />
-                <input type="text" placeholder="Contact Name*" />
-                <input type="text" placeholder="Address*" />
+                <input type="search" placeholder="Contact Name*" name="name" />
+                <input
+                  type="search"
+                  placeholder="Company Name*"
+                  name="company"
+                />
+                <input type="search" placeholder="Address*" name="address" />
                 <button class="filter-btn is-flex-row" type="button">
                   Filter
                 </button>
@@ -65,6 +69,7 @@
         </div>
 
         <div class="output-data"></div>
+        <div class="change-page"></div>
       </div>
     </section>
 
