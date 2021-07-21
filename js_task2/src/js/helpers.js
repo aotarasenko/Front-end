@@ -53,4 +53,27 @@ export const changePage = (pageIndex) => {
   usersPart.forEach((item) => {
     outputArea.appendChild(renderRow(item));
   });
+  checkFilterFields();
 };
+
+export const checkFilterFields = () => {
+  let dataRows = document.querySelectorAll('.user-row');
+  let filterFields = document.querySelectorAll('.filter-inputs input');
+
+  dataRows.forEach((row) => {
+    row.classList.remove('is-hidden');
+    row.childNodes.forEach((cell) => {
+      for (let i = 0; i < filterFields.length; i++) {
+        const item = filterFields[i];
+
+        if (cell.getAttribute('name') === item.name) {
+          let isRowCanBeRender = isCellValid(cell, item.value);
+          if (!isRowCanBeRender) {
+            row.classList.add('is-hidden');
+            continue;
+          }
+        }
+      }
+    });
+  });
+}

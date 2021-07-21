@@ -4,6 +4,7 @@ import {
   addEditRowEvent,
 } from './eventFunctions';
 import { changePage } from './helpers';
+import { paginationBox, outputArea, numOfRows } from './_variables';
 
 export const renderCell = (cellContent, cellName) => {
   const cell = document.createElement('div');
@@ -34,6 +35,18 @@ export const renderRow = (userNote) => {
   return row;
 };
 
+export const renderTable = (users) => {
+  outputArea.innerHTML = ''
+  paginationBox.innerHTML = ''
+
+  for (let i = 0; i < numOfRows; i++) {
+    outputArea.appendChild(renderRow(users[i]));
+  }
+  for (let i = 0; i < users.length / numOfRows; i++) {
+    paginationBox.appendChild(renderPageBtn(i));
+  }
+}
+
 export const renderPageBtn = (pageNumber) => {
   let btn = document.createElement('button');
   btn.type = 'button';
@@ -56,6 +69,7 @@ export const renderCheckbox = () => {
 export const renderControlBtn = (type) => {
   let btn = document.createElement('button');
   btn.type = 'button';
+
   if (type === 'edit') {
     btn.classList.add('edit-item-btn');
     btn.name = 'edit';
@@ -65,6 +79,6 @@ export const renderControlBtn = (type) => {
     btn.name = 'delete';
     addDeleteRowEvent(btn);
   }
-
+  
   return btn;
 };

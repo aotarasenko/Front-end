@@ -41,6 +41,7 @@ export default class ModalWindow {
     } else if (name === 'add') {
       btn.classList.add('save-btn', 'add-item');
       btn.textContent = 'SAVE';
+      btn.type = 'button';
       btn.addEventListener('click', (Event) => {
         Event.preventDefault();
         Event.stopPropagation();
@@ -52,6 +53,7 @@ export default class ModalWindow {
     } else if (name === 'edit') {
       btn.classList.add('save-btn', 'edit-item');
       btn.textContent = 'SAVE';
+      btn.type = 'button';
       btn.addEventListener('click', (Event) => {
         Event.preventDefault();
         Event.stopPropagation();

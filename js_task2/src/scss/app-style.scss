@@ -177,8 +177,34 @@ header {
       @include app-font;
       white-space: pre-wrap;
     }
+  }
+}
 
-    .edit-item-btn {
+.change-page {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+
+  button {
+    padding: 10px;
+    min-width: 50px;
+    border: 1px solid $font-secondary;
+    background-color: transparent;
+    @include app-font;
+
+    &:hover {
+      cursor: pointer;
+      color: $white;
+      background-color: rgba(36, 75, 148, 0.808);
+    }
+  }
+  button.selected-page {
+    background-color: $background-primary;
+    color: $white;
+  }
+}
+
+.edit-item-btn {
       position: relative;
       border: none;
       padding: 10px;
@@ -212,29 +238,3 @@ header {
       cursor: pointer;
       color: $background-primary;
     }
-  }
-}
-
-.change-page {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-
-  button {
-    padding: 10px;
-    min-width: 50px;
-    border: 1px solid $font-secondary;
-    background-color: transparent;
-    @include app-font;
-
-    &:hover {
-      cursor: pointer;
-      color: $white;
-      background-color: rgba(36, 75, 148, 0.808);
-    }
-  }
-  button.selected-page {
-    background-color: $background-primary;
-    color: $white;
-  }
-}
