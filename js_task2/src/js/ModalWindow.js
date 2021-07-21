@@ -34,16 +34,14 @@ export default class ModalWindow {
 
     if (name === 'close-modal') {
       btn.classList.add('close-modal-btn');
-      btn.addEventListener('click', (Event) => {
-        // Event.preventDefault();
+      btn.addEventListener('click', () => {
         this.close();
       });
     } else if (name === 'add') {
       btn.classList.add('save-btn', 'add-item');
       btn.textContent = 'SAVE';
       btn.type = 'button';
-      btn.addEventListener('click', (Event) => {
-        Event.preventDefault();
+      btn.addEventListener('click', () => {
         Event.stopPropagation();
         this.getFormData();
         addUserData(baseUrl, this.userToOutput);
@@ -54,9 +52,7 @@ export default class ModalWindow {
       btn.classList.add('save-btn', 'edit-item');
       btn.textContent = 'SAVE';
       btn.type = 'button';
-      btn.addEventListener('click', (Event) => {
-        Event.preventDefault();
-        Event.stopPropagation();
+      btn.addEventListener('click', () => {
         this.getFormData();
         updateUserData(baseUrl, this.id, this.userToOutput);
         this.close();
