@@ -5,6 +5,7 @@ import {
   users,
   numOfRows,
   outputArea,
+  paginationBox,
 } from './_variables';
 
 export function setDataToObject(nodeList) {
@@ -42,7 +43,7 @@ export function selectWholeTable(state) {
   });
 }
 
-export const changePage = (pageIndex) => {
+export const changePage = (pageIndex, btn) => {
   let usersPart = users.slice(
     pageIndex * numOfRows,
     pageIndex * numOfRows + numOfRows
@@ -53,6 +54,12 @@ export const changePage = (pageIndex) => {
   usersPart.forEach((item) => {
     outputArea.appendChild(renderRow(item));
   });
+
+  paginationBox.querySelectorAll('button').forEach((item) => {
+    item.classList.remove('selected-page');
+  });
+
+  btn.classList.add('selected-page');
   checkFilterFields();
 };
 
@@ -76,4 +83,4 @@ export const checkFilterFields = () => {
       }
     });
   });
-}
+};

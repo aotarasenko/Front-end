@@ -8,14 +8,13 @@
   width: 100%;
   height: 100%;
 
-  background-color: rgba(128, 128, 128, 0.555);
+  background-color: $color-light;
 
   form {
     position: relative;
     display: flex;
     flex-direction: column;
     padding: 24px;
-    min-width: 350px;
     background-color: $white;
 
     input {

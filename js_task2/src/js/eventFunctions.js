@@ -9,7 +9,7 @@ export const addRowSelectionEvent = (row) => {
       return;
     }
 
-    let checkbox = row.querySelector('input[type="checkbox');
+    let checkbox = row.querySelector('input[type="checkbox"]');
     if (checkbox.checked) {
       checkbox.checked = false;
       checkedItems.pop(row);

@@ -54,8 +54,9 @@ export const renderPageBtn = (pageNumber) => {
   btn.dataset.value = pageNumber;
 
   btn.addEventListener('click', () => {
-    changePage(btn.dataset.value);
+    changePage(btn.dataset.value, btn);
   });
+
   return btn;
 };
 
