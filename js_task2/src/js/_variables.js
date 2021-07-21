@@ -16,4 +16,4 @@ export const userTemplate = {
   city: '',
   country: '',
 };
-export const numOfRows = 3;
+export const numOfRows = 6;
