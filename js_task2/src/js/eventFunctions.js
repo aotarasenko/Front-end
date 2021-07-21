@@ -1,5 +1,5 @@
-import { checkedItems, baseUrl, users, numOfRows } from './_variables';
-import { deleteUserNote, getUsers } from './dataFunctions';
+import { checkedItems, baseUrl } from './_variables';
+import { deleteUserNote } from './dataFunctions';
 import { setDataToObject } from './helpers';
 import ModalWindow from './ModalWindow';
 
