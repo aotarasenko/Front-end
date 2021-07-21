@@ -36,8 +36,8 @@ export const renderRow = (userNote) => {
 };
 
 export const renderTable = (users) => {
-  outputArea.innerHTML = ''
-  paginationBox.innerHTML = ''
+  outputArea.innerHTML = '';
+  paginationBox.innerHTML = '';
 
   for (let i = 0; i < numOfRows; i++) {
     outputArea.appendChild(renderRow(users[i]));
@@ -45,7 +45,7 @@ export const renderTable = (users) => {
   for (let i = 0; i < users.length / numOfRows; i++) {
     paginationBox.appendChild(renderPageBtn(i));
   }
-}
+};
 
 export const renderPageBtn = (pageNumber) => {
   let btn = document.createElement('button');
@@ -62,6 +62,7 @@ export const renderPageBtn = (pageNumber) => {
 export const renderCheckbox = () => {
   let checkbox = document.createElement('input');
   checkbox.type = 'checkbox';
+  checkbox.classList.add('check-row');
 
   return checkbox;
 };
@@ -79,6 +80,6 @@ export const renderControlBtn = (type) => {
     btn.name = 'delete';
     addDeleteRowEvent(btn);
   }
-  
+
   return btn;
 };

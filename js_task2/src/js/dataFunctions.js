@@ -2,17 +2,14 @@ import { users } from './_variables';
 import axios from 'axios';
 import { renderTable } from './renderFunctions';
 
-export const getUsers = (baseUrl) => {
-  users = axios.get(`${baseUrl}/data`).then((res) => {
-    users = res.data;
-    renderTable(users);
-  });
+export const getUsers = async (baseUrl) => {
+  const res = await axios.get(`${baseUrl}/data`);
+  users = await res.data;
+  renderTable(users);
 };
 
-export const deleteUserNote = (baseUrl, userID) => {
-  axios.delete(`${baseUrl}/data/${userID}`).then(() => {
-    getUsers(baseUrl);
-  });
+export const deleteUserNote = async (baseUrl, userID) => {
+  await axios.delete(`${baseUrl}/data/${userID}`);
 };
 
 export const updateUserData = (baseUrl, id, user) => {

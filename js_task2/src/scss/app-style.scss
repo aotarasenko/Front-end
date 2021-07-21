@@ -5,7 +5,7 @@ header {
   a {
     @include app-font;
     text-decoration: none;
-    color: $font-secondary;
+    color: $color-light;
   }
 
   .account-actions {
@@ -13,7 +13,7 @@ header {
     div {
       display: flex;
       @include app-font;
-      color: $font-secondary;
+      color: $color-light;
 
       &::after {
         content: '';
@@ -21,7 +21,7 @@ header {
         margin: 0 8px;
         width: 1.5px;
         height: 100%;
-        background-color: $font-secondary;
+        background-color: $color-light;
         opacity: 0.1;
       }
     }
@@ -51,7 +51,7 @@ header {
 
       legend {
         @include app-font;
-        color: $font-secondary;
+        color: $color-light;
       }
 
       .filter-inputs {
@@ -188,7 +188,7 @@ header {
   button {
     padding: 10px;
     min-width: 50px;
-    border: 1px solid $font-secondary;
+    border: 1px solid $color-light;
     background-color: transparent;
     @include app-font;
 
@@ -205,36 +205,52 @@ header {
 }
 
 .edit-item-btn {
-      position: relative;
-      border: none;
-      padding: 10px;
-      background-color: transparent;
-      color: $color-neutral;
+  position: relative;
+  border: none;
+  padding: 10px;
+  background-color: transparent;
+  color: $color-neutral;
 
-      &::after {
-        content: '\f304';
-        font-family: 'Font Awesome 5 Free';
-        font-weight: 900;
-      }
-    }
+  &::after {
+    content: '\f304';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+  }
+}
 
-    .delete-item-btn {
-      border: none;
-      padding: 10px;
-      background-color: transparent;
-      color: $color-neutral;
+.delete-item-btn {
+  border: none;
+  padding: 10px;
+  background-color: transparent;
+  color: $color-neutral;
 
-      &::after {
-        content: '\f2ed';
-        font-family: 'Font Awesome 5 Free';
-        font-weight: 900;
-      }
-    }
-    .delete-item-btn:hover {
-      cursor: pointer;
-      color: $background-secondary;
-    }
-    .edit-item-btn:hover {
-      cursor: pointer;
-      color: $background-primary;
-    }
+  &::after {
+    content: '\f2ed';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+  }
+}
+.delete-item-btn:hover {
+  cursor: pointer;
+  color: $background-secondary;
+}
+.edit-item-btn:hover {
+  cursor: pointer;
+  color: $background-primary;
+}
+
+// .check-row {
+//   position: absolute;
+//   width: 0;
+//   height: 0;
+//   opacity: 0;
+
+//   ::after {
+//     position: relative;
+//     display: flex;
+
+//     border: 1px solid $color-light;
+//     width: 20px;
+//     height: 20px;
+//   }
+// }

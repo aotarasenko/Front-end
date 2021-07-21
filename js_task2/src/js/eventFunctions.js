@@ -1,5 +1,5 @@
 import { checkedItems, baseUrl } from './_variables';
-import { deleteUserNote } from './dataFunctions';
+import { deleteUserNote, getUsers } from './dataFunctions';
 import { setDataToObject } from './helpers';
 import ModalWindow from './ModalWindow';
 
@@ -24,7 +24,9 @@ export const addDeleteRowEvent = (btn) => {
   btn.addEventListener('click', (Event) => {
     Event.preventDefault();
     btn.parentElement.remove();
-    deleteUserNote(baseUrl, btn.parentElement.id);
+    deleteUserNote(baseUrl, btn.parentElement.id).then(() => {
+      getUsers(baseUrl);
+    });
   });
 };
 

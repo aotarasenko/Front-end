@@ -7,6 +7,7 @@ import {
   mainCheckbox,
   filterForm,
   checkedItems,
+  users,
 } from './_variables';
 import { addUser } from './eventFunctions';
 
@@ -15,9 +16,11 @@ document
   .addEventListener('click', (Event) => {
     Event.preventDefault();
     checkedItems.forEach((item) => {
-      item.remove();
-      deleteUserNote(baseUrl, item.id);
+      deleteUserNote(baseUrl, item.id).then(() => {
+        getUsers(baseUrl);
+      });
     });
+    checkedItems = [];
   });
 
 window.addEventListener('DOMContentLoaded', (Event) => {
