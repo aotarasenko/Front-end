@@ -4,7 +4,12 @@ import {
   addEditRowEvent,
 } from './eventFunctions';
 import { changePage } from './helpers';
-import { paginationBox, outputArea, numOfRows } from './_variables';
+import {
+  paginationBox,
+  outputArea,
+  numOfRows,
+  currentPage,
+} from './_variables';
 
 export const renderCell = (cellContent, cellName) => {
   const cell = document.createElement('div');
@@ -43,8 +48,42 @@ export const renderTable = (users) => {
     outputArea.appendChild(renderRow(users[i]));
   }
   for (let i = 0; i < users.length / numOfRows; i++) {
-    paginationBox.appendChild(renderPageBtn(i));
+    paginationBox.append(renderPageBtn(i));
   }
+
+  paginationBox.prepend(renderBtnLeft());
+
+  paginationBox.append(renderBtnRight());
+};
+
+const renderBtnLeft = () => {
+  let btnLeft = document.createElement('button');
+  btnLeft.classList.add('change-page-left');
+  btnLeft.textContent = '<';
+
+  btnLeft.addEventListener('click', () => {
+    changePage(
+      --currentPage,
+      paginationBox.querySelectorAll('button')[currentPage]
+    );
+  });
+
+  return btnLeft;
+};
+
+const renderBtnRight = () => {
+  let btnRight = document.createElement('button');
+  btnRight.classList.add('change-page-right');
+  btnRight.textContent = '>';
+
+  btnRight.addEventListener('click', () => {
+    changePage(
+      ++currentPage,
+      paginationBox.querySelectorAll('button')[currentPage]
+    );
+  });
+
+  return btnRight;
 };
 
 export const renderPageBtn = (pageNumber) => {
@@ -54,7 +93,7 @@ export const renderPageBtn = (pageNumber) => {
   btn.dataset.value = pageNumber;
 
   btn.addEventListener('click', () => {
-    changePage(btn.dataset.value, btn);
+    changePage(Number(btn.dataset.value), btn);
   });
 
   return btn;

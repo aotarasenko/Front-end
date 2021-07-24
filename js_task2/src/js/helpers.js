@@ -6,6 +6,7 @@ import {
   numOfRows,
   outputArea,
   paginationBox,
+  currentPage,
 } from './_variables';
 
 export function setDataToObject(nodeList) {
@@ -44,9 +45,19 @@ export function selectWholeTable(state) {
 }
 
 export const changePage = (pageIndex, btn) => {
+  console.log(currentPage, pageIndex);
+
+  currentPage = +pageIndex;
+  console.log(currentPage, pageIndex);
+  if (currentPage === 0) {
+    currentPage = users.length / numOfRows;
+  } else if (currentPage === users.length / numOfRows) {
+    currentPage = 0;
+  }
+
   let usersPart = users.slice(
-    pageIndex * numOfRows,
-    pageIndex * numOfRows + numOfRows
+    currentPage * numOfRows,
+    currentPage * numOfRows + numOfRows
   );
 
   outputArea.innerHTML = '';
