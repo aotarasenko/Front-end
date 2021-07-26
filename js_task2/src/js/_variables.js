@@ -1,9 +1,7 @@
 export const addBtn = document.querySelector('.add-note'),
   filterForm = document.querySelector('.filter-form'),
   outputArea = document.querySelector('.output-data'),
-  mainCheckbox = document.querySelector(
-    '.table-heading > input[type="checkbox"]'
-  ),
+  mainCheckbox = document.querySelector('.main-checkbox ~ div'),
   paginationBox = document.querySelector('.change-page');
 
 export const baseUrl = 'http://localhost:3000';

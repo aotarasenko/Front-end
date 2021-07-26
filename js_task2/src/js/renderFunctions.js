@@ -52,7 +52,6 @@ export const renderTable = (users) => {
   }
 
   paginationBox.prepend(renderBtnLeft());
-
   paginationBox.append(renderBtnRight());
 };
 
@@ -101,10 +100,13 @@ export const renderPageBtn = (pageNumber) => {
 
 export const renderCheckbox = () => {
   let checkbox = document.createElement('input');
+  let label = document.createElement('label');
+  let fakeBox = document.createElement('div');
   checkbox.type = 'checkbox';
   checkbox.classList.add('check-row');
-
-  return checkbox;
+  label.appendChild(checkbox);
+  label.appendChild(fakeBox);
+  return label;
 };
 
 export const renderControlBtn = (type) => {

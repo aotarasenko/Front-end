@@ -33,7 +33,11 @@ addBtn.addEventListener('click', (Event) => {
 });
 
 mainCheckbox.addEventListener('click', () => {
-  if (mainCheckbox.checked) {
+  let hiddenBox = document.querySelector('.main-checkbox');
+  hiddenBox.checked = hiddenBox.checked ? false : true;
+  console.log(hiddenBox.checked);
+
+  if (hiddenBox.checked) {
     selectWholeTable(true);
   } else {
     selectWholeTable(false);

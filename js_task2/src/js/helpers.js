@@ -35,7 +35,7 @@ export function selectWholeTable(state) {
   let rows = document.querySelectorAll('.user-row');
 
   rows.forEach((row) => {
-    row.firstChild.checked = state;
+    row.firstChild.firstChild.checked = state;
     if (state) {
       checkedItems.push(row);
     } else {
@@ -45,8 +45,6 @@ export function selectWholeTable(state) {
 }
 
 export const changePage = (pageIndex, btn) => {
-  console.log(currentPage, pageIndex);
-
   currentPage = +pageIndex;
   console.log(currentPage, pageIndex);
   if (currentPage === 0) {
