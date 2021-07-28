@@ -65,7 +65,7 @@ const renderBtnLeft = () => {
     currentPage -= 1;
     changePage(
       currentPage,
-      paginationBox.querySelectorAll('button')[currentPage]
+      paginationBox.querySelectorAll('.page')[currentPage]
     );
   });
 
@@ -81,7 +81,7 @@ const renderBtnRight = () => {
     currentPage += 1;
     changePage(
       currentPage,
-      paginationBox.querySelectorAll('button')[currentPage]
+      paginationBox.querySelectorAll('.page')[currentPage]
     );
   });
 
@@ -91,7 +91,7 @@ const renderBtnRight = () => {
 export const renderPageBtn = (pageNumber) => {
   let btn = document.createElement('button');
   btn.type = 'button';
-  btn.textContent = pageNumber;
+  btn.textContent = pageNumber + 1;
   btn.classList.add('page');
   btn.dataset.value = pageNumber;
 

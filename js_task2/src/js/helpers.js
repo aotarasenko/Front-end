@@ -34,17 +34,14 @@ export function selectWholeTable(state) {
 }
 
 export const changePage = (pageIndex, btn) => {
-  currentPage = +pageIndex;
-
-  console.log(pageIndex);
-  console.log(currentPage);
-  console.log(btn);
   let btnToDisabled = [
     document.querySelector('.change-page-left'),
     document.querySelector('.change-page-right'),
   ];
 
-  if (currentPage === users.length / numOfRows) {
+  currentPage = +pageIndex;
+
+  if (currentPage === users.length / numOfRows - 1) {
     btnToDisabled[1].disabled = true;
   } else if (currentPage === 0) {
     btnToDisabled[0].disabled = true;
@@ -79,7 +76,6 @@ export const isCellValid = (cell, fieldValue) => {
 
   for (let i = 0; i < fieldValue.length; i++) {
     if (cell.textContent[i].toLowerCase() !== fieldValue[i].toLowerCase()) {
-      console.log();
       return false;
     }
   }

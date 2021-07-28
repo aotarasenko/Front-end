@@ -7,6 +7,7 @@ import {
   mainCheckbox,
   filterForm,
   checkedItems,
+  currentPage,
 } from './_variables';
 import { addUser } from './eventFunctions';
 
