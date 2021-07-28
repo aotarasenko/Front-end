@@ -46,8 +46,8 @@ header {
       display: flex;
       align-items: center;
       flex-direction: row;
-      width: 100%;
       border: none;
+      width: 100%;
 
       legend {
         @include app-font;
@@ -64,9 +64,9 @@ header {
         }
         input {
           margin-bottom: 12px;
+          border: 2px solid rgba(214, 214, 214, 0.7);
           width: 100%;
           padding: 10px 8px;
-          border: 2px solid rgba(214, 214, 214, 0.719);
           border-radius: 2px;
           outline: none;
           @include app-font;
@@ -87,11 +87,11 @@ header {
       display: flex;
       justify-content: center;
       align-items: center;
+      border: none;
+      border-radius: 50%;
       width: 40px;
       height: 40px;
-      border: none;
       outline: none;
-      border-radius: 50%;
       background-color: $background-secondary;
 
       @include desktop-size {
@@ -127,11 +127,11 @@ header {
   width: 100%;
 
   .table-heading {
-    margin-bottom: 50px;
-    padding-right: 50px;
-    width: 100%;
     justify-content: flex-start;
+    margin-bottom: 50px;
     border-bottom: 1px solid $color-neutral;
+    width: 100%;
+    padding-right: 50px;
     @include app-font;
     .heading-item {
       display: flex;
@@ -157,8 +157,8 @@ header {
       display: flex;
       justify-content: flex-start;
       flex: 1;
-      padding: 14px 8px;
       width: 100%;
+      padding: 14px 8px;
       @include app-font;
       white-space: pre-wrap;
     }
@@ -166,21 +166,20 @@ header {
 }
 
 .change-page {
-  margin-top: 20px;
   display: flex;
   justify-content: center;
-
+  margin-top: 20px;
   button {
-    padding: 10px;
     min-width: 50px;
+    padding: 10px;
     border: 1px solid $color-light;
     background-color: transparent;
     @include app-font;
 
     &:hover {
+      background-color: $background-primary;
       cursor: pointer;
       color: $color-white;
-      background-color: $background-primary;
     }
   }
   button.selected-page {
