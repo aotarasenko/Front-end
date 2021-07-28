@@ -31,7 +31,7 @@ header {
 .page-name {
   padding: 12px;
   background-color: $background-primary;
-  color: $white;
+  color: $color-white;
   @include app-font;
 }
 
@@ -110,7 +110,7 @@ header {
         display: block;
         width: 40%;
         height: 1.5px;
-        background-color: $white;
+        background-color: $color-white;
         transform: rotate(0deg);
       }
 
@@ -179,13 +179,13 @@ header {
 
     &:hover {
       cursor: pointer;
-      color: $white;
+      color: $color-white;
       background-color: $background-primary;
     }
   }
   button.selected-page {
     background-color: $background-primary;
-    color: $white;
+    color: $color-white;
   }
 }
 

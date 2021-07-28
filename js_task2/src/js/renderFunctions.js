@@ -53,6 +53,7 @@ export const renderTable = (users) => {
 
   paginationBox.prepend(renderBtnLeft());
   paginationBox.append(renderBtnRight());
+  changePage(0, document.querySelector('.page'));
 };
 
 const renderBtnLeft = () => {
@@ -61,8 +62,9 @@ const renderBtnLeft = () => {
   btnLeft.textContent = '<';
 
   btnLeft.addEventListener('click', () => {
+    currentPage -= 1;
     changePage(
-      --currentPage,
+      currentPage,
       paginationBox.querySelectorAll('button')[currentPage]
     );
   });
@@ -76,8 +78,9 @@ const renderBtnRight = () => {
   btnRight.textContent = '>';
 
   btnRight.addEventListener('click', () => {
+    currentPage += 1;
     changePage(
-      ++currentPage,
+      currentPage,
       paginationBox.querySelectorAll('button')[currentPage]
     );
   });
@@ -88,7 +91,8 @@ const renderBtnRight = () => {
 export const renderPageBtn = (pageNumber) => {
   let btn = document.createElement('button');
   btn.type = 'button';
-  btn.textContent = pageNumber + 1;
+  btn.textContent = pageNumber;
+  btn.classList.add('page');
   btn.dataset.value = pageNumber;
 
   btn.addEventListener('click', () => {

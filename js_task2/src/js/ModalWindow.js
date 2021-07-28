@@ -13,8 +13,9 @@ export default class ModalWindow {
     this.eventType = btnType;
     this.id = id;
     document.body.appendChild(this.renderModalWindow());
-    this.modal = document.getElementById('#modal');
+    this.modal = document.getElementById('modal');
     Object.assign(this.userToOutput, userTemplate);
+    console.log(this.modal);
   }
 
   renderInput(inputName, value) {

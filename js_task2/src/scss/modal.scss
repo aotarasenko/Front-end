@@ -15,7 +15,7 @@
     display: flex;
     flex-direction: column;
     padding: 24px;
-    background-color: $white;
+    background-color: $color-white;
 
     input {
       margin: 20px;
@@ -27,7 +27,7 @@
       padding: 8px 12px;
       width: 100%;
       @include app-font;
-      color: $white;
+      color: $color-white;
       background-color: $background-primary;
 
       &:hover {
@@ -49,7 +49,7 @@
 
       &:hover {
         background-color: $background-secondary;
-        color: $white;
+        color: $color-white;
         cursor: pointer;
       }
 

@@ -15,4 +15,4 @@ export const userTemplate = {
   country: '',
 };
 export const numOfRows = 6;
-export let currentPage = 1;
+export let currentPage = 0;

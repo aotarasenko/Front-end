@@ -20,17 +20,6 @@ export function setDataToObject(nodeList) {
   return object;
 }
 
-export const isCellValid = (cell, fieldValue) => {
-  if (fieldValue === '') {
-    return true;
-  }
-  if (cell.textContent.toLowerCase().indexOf(fieldValue.toLowerCase()) === -1) {
-    return false;
-  }
-
-  return true;
-};
-
 export function selectWholeTable(state) {
   let rows = document.querySelectorAll('.user-row');
 
@@ -46,11 +35,22 @@ export function selectWholeTable(state) {
 
 export const changePage = (pageIndex, btn) => {
   currentPage = +pageIndex;
-  console.log(currentPage, pageIndex);
-  if (currentPage === 0) {
-    currentPage = users.length / numOfRows;
-  } else if (currentPage === users.length / numOfRows) {
-    currentPage = 0;
+
+  console.log(pageIndex);
+  console.log(currentPage);
+  console.log(btn);
+  let btnToDisabled = [
+    document.querySelector('.change-page-left'),
+    document.querySelector('.change-page-right'),
+  ];
+
+  if (currentPage === users.length / numOfRows) {
+    btnToDisabled[1].disabled = true;
+  } else if (currentPage === 0) {
+    btnToDisabled[0].disabled = true;
+  } else {
+    btnToDisabled[0].disabled = false;
+    btnToDisabled[1].disabled = false;
   }
 
   let usersPart = users.slice(
@@ -72,6 +72,21 @@ export const changePage = (pageIndex, btn) => {
   checkFilterFields();
 };
 
+export const isCellValid = (cell, fieldValue) => {
+  if (fieldValue === '') {
+    return true;
+  }
+
+  for (let i = 0; i < fieldValue.length; i++) {
+    if (cell.textContent[i].toLowerCase() !== fieldValue[i].toLowerCase()) {
+      console.log();
+      return false;
+    }
+  }
+
+  return true;
+};
+
 export const checkFilterFields = () => {
   let dataRows = document.querySelectorAll('.user-row');
   let filterFields = document.querySelectorAll('.filter-inputs input');
@@ -86,7 +101,6 @@ export const checkFilterFields = () => {
           let isRowCanBeRender = isCellValid(cell, item.value);
           if (!isRowCanBeRender) {
             row.classList.add('is-hidden');
-            continue;
           }
         }
       }

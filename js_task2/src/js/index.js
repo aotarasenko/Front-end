@@ -1,6 +1,6 @@
 import '../scss/main.scss';
 import { getUsers, deleteUserNote } from './dataFunctions';
-import { selectWholeTable, checkFilterFields } from './helpers';
+import { selectWholeTable, checkFilterFields, changePage } from './helpers';
 import {
   baseUrl,
   addBtn,
