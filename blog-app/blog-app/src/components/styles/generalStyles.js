@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { AppColors } from "./variables";
 
 export const FlexRow = styled.div`
   display: flex;

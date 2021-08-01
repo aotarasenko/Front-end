@@ -1,11 +1,14 @@
-import { Header } from "./components/Layout/Header/Header";
 import { Footer } from "./components/Layout/Footer/Footer";
+import { MainContentStyled } from "./components/Layout/MainContent/MainStyle";
+import { Sidebar } from "./components/Layout/Sidebar/Sidebar";
 
 function App() {
   return (
     <>
-      <Header />
-      <Footer />
+      <Sidebar>
+        <Footer />
+      </Sidebar>
+      <MainContentStyled />
     </>
   );
 }
