@@ -1,5 +1,5 @@
 import { Footer } from "./components/Layout/Footer/Footer";
-import { MainContentStyled } from "./components/Layout/MainContent/MainStyle";
+import { MainContent } from "./components/Layout/MainContent/MainContent";
 import { Sidebar } from "./components/Layout/Sidebar/Sidebar";
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
       <Sidebar>
         <Footer />
       </Sidebar>
-      <MainContentStyled />
+      <MainContent />
     </>
   );
 }

@@ -5,6 +5,7 @@ export const FlexRow = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: ${(props) => props.flexSpacing || "space-between"};
+  width: 100%;
 `;
 
 export const FlexColumn = styled.div`

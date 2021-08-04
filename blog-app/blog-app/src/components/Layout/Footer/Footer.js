@@ -1,5 +1,7 @@
 import { FlexRow } from "../../styles/generalStyles";
-import { Copyright } from "./FooterStyle";
+import styled from "styled-components";
+import { AppColors, AppFontSizes } from "../../styles/variables";
+import {} from "../../styles/generalStyles";
 
 export const Footer = () => {
   return (
@@ -10,3 +12,9 @@ export const Footer = () => {
     </Copyright>
   );
 };
+
+export const Copyright = styled.footer`
+  padding: 20px 0;
+  color: ${AppColors.white};
+  font-size: ${AppFontSizes.small};
+`;
