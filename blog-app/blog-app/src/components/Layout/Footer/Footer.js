@@ -1,7 +1,6 @@
 import { FlexRow } from "../../styles/generalStyles";
 import styled from "styled-components";
 import { AppColors, AppFontSizes } from "../../styles/variables";
-import {} from "../../styles/generalStyles";
 
 export const Footer = () => {
   return (
