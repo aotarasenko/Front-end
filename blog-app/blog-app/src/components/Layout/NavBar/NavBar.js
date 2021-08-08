@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import { AppColors, navBarSize } from "../../styles/variables";
+import { AppColors } from "../../styles/variables";
 import { NavMenu } from "./NavMenu/NavMenu";
 
 export const NavBar = () => {
   return (
     <NavBarStyled>
-      <NavMenu>gdgdr</NavMenu>
+      <NavMenu />
     </NavBarStyled>
   );
 };
@@ -15,6 +15,5 @@ const NavBarStyled = styled.nav`
   left: 0;
   bottom: 0;
   width: 100%;
-  height: ${navBarSize};
-  background-color: ${AppColors.light};
+  background-color: ${AppColors.primary};
 `;

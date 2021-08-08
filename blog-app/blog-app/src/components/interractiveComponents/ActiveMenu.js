@@ -1,39 +1,27 @@
+import { useState } from "react";
 import styled from "styled-components";
-import { AppColors } from "../styles/variables";
+import { AppColors, AppSizes } from "../styles/variables";
+
 export const ActiveMenu = () => {
+  const [isActive, setActive] = useState(false);
+  const toggleMenu = () => setActive(!isActive);
+
   return (
-    <ActiveMenuStyled>
+    <ActiveMenuStyled onClick={toggleMenu} isActive={isActive}>
+      <div></div>
+      <div></div>
       <div></div>
     </ActiveMenuStyled>
   );
 };
 
 const ActiveMenuStyled = styled.div`
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 20px;
-  left: auto;
   display: flex;
   flex-direction: column;
-  padding: 8px;
-  width: 40px;
-  height: 40px;
-
-  &.is-active {
-    div {
-      opacity: 0;
-
-      &::before {
-        top: 0;
-        transform: rotate(45deg);
-      }
-      &::after {
-        top: 0;
-        transform: rotate(-45deg);
-      }
-    }
-  }
+  justify-content: center;
+  margin-left: 30px;
+  width: 30px;
+  height: 30px;
 
   &:hover {
     cursor: pointer;
@@ -41,29 +29,48 @@ const ActiveMenuStyled = styled.div`
 
   div {
     position: relative;
-    top: 20px;
-    height: 2px;
+    height: 5px;
     width: 100%;
+    border-radius: 5px;
     background-color: ${AppColors.white};
+    transition: 0.5s transform ease;
 
-    &::before {
-      content: "";
+    &:first-child {
       position: relative;
-      top: -12px;
-      display: block;
-      height: 2px;
+      top: -7px;
+      height: 5px;
       width: 100%;
-      background-color: ${AppColors.white};
+      transition: 0.5s transform ease;
     }
+    &:last-child {
+      position: relative;
+      bottom: -7px;
+      height: 5px;
+      width: 100%;
+      transition: 0.5s transform ease;
+    }
+  }
 
-    &::after {
-      content: "";
-      position: relative;
-      bottom: -10px;
-      display: block;
-      height: 2px;
-      width: 100%;
-      background-color: ${AppColors.white};
+  ${({ isActive }) =>
+    isActive &&
+    `
+    div {
+      transform: scale(0);
+
+      &:first-child{
+        transform: rotate(225deg) translate(-7px, -10px);
+        transition: 0.5s transform ease;
+      }
+
+      &:last-child{
+        transform: rotate(-225deg) translate(-7px, 10px);
+        transition: 0.5s transform ease;
+      }
     }
+    
+  `}
+
+  @media screen and (min-width: ${AppSizes.tablet}) {
+    display: none;
   }
 `;

@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import { AppColors, sidebarSize } from "../../styles/variables";
+import { AppColors } from "../../styles/variables";
 
 export const MainContent = () => {
   return <MainContentStyled />;
 };
 
 export const MainContentStyled = styled.main`
-  padding-left: ${sidebarSize};
+  padding: 12px;
   height: 100vh;
   background-color: ${AppColors.light};
   box-sizing: border-box;

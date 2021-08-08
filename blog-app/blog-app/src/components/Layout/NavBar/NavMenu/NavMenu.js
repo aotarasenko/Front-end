@@ -1,15 +1,14 @@
-import {
-  AppColors,
-  AppFontSizes,
-  AppIcons,
-  AppSizes,
-} from "../../../styles/variables";
+import { AppColors, AppFontSizes, AppIcons } from "../../../styles/variables";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 export const NavMenu = ({ isSizeForText }) => {
   const menuItems = [
-    { title: "My Posts", linkTo: "/home", icon: AppIcons.home },
+    {
+      title: "My Posts",
+      linkTo: "/home",
+      icon: AppIcons.home,
+    },
     { title: "Favorites", linkTo: "/favorites", icon: AppIcons.favorite },
     {
       title: "Subscriptions",
@@ -42,11 +41,24 @@ const NavMenuStyled = styled.ul`
   padding: 0;
 
   li {
+    position: relative;
     display: flex;
     flex: 1;
     justify-content: center;
     align-items: center;
     list-style: none;
+
+    &::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      display: block;
+      width: 1.5px;
+      height: 50%;
+      border-radius: 75%;
+      background-color: ${AppColors.neutral};
+      opacity: 0.4;
+    }
 
     svg {
       font-size: ${AppFontSizes.medium};
@@ -55,18 +67,20 @@ const NavMenuStyled = styled.ul`
 
     a {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
+      padding: 10px 0;
+      width: 100%;
+      height: 100%;
       border-bottom: 2px solid transparent;
-      padding: 20px;
       transition: 0.4s border-bottom ease;
       text-decoration: none;
       color: ${AppColors.white};
 
       &:hover {
-        border-color: ${AppColors.white};
+        background-color: ${AppColors.dark};
         cursor: poiner;
-        transition: 0.4s border-bottom ease;
+        transition: 0.4s background-color ease;
       }
     }
   }
