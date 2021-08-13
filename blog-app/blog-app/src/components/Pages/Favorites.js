@@ -1,3 +1,10 @@
+import { Post } from "../interractiveComponents/Post/Post";
+
 export const Favorites = () => {
-  return <div>favorites</div>;
+  return (
+    <div>
+      <Post tags={["#daed", ["#fshef"]]} />
+      <Post />
+    </div>
+  );
 };

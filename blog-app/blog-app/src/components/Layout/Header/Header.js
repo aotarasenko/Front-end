@@ -1,28 +1,30 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-import { ActiveMenu } from "../../interractiveComponents/ActiveMenu";
-import { AppLink } from "../../interractiveComponents/AppLink";
 import { AppColors } from "../../styles/variables";
+import { Avatar } from "../../interractiveComponents/Avatar";
 
 export const Header = () => {
   return (
     <HeaderStyled>
-      <NavLink to="/world">Home</NavLink>
-      <AppLink link="#" text="Log In" />
-      <AppLink link="#" text="Sing In" />
-      <ActiveMenu />
+      <Avatar imgUrl="https://res.cloudinary.com/stealthman22/image/upload/v1586308024/new-portfolio/hero/time-lapse-photography-of-waterfalls-during-sunset-210186.jpg" />
+      <div>
+        <NavLink to="/world">Home</NavLink>
+        <NavLink to="#">Log In</NavLink>
+        <NavLink to="#">Sing In</NavLink>
+      </div>
     </HeaderStyled>
   );
 };
 
 const HeaderStyled = styled.header`
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   padding: 10px;
   background-color: ${AppColors.light};
 
   a {
+    margin: 0 8px;
     color: ${AppColors.white};
     opacity: 0.5;
     text-decoration: none;

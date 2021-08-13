@@ -1,4 +1,9 @@
-import { AppColors, AppFontSizes, AppIcons } from "../../../styles/variables";
+import {
+  AppColors,
+  AppFontSizes,
+  AppIcons,
+  AppSizes,
+} from "../../../styles/variables";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
@@ -16,6 +21,7 @@ export const NavMenu = ({ isSizeForText }) => {
       icon: AppIcons.subscription,
     },
     { title: "World Posts", linkTo: "/world", icon: AppIcons.world },
+    { title: "Profile", linkTo: "/profile", icon: AppIcons.profile },
   ];
 
   return (
@@ -40,10 +46,14 @@ const NavMenuStyled = styled.ul`
   margin: 0;
   padding: 0;
 
+  @media screen and (min-width: ${AppSizes.tablet}) {
+    flex-direction: column;
+  }
+
   li {
     position: relative;
     display: flex;
-    flex: 1;
+    width: 100%;
     justify-content: center;
     align-items: center;
     list-style: none;

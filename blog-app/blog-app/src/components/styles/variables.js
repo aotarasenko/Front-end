@@ -1,9 +1,7 @@
-import { AiFillHome, AiFillStar } from "react-icons/ai";
+import { AiFillHome, AiFillStar, AiFillLike } from "react-icons/ai";
 import { BiWorld } from "react-icons/bi";
 import { BsFillBookmarkFill } from "react-icons/bs";
-
-export const sidebarSize = "250px";
-export const navBarSize = "60px";
+import { CgProfile } from "react-icons/cg";
 
 export const AppColors = {
   primary: "#1564bf",
@@ -32,4 +30,6 @@ export const AppIcons = {
   world: <BiWorld />,
   favorite: <AiFillStar />,
   subscription: <BsFillBookmarkFill />,
+  profile: <CgProfile />,
+  like: <AiFillLike />,
 };
