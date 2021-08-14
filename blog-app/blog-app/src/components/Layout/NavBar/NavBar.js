@@ -14,6 +14,7 @@ const NavBarStyled = styled.nav`
   position: fixed;
   left: 0;
   bottom: 0;
+  z-index: 5;
   min-width: 40px;
   width: 100%;
   background-color: ${AppColors.primary};

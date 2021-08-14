@@ -9,8 +9,8 @@ export const Header = () => {
       <Avatar imgUrl="https://res.cloudinary.com/stealthman22/image/upload/v1586308024/new-portfolio/hero/time-lapse-photography-of-waterfalls-during-sunset-210186.jpg" />
       <div>
         <NavLink to="/world">Home</NavLink>
-        <NavLink to="#">Log In</NavLink>
-        <NavLink to="#">Sing In</NavLink>
+        <NavLink to="/auth/login">Log In</NavLink>
+        <NavLink to="/auth/signin">Sign In</NavLink>
       </div>
     </HeaderStyled>
   );
