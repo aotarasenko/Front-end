@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { FlexColumn, FlexRow } from "../../styles/generalStyles";
+import { AppColors, AppFontSizes } from "../../styles/variables";
 import { Avatar } from "../Avatar";
 import { LikeButton } from "../LikeButton";
 
@@ -6,14 +8,26 @@ export const Post = (post) => {
   return (
     <PostStyled>
       <div className="post-heading">
-        <Avatar imgUrl="https://res.cloudinary.com/stealthman22/image/upload/v1586308024/new-portfolio/hero/time-lapse-photography-of-waterfalls-during-sunset-210186.jpg" />
-        <LikeButton state={false} />
+        <Avatar imgUrl={post.author.image} />
+        <FlexColumn flexSpacing="flex-start">
+          <p>{post.author.username}</p>
+          <p>{post.createdAt}</p>
+        </FlexColumn>
+        <FlexRow flexSpacing="flex-end">
+          <LikeButton state={false} />
+          <p>{post.favoritesCount}</p>
+        </FlexRow>
       </div>
       <div className="post-content">
         <h3 className="post-title">{post.title}</h3>
-        <p className="post-text">{post.text}</p>
+        <p className="post-text">{post.description}</p>
       </div>
-      <div className="post-tags">{post.tags}</div>
+      <hr />
+      <FlexRow className="post-tags" flexSpacing="flex-end">
+        {post.tagList.map((tag) => {
+          return "#" + tag;
+        })}
+      </FlexRow>
     </PostStyled>
   );
 };
@@ -29,5 +43,14 @@ const PostStyled = styled.section`
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    p {
+      margin: 0;
+      font-size: ${AppFontSizes.small};
+    }
+  }
+
+  hr {
+    width: 100%;
   }
 `;

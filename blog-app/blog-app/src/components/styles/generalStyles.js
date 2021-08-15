@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { AppSizes } from "./variables";
 
 export const FlexRow = styled.div`
   display: flex;
@@ -13,4 +14,9 @@ export const FlexColumn = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: ${(props) => props.flexSpacing || "space-between"};
+`;
+
+export const Container = styled.div`
+  margin: 0 auto;
+  max-width: ${AppSizes.laptop}px;
 `;

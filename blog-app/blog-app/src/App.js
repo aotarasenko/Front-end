@@ -1,4 +1,4 @@
-import { Route, BrowserRouter, Redirect } from "react-router-dom";
+import { Route, BrowserRouter } from "react-router-dom";
 import { NavBar } from "./components/Layout/NavBar/NavBar";
 import { Home } from "./components/Pages/Home";
 import { World } from "./components/Pages/World";

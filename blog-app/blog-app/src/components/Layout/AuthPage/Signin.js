@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 import { AuthForm } from "./AuthForm";
 
@@ -6,10 +7,10 @@ export const Signin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const sendSignin = (e) => {
+  const sendSignin = async (e) => {
     e.preventDefault();
 
-    console.log({ name, email, password });
+    // axios.get
   };
 
   return (
@@ -34,7 +35,7 @@ export const Signin = () => {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <button type="submit">SingIn</button>
+        <button type="submit">SignIn</button>
       </fieldset>
     </AuthForm>
   );
