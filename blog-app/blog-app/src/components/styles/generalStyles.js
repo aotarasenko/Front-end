@@ -18,5 +18,6 @@ export const FlexColumn = styled.div`
 
 export const Container = styled.div`
   margin: 0 auto;
-  max-width: ${AppSizes.laptop}px;
+  width: 100%;
+  max-width: ${AppSizes.laptop};
 `;

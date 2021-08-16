@@ -2,16 +2,21 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { AppColors } from "../../styles/variables";
 import { Avatar } from "../../interractiveComponents/Avatar";
+import { Container, FlexRow } from "../../styles/generalStyles";
 
 export const Header = () => {
   return (
     <HeaderStyled>
-      <Avatar imgUrl="https://res.cloudinary.com/stealthman22/image/upload/v1586308024/new-portfolio/hero/time-lapse-photography-of-waterfalls-during-sunset-210186.jpg" />
-      <div>
-        <NavLink to="/world">Home</NavLink>
-        <NavLink to="/auth/login">Log In</NavLink>
-        <NavLink to="/auth/signin">Sign In</NavLink>
-      </div>
+      <Container>
+        <FlexRow>
+          <Avatar imgUrl="https://res.cloudinary.com/stealthman22/image/upload/v1586308024/new-portfolio/hero/time-lapse-photography-of-waterfalls-during-sunset-210186.jpg" />
+          <div>
+            <NavLink to="/world">Home</NavLink>
+            <NavLink to="/auth/login">Log In</NavLink>
+            <NavLink to="/auth/signin">Sign In</NavLink>
+          </div>
+        </FlexRow>
+      </Container>
     </HeaderStyled>
   );
 };
