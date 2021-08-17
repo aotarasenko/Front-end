@@ -6,6 +6,7 @@ export const FlexRow = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: ${(props) => props.flexSpacing || "space-between"};
+  flex-wrap: ${(props) => props.flexWrap || "nowrap"};
   width: 100%;
 `;
 

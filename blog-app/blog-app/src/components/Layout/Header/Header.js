@@ -1,8 +1,7 @@
 import { NavLink } from "react-router-dom";
-import styled from "styled-components";
-import { AppColors } from "../../styles/variables";
-import { Avatar } from "../../interractiveComponents/Avatar";
-import { Container, FlexRow } from "../../styles/generalStyles";
+import { Avatar } from "../../../common/Avatar";
+import { Container, FlexRow } from "../../../styles/generalStyles";
+import { HeaderStyled } from "./Header.styled";
 
 export const Header = () => {
   return (
@@ -10,33 +9,12 @@ export const Header = () => {
       <Container>
         <FlexRow>
           <Avatar imgUrl="https://res.cloudinary.com/stealthman22/image/upload/v1586308024/new-portfolio/hero/time-lapse-photography-of-waterfalls-during-sunset-210186.jpg" />
-          <div>
-            <NavLink to="/world">Home</NavLink>
+          <FlexRow flexSpacing="flex-end" flexWrap="wrap">
             <NavLink to="/auth/login">Log In</NavLink>
             <NavLink to="/auth/signin">Sign In</NavLink>
-          </div>
+          </FlexRow>
         </FlexRow>
       </Container>
     </HeaderStyled>
   );
 };
-
-const HeaderStyled = styled.header`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  background-color: ${AppColors.light};
-
-  a {
-    margin: 0 8px;
-    color: ${AppColors.white};
-    opacity: 0.5;
-    text-decoration: none;
-    font-weight: bold;
-
-    &:hover {
-      opacity: 1;
-    }
-  }
-`;

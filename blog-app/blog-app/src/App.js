@@ -1,20 +1,18 @@
 import { Route, BrowserRouter } from "react-router-dom";
 import { NavBar } from "./components/Layout/NavBar/NavBar";
-import { Home } from "./components/Pages/Home";
-import { Favorites } from "./components/Pages/Favorites";
-import { Subscriptions } from "./components/Pages/Subscriptions";
+import { Home } from "./Pages/Home";
+import { Favorites } from "./Pages/Favorites";
+import { Subscriptions } from "./Pages/Subscriptions";
 import { Header } from "./components/Layout/Header/Header";
-import { Main } from "./components/Layout/Main/Main";
-import { Login } from "./components/Layout/AuthPage/Login";
-import { Signin } from "./components/Layout/AuthPage/Signin";
-import { Profile } from "./components/Pages/Profile";
+import { Login } from "./Pages/Auth/Login";
+import { Signin } from "./Pages/Auth/Signin";
+import { Profile } from "./Pages/Profile";
 
 function App() {
   return (
     <BrowserRouter>
       <Header />
       <NavBar />
-      <Main />
       {/* {!loggegIn ? <Redirect to="/world" />} */}
       <Route exact path="/home" component={Home} />
       <Route exact path="/auth/login" component={Login} />

@@ -1,6 +1,6 @@
 import { Container } from "../styles/generalStyles";
-import { Post } from "../interractiveComponents/Post/Post";
-import { useHome } from "../../hooks/useHome";
+import { Post } from "../common/Post/Post";
+import { useHome } from "../hooks/useHome";
 
 export const Home = () => {
   const { articles } = useHome();

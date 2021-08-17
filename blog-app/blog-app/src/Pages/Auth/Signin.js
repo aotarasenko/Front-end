@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import { AuthForm } from "./AuthForm";
+import { AuthForm } from "./AuthForm.styled";
 
 export const Signin = () => {
   const [name, setName] = useState("");

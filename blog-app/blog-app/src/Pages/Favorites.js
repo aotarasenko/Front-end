@@ -1,4 +1,4 @@
-import { Post } from "../interractiveComponents/Post/Post";
+import { Post } from "../common/Post/Post";
 
 export const Favorites = () => {
   return (

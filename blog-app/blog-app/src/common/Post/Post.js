@@ -10,7 +10,7 @@ export const Post = (post) => {
       <div className="post-heading">
         <Avatar imgUrl={post.author.image} />
         <FlexColumn flexSpacing="flex-start">
-          <p>{post.author.username}</p>
+          <p className="author-name">{post.author.username}</p>
           <p>{post.createdAt}</p>
         </FlexColumn>
         <FlexRow flexSpacing="flex-end">
@@ -54,10 +54,14 @@ const PostStyled = styled.section`
     color: ${AppColors.light};
   }
 
+  .post-body {
+    min-height: 80px;
+    border: 2px solid ${AppColors.primary};
+  }
+
   .post-description,
   .post-tags {
     color: ${AppColors.neutral};
-    opacity: 0.7;
     font-style: italic;
   }
 
@@ -69,6 +73,10 @@ const PostStyled = styled.section`
     p {
       margin: 0;
       font-size: ${AppFontSizes.small};
+    }
+    .author-name {
+      font-weight: bold;
+      color: ${AppColors.light};
     }
   }
 `;
