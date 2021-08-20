@@ -2,9 +2,8 @@ import styled from "styled-components";
 import { AppColors, AppFontSizes } from "../../styles/variables";
 
 export const AuthForm = styled.form`
-  padding: 10px;
-
   margin: 40px auto;
+  padding: 10px;
   max-width: 500px;
   box-sizing: border-box;
   box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);

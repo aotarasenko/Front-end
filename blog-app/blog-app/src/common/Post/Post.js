@@ -25,11 +25,11 @@ export const Post = (post) => {
       <hr />
       <FlexRow flexSpacing="space-between">
         <p className="post-description">{post.description}</p>
-        <p className="post-tags">
+        <div className="post-tags">
           {post.tagList.map((tag) => {
-            return "#" + tag;
+            return <span key={post.author + tag}>{"#" + tag}</span>;
           })}
-        </p>
+        </div>
       </FlexRow>
     </PostStyled>
   );
@@ -61,6 +61,8 @@ const PostStyled = styled.section`
 
   .post-description,
   .post-tags {
+    display: flex;
+    flex-wrap: wrap;
     color: ${AppColors.neutral};
     font-style: italic;
   }

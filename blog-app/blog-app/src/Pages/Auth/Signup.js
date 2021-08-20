@@ -1,32 +1,37 @@
-import { AuthForm } from "./AuthForm.styled";
-import { useContext, useState } from "react";
-import { Redirect } from "react-router-dom";
+import { useState } from "react";
+import { registerUser } from "../../api/auth/actions";
 import { useAuthDispatch } from "../../api/auth/authenticate";
-import { loginUser } from "../../api/auth/actions";
+import { AuthForm } from "./AuthForm.styled";
 import { useHistory } from "react-router";
 
-export const Login = () => {
+export const Signup = () => {
+  const [username, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const history = useHistory();
   const dispatch = useAuthDispatch();
 
-  const sendLogin = async (e) => {
+  const sendSignup = async (e) => {
     e.preventDefault();
-    let payload = JSON.stringify({ user: { email, password } });
+    let payload = JSON.stringify({ user: { username, email, password } });
     try {
-      loginUser(dispatch, payload).then(() => {
-        history.push("/home");
-      });
+      registerUser(dispatch, payload).then(() => history.push("/auth/login"));
     } catch (error) {
       console.log(error);
     }
   };
+
   return (
-    <AuthForm>
+    <AuthForm onSubmit={sendSignup}>
       <fieldset>
-        <legend>Login</legend>
+        <legend>Sign Up</legend>
+        <input
+          placeholder="Name"
+          type="text"
+          onChange={(e) => setName(e.target.value)}
+          value={username}
+          required
+        />
         <input
           placeholder="Email"
           type="email"
@@ -41,8 +46,8 @@ export const Login = () => {
           value={password}
           required
         />
-        <button type="button" onClick={sendLogin}>
-          Login
+        <button type="submit" onSubmit={sendSignup}>
+          Sign Up
         </button>
       </fieldset>
     </AuthForm>

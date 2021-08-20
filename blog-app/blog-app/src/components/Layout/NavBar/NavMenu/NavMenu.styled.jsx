@@ -11,7 +11,6 @@ export const NavMenuStyled = styled.ul`
   align-items: center;
   margin: 0;
   padding: 0;
-
   @media screen and (min-width: ${AppSizes.tablet}) {
     flex-direction: column;
   }
@@ -19,9 +18,9 @@ export const NavMenuStyled = styled.ul`
   li {
     position: relative;
     display: flex;
-    width: 100%;
     justify-content: center;
     align-items: center;
+    width: 100%;
     list-style: none;
 
     &::after {
@@ -29,7 +28,7 @@ export const NavMenuStyled = styled.ul`
       position: absolute;
       right: 0;
       display: block;
-      width: 1.5px;
+      width: 2px;
       height: 50%;
       border-radius: 75%;
       background-color: ${AppColors.neutral};
@@ -46,9 +45,9 @@ export const NavMenuStyled = styled.ul`
       justify-content: center;
       align-items: center;
       padding: 10px 0;
+      border-bottom: 2px solid transparent;
       width: 100%;
       height: 100%;
-      border-bottom: 2px solid transparent;
       transition: 0.4s border-bottom ease;
       text-decoration: none;
       color: ${AppColors.white};

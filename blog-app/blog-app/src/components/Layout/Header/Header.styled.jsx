@@ -9,7 +9,7 @@ export const HeaderStyled = styled.header`
   background-color: ${AppColors.light};
 
   a {
-    margin: 0 8px;
+    margin: 0 10px;
     color: ${AppColors.white};
     opacity: 0.5;
     text-decoration: none;
