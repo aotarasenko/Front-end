@@ -1,5 +1,4 @@
 import axios from "axios";
-import { Redirect } from "react-router-dom";
 
 const ROOT_URL = "https://conduit.productionready.io/api";
 
@@ -18,7 +17,7 @@ export async function loginUser(dispatch, loginPayload) {
       localStorage.setItem("currentUser", JSON.stringify(response));
     }
 
-    dispatch({ type: "LOGIN_ERROR", error: response.errors[0] });
+    dispatch({ type: "LOGIN_ERROR", error: response.errorMessage });
     return;
   } catch (error) {
     dispatch({ type: "LOGIN_ERROR", error: error });
@@ -39,7 +38,7 @@ export async function registerUser(dispatch, registerPayload) {
       dispatch({ type: "REGISTER_SUCCESS", payload: response });
       localStorage.setItem("currentUser", JSON.stringify(response));
     }
-    dispatch({ type: "REGISTER_ERROR", error: response.errors[0] });
+    dispatch({ type: "REGISTER_ERROR", error: response.errorMessage });
     return;
   } catch (error) {
     dispatch({ type: "REGISTER_ERROR", error: error });

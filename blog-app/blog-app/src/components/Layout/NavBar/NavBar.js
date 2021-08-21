@@ -8,9 +8,13 @@ export const NavBar = () => {
   const currentUser = useAuthState();
   console.log(currentUser);
 
-  return (
-    <NavBarStyled>
-      <NavMenu />
-    </NavBarStyled>
-  );
+  if (currentUser.isAuth) {
+    return (
+      <NavBarStyled>
+        <NavMenu />
+      </NavBarStyled>
+    );
+  }
+
+  return null;
 };

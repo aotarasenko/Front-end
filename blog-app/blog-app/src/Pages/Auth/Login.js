@@ -1,7 +1,7 @@
 import { AuthForm } from "./AuthForm.styled";
 import { useContext, useState } from "react";
 import { Redirect } from "react-router-dom";
-import { useAuthDispatch } from "../../api/auth/authenticate";
+import { useAuthDispatch, useAuthState } from "../../api/auth/authenticate";
 import { loginUser } from "../../api/auth/actions";
 import { useHistory } from "react-router";
 
@@ -12,13 +12,23 @@ export const Login = () => {
   const history = useHistory();
   const dispatch = useAuthDispatch();
 
+  const currentUser = useAuthState();
+  const [isLoggedIn, setLoggedIn] = useState(currentUser.isAuth);
+  if (isLoggedIn) {
+    history.push("/home");
+    <Redirect to="/home" />;
+  }
+
   const sendLogin = async (e) => {
     e.preventDefault();
     let payload = JSON.stringify({ user: { email, password } });
     try {
-      loginUser(dispatch, payload).then(() => {
+      let res = await loginUser(dispatch, payload);
+
+      if (res) {
         history.push("/home");
-      });
+        <Redirect to="/home" />;
+      }
     } catch (error) {
       console.log(error);
     }
