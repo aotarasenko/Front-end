@@ -10,18 +10,19 @@ export const Header = () => {
   const user = useAuthState();
   const dispatch = useAuthDispatch();
   const history = useHistory();
+
   const handleLogout = () => {
     logout(dispatch);
     history.push("/home");
   };
 
-  console.log(user.user.username);
+  console.log(user);
 
   return (
     <HeaderStyled>
       <Container>
         <FlexRow>
-          <Avatar imgUrl={user.user.image || user.user.username} />
+          <Avatar />
           <FlexRow flexSpacing="flex-end" flexWrap="wrap">
             <NavLink to="/home">Home</NavLink>
             {!user.isAuth && (

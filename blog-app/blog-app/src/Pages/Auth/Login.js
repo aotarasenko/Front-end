@@ -1,5 +1,5 @@
 import { AuthForm } from "./AuthForm.styled";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { useAuthDispatch, useAuthState } from "../../api/auth/authenticate";
 import { loginUser } from "../../api/auth/actions";
@@ -13,8 +13,7 @@ export const Login = () => {
   const dispatch = useAuthDispatch();
 
   const currentUser = useAuthState();
-  const [isLoggedIn, setLoggedIn] = useState(currentUser.isAuth);
-  if (isLoggedIn) {
+  if (currentUser.isAuth) {
     history.push("/home");
     <Redirect to="/home" />;
   }
@@ -24,8 +23,9 @@ export const Login = () => {
     let payload = JSON.stringify({ user: { email, password } });
     try {
       let res = await loginUser(dispatch, payload);
-
+      console.log(res);
       if (res) {
+        console.log(currentUser);
         history.push("/home");
         <Redirect to="/home" />;
       }

@@ -6,7 +6,6 @@ import { AuthProvider } from "../../../api/auth/authenticate";
 
 export const NavBar = () => {
   const currentUser = useAuthState();
-  console.log(currentUser);
 
   if (currentUser.isAuth) {
     return (
