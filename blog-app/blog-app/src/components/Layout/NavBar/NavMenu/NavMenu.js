@@ -15,7 +15,6 @@ export const NavMenu = ({ isSizeForText }) => {
       linkTo: "/subscriptions",
       icon: AppIcons.subscription,
     },
-    { title: "World Posts", linkTo: "/world", icon: AppIcons.world },
     { title: "Profile", linkTo: "/profile", icon: AppIcons.profile },
   ];
 

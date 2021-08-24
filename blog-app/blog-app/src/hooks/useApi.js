@@ -9,10 +9,14 @@ import {
 export const useApi = () => {
   const baseURL = "https://conduit.productionready.io";
 
+  let token = localStorage.getItem("token")
+    ? JSON.parse(localStorage.getItem("token"))
+    : "";
+
   const authInstance = axios.create({
     baseURL,
     headers: {
-      Authorization: `Token someToken`,
+      Authorization: `Token ${token}`,
     },
   });
 

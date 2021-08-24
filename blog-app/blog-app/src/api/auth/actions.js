@@ -1,5 +1,4 @@
 import axios from "axios";
-import { Redirect } from "react-router-dom";
 const ROOT_URL = "https://conduit.productionready.io/api";
 
 export async function loginUser(dispatch, loginPayload) {
@@ -14,7 +13,7 @@ export async function loginUser(dispatch, loginPayload) {
 
     if (response.data) {
       dispatch({ type: "LOGIN_SUCCESS", payload: response });
-      localStorage.setItem("currentUser", JSON.stringify(response));
+      localStorage.setItem("token", JSON.stringify(response.data.user.token));
     }
 
     dispatch({ type: "LOGIN_ERROR", error: response.errorMessage });

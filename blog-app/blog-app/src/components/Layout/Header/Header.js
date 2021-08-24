@@ -5,6 +5,7 @@ import { Container, FlexRow } from "../../../styles/generalStyles";
 import { HeaderStyled } from "./Header.styled";
 import { logout } from "../../../api/auth/actions";
 import { useHistory } from "react-router";
+import { AddPostButton } from "../../../common/AddPostButton";
 
 export const Header = () => {
   const user = useAuthState();
@@ -16,14 +17,13 @@ export const Header = () => {
     history.push("/home");
   };
 
-  console.log(user);
-
   return (
     <HeaderStyled>
       <Container>
         <FlexRow>
           <Avatar />
           <FlexRow flexSpacing="flex-end" flexWrap="wrap">
+            <AddPostButton />
             <NavLink to="/home">Home</NavLink>
             {!user.isAuth && (
               <>

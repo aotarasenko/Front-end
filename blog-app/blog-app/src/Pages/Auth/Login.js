@@ -1,9 +1,10 @@
 import { AuthForm } from "./AuthForm.styled";
 import { useState } from "react";
-import { Redirect } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 import { useAuthDispatch, useAuthState } from "../../api/auth/authenticate";
 import { loginUser } from "../../api/auth/actions";
 import { useHistory } from "react-router";
+import { FlexRow } from "../../styles/generalStyles";
 
 export const Login = () => {
   const [email, setEmail] = useState("");
@@ -55,6 +56,12 @@ export const Login = () => {
           Login
         </button>
       </fieldset>
+      <FlexRow flexSpacing="center">
+        <span>
+          Don`t have an account? <NavLink to="/auth/signup">Create </NavLink>
+          Now!
+        </span>
+      </FlexRow>
     </AuthForm>
   );
 };

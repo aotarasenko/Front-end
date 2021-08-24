@@ -15,7 +15,6 @@ function App() {
       <BrowserRouter>
         <Header />
         <NavBar />
-        {/* {!loggegIn ? <Redirect to="/world" />} */}
         <Route exact path="/home" component={Home} />
         <Route exact path="/auth/login" component={Login} />
         <Route exact path="/auth/signup" component={Signup} />

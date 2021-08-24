@@ -3,6 +3,8 @@ import { registerUser } from "../../api/auth/actions";
 import { useAuthDispatch } from "../../api/auth/authenticate";
 import { AuthForm } from "./AuthForm.styled";
 import { useHistory } from "react-router";
+import { FlexRow } from "../../styles/generalStyles";
+import { NavLink } from "react-router-dom";
 
 export const Signup = () => {
   const [username, setName] = useState("");
@@ -50,6 +52,12 @@ export const Signup = () => {
           Sign Up
         </button>
       </fieldset>
+      <FlexRow flexSpacing="center">
+        <span>
+          Already have an account? <NavLink to="/auth/signup">Log In</NavLink>{" "}
+          Now!
+        </span>
+      </FlexRow>
     </AuthForm>
   );
 };
