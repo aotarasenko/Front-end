@@ -7,22 +7,23 @@ import { Header } from "./components/Layout/Header/Header";
 import { Login } from "./Pages/Auth/Login";
 import { Signup } from "./Pages/Auth/Signup";
 import { Profile } from "./Pages/Profile";
-import { AuthProvider } from "./api/auth/authenticate";
+import { useAuthState } from "./api/auth/authenticate";
 
 function App() {
+  const user = useAuthState();
+
+  console.log(user);
   return (
-    <AuthProvider>
-      <BrowserRouter>
-        <Header />
-        <NavBar />
-        <Route exact path="/home" component={Home} />
-        <Route exact path="/auth/login" component={Login} />
-        <Route exact path="/auth/signup" component={Signup} />
-        <Route exact path="/favorites" component={Favorites} />
-        <Route exact path="/subscriptions" component={Subscriptions} />
-        <Route exact path="/profile" component={Profile} />
-      </BrowserRouter>
-    </AuthProvider>
+    <BrowserRouter>
+      <Header />
+      <NavBar />
+      <Route exact path="/home" component={Home} />
+      <Route exact path="/auth/login" component={Login} />
+      <Route exact path="/auth/signup" component={Signup} />
+      <Route exact path="/favorites" component={Favorites} />
+      <Route exact path="/subscriptions" component={Subscriptions} />
+      <Route exact path="/profile" component={Profile} />
+    </BrowserRouter>
   );
 }
 

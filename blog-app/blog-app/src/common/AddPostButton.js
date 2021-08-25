@@ -12,7 +12,6 @@ export const AddPostButton = () => {
   const user = useAuthState();
 
   const handleActive = (e) => {
-    e.stopPropagation();
     setActive(!isActive);
   };
 

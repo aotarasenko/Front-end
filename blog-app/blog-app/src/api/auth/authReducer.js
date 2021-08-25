@@ -1,12 +1,10 @@
-let user = localStorage.getItem("currentUser")
-  ? JSON.parse(localStorage.getItem("currentUser")).data.user
-  : "";
+let user = "";
 let token = localStorage.getItem("token")
   ? JSON.parse(localStorage.getItem("token"))
   : "";
 
 export const initialState = {
-  user: "" || user,
+  user,
   token: "" || token,
   isAuth: user ? true : false,
   loading: false,
@@ -14,6 +12,7 @@ export const initialState = {
 };
 
 export const authReducer = (initialState, action) => {
+  console.log(initialState, action);
   switch (action.type) {
     case "REQUEST_REGISTER":
       return {
@@ -41,7 +40,7 @@ export const authReducer = (initialState, action) => {
     case "LOGIN_SUCCESS":
       return {
         ...initialState,
-        user: user,
+        user: action,
         token: token,
         isAuth: true,
         loading: false,

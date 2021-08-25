@@ -16,7 +16,6 @@ export const Header = () => {
     logout(dispatch);
     history.push("/home");
   };
-
   return (
     <HeaderStyled>
       <Container>

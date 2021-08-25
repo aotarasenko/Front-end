@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import styled from "styled-components";
 import { AppColors } from "../../styles/variables";
 import { ModalContext } from "../AddPostButton";
-import { initPostNewArticleApi } from "../../api/articles/articles";
+import axios from "axios";
 
 export const AddPostWindow = () => {
   const { isActive, handleActive } = useContext(ModalContext);
@@ -12,16 +12,32 @@ export const AddPostWindow = () => {
   const [body, setBody] = useState("");
   const [tags, setTags] = useState("");
 
-  const createArticle = (e) => {
+  const createArticle = async (e) => {
     e.preventDefault();
-    initPostNewArticleApi(
-      JSON.stringify({
-        title: title,
-        description: description,
-        body: body,
-        tags: tags,
-      })
+    const baseURL = "https://conduit.productionready.io/api/articles";
+
+    let token = localStorage.getItem("token")
+      ? JSON.parse(localStorage.getItem("token"))
+      : "";
+
+    await axios.post(
+      baseURL,
+      {
+        article: {
+          title: title,
+          description: description,
+          body: body,
+          tagList: tags.split(","),
+        },
+      },
+      {
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      }
     );
+
+    handleActive(!isActive);
   };
 
   return (
@@ -69,9 +85,9 @@ export const AddPostWindow = () => {
                 />
               </label>
               <input
-                type="submit"
+                type="button"
                 value="Create Article"
-                onSubmit={createArticle}
+                onClick={createArticle}
               />
             </fieldset>
           </ModalForm>

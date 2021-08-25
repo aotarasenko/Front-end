@@ -7,6 +7,8 @@ export const Profile = () => {
   const user = useAuthState();
   const history = useHistory();
 
+  console.log(user);
+
   if (user.isAuth === false) {
     history.push("/auth/login");
   }

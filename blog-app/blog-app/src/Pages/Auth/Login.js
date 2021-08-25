@@ -14,6 +14,7 @@ export const Login = () => {
   const dispatch = useAuthDispatch();
 
   const currentUser = useAuthState();
+
   if (currentUser.isAuth) {
     history.push("/home");
     <Redirect to="/home" />;
@@ -23,10 +24,8 @@ export const Login = () => {
     e.preventDefault();
     let payload = JSON.stringify({ user: { email, password } });
     try {
-      let res = await loginUser(dispatch, payload);
-      console.log(res);
+      const res = await loginUser(dispatch, payload);
       if (res) {
-        console.log(currentUser);
         history.push("/home");
         <Redirect to="/home" />;
       }

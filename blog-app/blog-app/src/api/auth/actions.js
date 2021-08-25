@@ -1,5 +1,5 @@
 import axios from "axios";
-const ROOT_URL = "https://conduit.productionready.io/api";
+export const ROOT_URL = "https://conduit.productionready.io/api";
 
 export async function loginUser(dispatch, loginPayload) {
   try {
@@ -12,8 +12,9 @@ export async function loginUser(dispatch, loginPayload) {
     });
 
     if (response.data) {
-      dispatch({ type: "LOGIN_SUCCESS", payload: response });
+      dispatch({ payload: response.data, type: "LOGIN_SUCCESS" });
       localStorage.setItem("token", JSON.stringify(response.data.user.token));
+      return response.data.user;
     }
 
     dispatch({ type: "LOGIN_ERROR", error: response.errorMessage });
@@ -46,6 +47,5 @@ export async function registerUser(dispatch, registerPayload) {
 
 export async function logout(dispatch) {
   dispatch({ type: "LOGOUT" });
-  localStorage.removeItem("currentUser");
   localStorage.removeItem("token");
 }
