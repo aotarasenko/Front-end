@@ -1,12 +1,12 @@
-let user = "";
+// let user = "";
 let token = localStorage.getItem("token")
   ? JSON.parse(localStorage.getItem("token"))
   : "";
 
 export const initialState = {
-  user,
+  user: "",
   token: "" || token,
-  isAuth: user ? true : false,
+  isAuth: false,
   loading: false,
   errorMessage: null,
 };
@@ -22,7 +22,7 @@ export const authReducer = (initialState, action) => {
     case "REGISTER_SUCCESS":
       return {
         ...initialState,
-        user: action.payload.user,
+        // user: action.payload.user,
         token: action.payload.token,
         loading: false,
       };
@@ -40,12 +40,13 @@ export const authReducer = (initialState, action) => {
     case "LOGIN_SUCCESS":
       return {
         ...initialState,
-        user: action,
-        token: token,
+        user: action.payload.user,
+        token: action.payload.token,
         isAuth: true,
         loading: false,
       };
     case "LOGOUT":
+      localStorage.removeItem("token");
       return {
         ...initialState,
         user: "",
