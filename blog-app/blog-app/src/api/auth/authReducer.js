@@ -1,16 +1,3 @@
-// let user = "";
-let token = localStorage.getItem("token")
-  ? JSON.parse(localStorage.getItem("token"))
-  : "";
-
-export const initialState = {
-  user: "",
-  token: "" || token,
-  isAuth: false,
-  loading: false,
-  errorMessage: null,
-};
-
 export const authReducer = (initialState, action) => {
   console.log(initialState, action);
   switch (action.type) {

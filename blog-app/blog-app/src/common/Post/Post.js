@@ -1,25 +1,50 @@
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+import { useAuthState } from "../../api/auth/authenticate";
 import { FlexColumn, FlexRow } from "../../styles/generalStyles";
 import { AppColors, AppFontSizes } from "../../styles/variables";
 import { Avatar } from "../Avatar";
 import { LikeButton } from "../LikeButton";
+import { useState } from "react";
+import axios from "axios";
+import { ROOT_URL } from "../../api/auth/actions";
 
-export const Post = (post) => {
+export const Post = (state) => {
+  const { isAuth } = useAuthState();
+
+  const [post, setPost] = useState(state);
+
+  console.log(post);
+  const updatePost = () => {
+    axios
+      .get(`${ROOT_URL}/articles/${post.slug}`)
+      .then((res) => setPost(res.data.article));
+
+    console.log(post);
+  };
+
   return (
     <PostStyled>
       <div className="post-heading">
-        <Avatar imgUrl={post.author.image} />
+        <Avatar imgUrl={state.author.image} />
         <FlexColumn flexSpacing="flex-start">
-          <p className="author-name">{post.author.username}</p>
-          <p>{post.createdAt}</p>
+          <p className="author-name">{state.author.username}</p>
+          <p>{state.createdAt}</p>
         </FlexColumn>
         <FlexRow flexSpacing="flex-end">
-          <LikeButton state={false} />
+          <LikeButton
+            state={state.favorited}
+            postSlug={state.slug}
+            isDisable={isAuth ? false : true}
+            update={updatePost}
+          />
           <p>{post.favoritesCount}</p>
         </FlexRow>
       </div>
       <div className="post-content">
-        <h3 className="post-title">{post.title}</h3>
+        <NavLink to="/post-view" className="post-title">
+          {post.title}
+        </NavLink>
         <p className="post-body">{post.body}</p>
       </div>
       <hr />

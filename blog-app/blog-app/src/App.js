@@ -8,6 +8,19 @@ import { Login } from "./Pages/Auth/Login";
 import { Signup } from "./Pages/Auth/Signup";
 import { Profile } from "./Pages/Profile";
 import { useAuthState } from "./api/auth/authenticate";
+import axios from "axios";
+import { ROOT_URL } from "./api/auth/actions";
+
+export const initialState = {
+  user: "",
+  token:
+    "" || localStorage.getItem("token")
+      ? JSON.parse(localStorage.getItem("token"))
+      : "",
+  isAuth: false,
+  loading: false,
+  errorMessage: null,
+};
 
 function App() {
   const user = useAuthState();

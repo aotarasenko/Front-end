@@ -27,7 +27,7 @@ export const AddPostWindow = () => {
           title: title,
           description: description,
           body: body,
-          tagList: tags.split(","),
+          tagList: tags.split(", "),
         },
       },
       {
@@ -53,7 +53,7 @@ export const AddPostWindow = () => {
                 Title
                 <input
                   type="text"
-                  placeholder={`Article Title ${isActive}`}
+                  placeholder={`Article Title`}
                   onChange={(e) => setTitle(e.target.value)}
                 />
               </label>

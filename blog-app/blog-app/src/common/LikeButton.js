@@ -1,13 +1,41 @@
-import { useState } from "react";
+import axios from "axios";
 import styled from "styled-components";
+import { ROOT_URL } from "../api/auth/actions";
 import { AppColors, AppIcons } from "../styles/variables";
 
-export const LikeButton = ({ state }) => {
-  const [isLiked, setLiked] = useState(state);
-  const toggleLike = () => setLiked(!isLiked);
+export const LikeButton = (props) => {
+  const toggleLike = () => {
+    try {
+      if (props.favorited) {
+        axios.delete(`${ROOT_URL}/articles/${props.postSlug}/favorite`, {
+          headers: {
+            Authorization: `Token ${localStorage.getItem("token")}`,
+          },
+        });
+      } else {
+        axios.post(
+          `${ROOT_URL}/articles/${props.postSlug}/favorite`,
+          {},
+          {
+            headers: {
+              Authorization: `Token ${localStorage.getItem("token")}`,
+            },
+          }
+        );
+      }
+    } catch (e) {
+      console.log(e);
+    } finally {
+      props.update();
+    }
+  };
 
   return (
-    <LikeButtonStyled isLiked={isLiked} onClick={toggleLike}>
+    <LikeButtonStyled
+      isLiked={props.favorited}
+      onClick={toggleLike}
+      disabled={props.isDisable}
+    >
       {AppIcons.like}
     </LikeButtonStyled>
   );
