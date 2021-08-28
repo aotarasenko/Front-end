@@ -9,7 +9,6 @@ export const authReducer = (initialState, action) => {
     case "REGISTER_SUCCESS":
       return {
         ...initialState,
-        // user: action.payload.user,
         token: action.payload.token,
         loading: false,
       };

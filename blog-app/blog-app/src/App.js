@@ -7,9 +7,10 @@ import { Header } from "./components/Layout/Header/Header";
 import { Login } from "./Pages/Auth/Login";
 import { Signup } from "./Pages/Auth/Signup";
 import { Profile } from "./Pages/Profile";
-import { useAuthState } from "./api/auth/authenticate";
+import { useAuthDispatch, useAuthState } from "./api/auth/authenticate";
 import axios from "axios";
 import { ROOT_URL } from "./api/auth/actions";
+import { useEffect } from "react";
 
 export const initialState = {
   user: "",
@@ -23,9 +24,22 @@ export const initialState = {
 };
 
 function App() {
-  const user = useAuthState();
+  const dispatch = useAuthDispatch();
 
-  console.log(user);
+  useEffect(() => {
+    if (initialState.token) {
+      axios
+        .get(`${ROOT_URL}/user`, {
+          headers: {
+            Authorization: `Token ${initialState.token}`,
+          },
+        })
+        .then((response) => {
+          dispatch({ payload: response.data, type: "LOGIN_SUCCESS" });
+        });
+    }
+  }, [dispatch]);
+
   return (
     <BrowserRouter>
       <Header />

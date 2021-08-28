@@ -11,16 +11,15 @@ import { ROOT_URL } from "../../api/auth/actions";
 
 export const Post = (state) => {
   const { isAuth } = useAuthState();
-
   const [post, setPost] = useState(state);
-
-  console.log(post);
   const updatePost = () => {
+    console.log(post);
     axios
       .get(`${ROOT_URL}/articles/${post.slug}`)
-      .then((res) => setPost(res.data.article));
-
-    console.log(post);
+      .then((res) => setPost(res.data.article))
+      .then(() => {
+        console.log(post);
+      });
   };
 
   return (
@@ -56,6 +55,7 @@ export const Post = (state) => {
           })}
         </div>
       </FlexRow>
+      <NavLink to="/post-view">Read More...</NavLink>
     </PostStyled>
   );
 };
