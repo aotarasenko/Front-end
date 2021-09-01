@@ -7,7 +7,7 @@ import { Header } from "./components/Layout/Header/Header";
 import { Login } from "./Pages/Auth/Login";
 import { Signup } from "./Pages/Auth/Signup";
 import { Profile } from "./Pages/Profile";
-import { useAuthDispatch, useAuthState } from "./api/auth/authenticate";
+import { useAuthDispatch } from "./api/auth/authenticate";
 import axios from "axios";
 import { ROOT_URL } from "./api/auth/actions";
 import { useEffect } from "react";
@@ -49,7 +49,7 @@ function App() {
       <Route exact path="/auth/signup" component={Signup} />
       <Route exact path="/favorites" component={Favorites} />
       <Route exact path="/subscriptions" component={Subscriptions} />
-      <Route exact path="/profile" component={Profile} />
+      <Route path="/profiles" component={Profile} />
     </BrowserRouter>
   );
 }

@@ -5,7 +5,9 @@ import { Container, FlexRow } from "../../../styles/generalStyles";
 import { HeaderStyled } from "./Header.styled";
 import { logout } from "../../../api/auth/actions";
 import { useHistory } from "react-router";
-import { AddPostButton } from "../../../common/AddPostButton";
+import { CallModalButton } from "../../../common/CallModalButton";
+import { AddPostWindow } from "../../../common/ModalWindow/AddPostWindow";
+import { AppIcons } from "../../../styles/variables";
 
 export const Header = () => {
   const user = useAuthState();
@@ -16,13 +18,14 @@ export const Header = () => {
     logout(dispatch);
     history.push("/home");
   };
+  console.log(user);
   return (
     <HeaderStyled>
       <Container>
         <FlexRow>
           <Avatar />
           <FlexRow flexSpacing="flex-end" flexWrap="wrap">
-            <AddPostButton />
+            <CallModalButton children={<AddPostWindow />} icon={AppIcons.add} />
             <NavLink to="/home">Home</NavLink>
             {!user.isAuth && (
               <>
@@ -32,7 +35,20 @@ export const Header = () => {
             )}
             {user.isAuth && (
               <>
-                <NavLink to="/profile">Profile</NavLink>
+                <button
+                  type="link"
+                  onClick={() => {
+                    history.push({
+                      pathname: `/profiles/${user.user.username}`,
+                      search: `author=${user.user.username}`,
+                      state: {
+                        author: user.user.username,
+                      },
+                    });
+                  }}
+                >
+                  Profile
+                </button>
                 <button onClick={handleLogout}>Logout</button>
               </>
             )}

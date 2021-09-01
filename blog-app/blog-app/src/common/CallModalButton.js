@@ -2,11 +2,10 @@ import { createContext, useState } from "react";
 import styled from "styled-components";
 import { useAuthState } from "../api/auth/authenticate";
 import { AppColors, AppFontSizes, AppSizes } from "../styles/variables";
-import { AddPostWindow } from "./ModalWindow/AddPostWindow";
 
 export const ModalContext = createContext();
 
-export const AddPostButton = () => {
+export const CallModalButton = ({ children, icon }) => {
   const [isActive, setActive] = useState(false);
 
   const user = useAuthState();
@@ -17,8 +16,14 @@ export const AddPostButton = () => {
 
   return (
     <ModalContext.Provider value={{ isActive, handleActive }}>
-      {user.isAuth ? <AddButton onClick={handleActive}>+</AddButton> : ""}
-      {isActive ? <AddPostWindow /> : ""}
+      <>
+        {user.isAuth ? (
+          <AddButton onClick={handleActive}>{icon}</AddButton>
+        ) : (
+          ""
+        )}
+        {isActive ? children : ""}
+      </>
     </ModalContext.Provider>
   );
 };
@@ -27,6 +32,9 @@ const AddButton = styled.button`
   position: fixed;
   right: 20px;
   bottom: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 50%;
   border: none;
   outline: none;
@@ -40,6 +48,10 @@ const AddButton = styled.button`
   &:hover {
     opacity: 1;
     cursor: pointer;
+  }
+
+  svg {
+    font-size: ${AppFontSizes.medium};
   }
 
   @media screen and (min-width: ${AppSizes.tablet}) {

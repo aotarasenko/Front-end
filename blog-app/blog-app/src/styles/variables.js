@@ -2,6 +2,8 @@ import { AiFillHome, AiFillStar, AiFillLike } from "react-icons/ai";
 import { BiWorld } from "react-icons/bi";
 import { BsFillBookmarkFill } from "react-icons/bs";
 import { CgProfile } from "react-icons/cg";
+import { IoMdAdd } from "react-icons/io";
+import { MdEdit } from "react-icons/md";
 
 export const AppColors = {
   primary: "#1564bf",
@@ -32,4 +34,6 @@ export const AppIcons = {
   subscription: <BsFillBookmarkFill />,
   profile: <CgProfile />,
   like: <AiFillLike />,
+  add: <IoMdAdd />,
+  edit: <MdEdit />,
 };

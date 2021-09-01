@@ -1,37 +1,60 @@
 import { useHistory } from "react-router-dom";
 import { useAuthState } from "../api/auth/authenticate";
-import { Avatar } from "../common/Avatar";
 import { Container, FlexColumn, FlexRow } from "../styles/generalStyles";
 import { Post } from "../common/Post/Post";
 import axios from "axios";
 import { ROOT_URL } from "../api/auth/actions";
-import { useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
+import { CallModalButton } from "../common/CallModalButton";
+import { EditProfileWindow } from "../common/ModalWindow/EditProfileWindow";
+import { AppIcons } from "../styles/variables";
+
+export const EditContext = createContext();
 
 export const Profile = () => {
-  const user = useAuthState();
+  // const currentUser = useAuthState();
   const history = useHistory();
-  if (user.isAuth === false) {
-    history.push("/auth/login");
-  }
 
-  const [articles, setArticles] = useState([]);
+  // if (user.isAuth === false) {
+  //   history.push("/auth/login");
+  // }
+
+  let [articles, setArticles] = useState([]);
+  const [user, setUser] = useState({});
 
   useEffect(() => {
     axios
-      .get(`${ROOT_URL}/articles?author=${user.user.username}`)
+      .get(`${ROOT_URL}/articles${history.location.search}`)
       .then((res) => setArticles(res.data.articles));
+
+    axios
+      .get(`${ROOT_URL}${history.location.pathname}${history.location.search}`)
+      .then((res) => setUser(res.data.profile));
   }, []);
+
+  // const deletePost = async (slug) => {
+  //   await axios.delete(`${ROOT_URL}/articles/${slug}`, {
+  //     headers: {
+  //       Authorization: `Token ${localStorage.getItem("token")}`,
+  //     },
+  //   });
+  //   // articles = articles.filter((item) => item.slug !== slug);
+  // };
 
   return (
     <Container>
       <section className="user-info">
         <FlexRow>
-          <Avatar imgUrl={user.user.image} />
+          <img src={user.image} alt="Avatar" />
           <FlexColumn>
-            <p>{user.user.username}</p>
-            <p>{user.user.email}</p>
-            <p>{user.user.createdAt}</p>
-            <p>{user.user.bio}</p>
+            <p>{user.username}</p>
+            <p>{user.createdAt}</p>
+            <p>{user.bio}</p>
+
+            <CallModalButton
+              children={<EditProfileWindow />}
+              icon={AppIcons.edit}
+            />
           </FlexColumn>
         </FlexRow>
       </section>

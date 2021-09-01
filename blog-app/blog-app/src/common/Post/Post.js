@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, Route, Link, useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { useAuthState } from "../../api/auth/authenticate";
 import { FlexColumn, FlexRow } from "../../styles/generalStyles";
@@ -8,18 +8,19 @@ import { LikeButton } from "../LikeButton";
 import { useState } from "react";
 import axios from "axios";
 import { ROOT_URL } from "../../api/auth/actions";
+import { PostView } from "../../components/Layout/PostView/PostView";
+import { DeleteButton } from "../DeleteButton";
+import { Profile } from "../../Pages/Profile";
 
 export const Post = (state) => {
-  const { isAuth } = useAuthState();
+  const user = useAuthState();
   const [post, setPost] = useState(state);
+  const history = useHistory();
+
   const updatePost = () => {
-    console.log(post);
     axios
       .get(`${ROOT_URL}/articles/${post.slug}`)
-      .then((res) => setPost(res.data.article))
-      .then(() => {
-        console.log(post);
-      });
+      .then((res) => setPost(res.data.article));
   };
 
   return (
@@ -27,14 +28,27 @@ export const Post = (state) => {
       <div className="post-heading">
         <Avatar imgUrl={state.author.image} />
         <FlexColumn flexSpacing="flex-start">
-          <p className="author-name">{state.author.username}</p>
+          <button
+            type="link"
+            onClick={() => {
+              history.push({
+                pathname: `/profiles/${post.author.username}`,
+                search: `author=${post.author.username}`,
+                state: {
+                  author: post.author.username,
+                },
+              });
+            }}
+          >
+            {state.author.username}
+          </button>
           <p>{state.createdAt}</p>
         </FlexColumn>
         <FlexRow flexSpacing="flex-end">
           <LikeButton
             state={state.favorited}
             postSlug={state.slug}
-            isDisable={isAuth ? false : true}
+            isDisable={user.isAuth ? false : true}
             update={updatePost}
           />
           <p>{post.favoritesCount}</p>
@@ -55,7 +69,13 @@ export const Post = (state) => {
           })}
         </div>
       </FlexRow>
-      <NavLink to="/post-view">Read More...</NavLink>
+      <FlexRow>
+        <button>
+          Read More...
+          <Route path="/post-view" component={PostView} />
+        </button>
+        {state.author.username === user.user.username ? <DeleteButton /> : null}
+      </FlexRow>
     </PostStyled>
   );
 };

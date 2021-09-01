@@ -12,7 +12,7 @@ export async function loginUser(dispatch, loginPayload) {
     });
 
     if (response.data) {
-      dispatch({ payload: response.data, type: "LOGIN_SUCCESS" });
+      dispatch({ payload: response.data.user, type: "LOGIN_SUCCESS" });
       localStorage.setItem("token", JSON.stringify(response.data.user.token));
       return response.data.user;
     }
