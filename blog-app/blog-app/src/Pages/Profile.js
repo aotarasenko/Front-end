@@ -23,13 +23,19 @@ export const Profile = () => {
   const [user, setUser] = useState({});
 
   useEffect(() => {
-    axios
-      .get(`${ROOT_URL}/articles${history.location.search}`)
-      .then((res) => setArticles(res.data.articles));
+    const getProfileData = async () => {
+      const articleData = await axios.get(
+        `${ROOT_URL}/articles${history.location.search}`
+      );
 
-    axios
-      .get(`${ROOT_URL}${history.location.pathname}${history.location.search}`)
-      .then((res) => setUser(res.data.profile));
+      const userData = await axios.get(
+        `${ROOT_URL}${history.location.pathname}${history.location.search}`
+      );
+      setUser(userData.data.profile);
+      setArticles(articleData.data.articles);
+    };
+
+    getProfileData();
   }, []);
 
   // const deletePost = async (slug) => {
@@ -50,11 +56,12 @@ export const Profile = () => {
             <p>{user.username}</p>
             <p>{user.createdAt}</p>
             <p>{user.bio}</p>
-
-            <CallModalButton
-              children={<EditProfileWindow />}
-              icon={AppIcons.edit}
-            />
+            {history.location.state.currentUser ? (
+              <CallModalButton
+                children={<EditProfileWindow />}
+                icon={AppIcons.edit}
+              />
+            ) : null}
           </FlexColumn>
         </FlexRow>
       </section>

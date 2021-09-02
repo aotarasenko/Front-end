@@ -17,16 +17,15 @@ export const Post = (state) => {
   const [post, setPost] = useState(state);
   const history = useHistory();
 
-  const updatePost = () => {
-    axios
-      .get(`${ROOT_URL}/articles/${post.slug}`)
-      .then((res) => setPost(res.data.article));
+  const updatePost = async () => {
+    const res = await axios.get(`${ROOT_URL}/articles/${post.slug}`);
+    setPost(res.data.article);
   };
 
   return (
     <PostStyled>
       <div className="post-heading">
-        <Avatar imgUrl={state.author.image} />
+        <Avatar imgUrl={post.author.image} />
         <FlexColumn flexSpacing="flex-start">
           <button
             type="link"
@@ -36,6 +35,8 @@ export const Post = (state) => {
                 search: `author=${post.author.username}`,
                 state: {
                   author: post.author.username,
+                  currentUser:
+                    post.author.username === user.user.username ? true : false,
                 },
               });
             }}
@@ -55,9 +56,21 @@ export const Post = (state) => {
         </FlexRow>
       </div>
       <div className="post-content">
-        <NavLink to="/post-view" className="post-title">
-          {post.title}
-        </NavLink>
+        <button
+          type="link"
+          onClick={() => {
+            history.push({
+              pathname: `/articles/${post.slug}`,
+              state: {
+                author: post.author.username,
+                currentUser:
+                  post.author.username === user.user.username ? true : false,
+              },
+            });
+          }}
+        >
+          {state.title}
+        </button>
         <p className="post-body">{post.body}</p>
       </div>
       <hr />

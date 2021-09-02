@@ -11,6 +11,7 @@ import { useAuthDispatch } from "./api/auth/authenticate";
 import axios from "axios";
 import { ROOT_URL } from "./api/auth/actions";
 import { useEffect } from "react";
+import { PostView } from "./components/Layout/PostView/PostView";
 
 export const initialState = {
   user: "",
@@ -50,6 +51,7 @@ function App() {
       <Route exact path="/favorites" component={Favorites} />
       <Route exact path="/subscriptions" component={Subscriptions} />
       <Route path="/profiles" component={Profile} />
+      <Route path="/articles" component={PostView} />
     </BrowserRouter>
   );
 }

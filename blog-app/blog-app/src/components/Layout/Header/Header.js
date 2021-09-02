@@ -18,7 +18,7 @@ export const Header = () => {
     logout(dispatch);
     history.push("/home");
   };
-  console.log(user);
+
   return (
     <HeaderStyled>
       <Container>
@@ -43,6 +43,7 @@ export const Header = () => {
                       search: `author=${user.user.username}`,
                       state: {
                         author: user.user.username,
+                        currentUser: true,
                       },
                     });
                   }}
