@@ -1,93 +1,104 @@
 import { useContext, useState } from "react";
-import { ModalContext } from "../CallModalButton";
 import axios from "axios";
 import { ModalWrapper, ModalForm } from "./ModalWindow.styled";
+import {
+  Formik,
+  Form,
+  Field,
+  withFormik,
+  FastField,
+  useFormik,
+  FieldArray,
+} from "formik";
+import * as Yup from "yup";
+import { values } from "lodash";
 
-export const AddPostWindow = () => {
-  const { isActive, handleActive } = useContext(ModalContext);
-
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [body, setBody] = useState("");
-  const [tags, setTags] = useState("");
-
-  const createArticle = async (e) => {
-    e.preventDefault();
-    const baseURL = "https://conduit.productionready.io/api/articles";
-
-    let token = localStorage.getItem("token")
-      ? JSON.parse(localStorage.getItem("token"))
-      : "";
-
-    await axios.post(
-      baseURL,
-      {
-        article: {
-          title: title,
-          description: description,
-          body: body,
-          tagList: tags.split(", "),
-        },
-      },
-      {
-        headers: {
-          Authorization: `Token ${token}`,
-        },
-      }
-    );
-
-    handleActive(!isActive);
+export const AddPostWindow = ({ isModalOpen, handleCloseModal }) => {
+  const initialValues = {
+    title: "test",
+    body: "test",
+    description: "test",
+    tags: ["test1", "test2"],
   };
+
+  const formik = useFormik({
+    initialValues,
+    onSubmit: async (values) => {
+      const baseURL = "https://conduit.productionready.io/api/articles";
+
+      let token = localStorage.getItem("token")
+        ? JSON.parse(localStorage.getItem("token"))
+        : "";
+
+      await axios.post(
+        baseURL,
+        {
+          article: values,
+        },
+        {
+          headers: {
+            Authorization: `Token ${token}`,
+          },
+        }
+      );
+
+      handleCloseModal();
+    },
+    validate: (values) => {},
+  });
 
   return (
     <>
-      {isActive ? (
+      {isModalOpen ? (
         <ModalWrapper>
-          <ModalForm>
-            <button onClick={handleActive}>x</button>
+          <ModalForm onSubmit={formik.handleSubmit}>
+            <button onClick={handleCloseModal}>x</button>
             <fieldset>
               <legend>Add New Article </legend>
               <label>
                 {" "}
                 Title
                 <input
+                  name="title"
                   type="text"
-                  placeholder={`Article Title`}
-                  onChange={(e) => setTitle(e.target.value)}
+                  placeholder="Article Title"
+                  onChange={formik.handleChange}
+                  value={formik.values.title}
                 />
               </label>
               <label>
                 {" "}
                 Description
                 <input
+                  name="description"
                   type="text"
                   placeholder="Article Description"
-                  onChange={(e) => setDescription(e.target.value)}
+                  onChange={formik.handleChange}
+                  value={formik.values.description}
                 />
               </label>
               <label>
                 {" "}
                 Body
                 <input
+                  name="body"
                   type="text"
                   placeholder="Article Body"
-                  onChange={(e) => setBody(e.target.value)}
+                  onChange={formik.handleChange}
+                  value={formik.values.body}
                 />
               </label>
               <label>
                 {" "}
                 Tags
                 <input
-                  type="text"
+                  name="tags"
                   placeholder="Tags"
-                  onChange={(e) => setTags(e.target.value)}
+                  onChange={formik.handleChange}
+                  value={formik.values.tags}
                 />
               </label>
-              <input
-                type="button"
-                value="Create Article"
-                onClick={createArticle}
-              />
+              <input type="submit" value="Create Article" />
             </fieldset>
           </ModalForm>
         </ModalWrapper>

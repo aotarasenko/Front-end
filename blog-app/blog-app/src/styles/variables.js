@@ -2,8 +2,9 @@ import { AiFillHome, AiFillStar, AiFillLike } from "react-icons/ai";
 import { BiWorld } from "react-icons/bi";
 import { BsFillBookmarkFill } from "react-icons/bs";
 import { CgProfile } from "react-icons/cg";
-import { IoMdAdd } from "react-icons/io";
+import { IoMdAdd, IoClose } from "react-icons/io";
 import { MdEdit } from "react-icons/md";
+import { IoMdClose } from "react-icons/io";
 
 export const AppColors = {
   primary: "#1564bf",
@@ -11,6 +12,7 @@ export const AppColors = {
   dark: "#003b8e",
   white: "#fff",
   neutral: "#aaa",
+  error: "#f44336",
 };
 
 export const AppSizes = {
@@ -36,4 +38,5 @@ export const AppIcons = {
   like: <AiFillLike />,
   add: <IoMdAdd />,
   edit: <MdEdit />,
+  close: <IoMdClose />,
 };

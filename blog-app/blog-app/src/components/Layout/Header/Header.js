@@ -5,14 +5,22 @@ import { Container, FlexRow } from "../../../styles/generalStyles";
 import { HeaderStyled } from "./Header.styled";
 import { logout } from "../../../api/auth/actions";
 import { useHistory } from "react-router";
-import { CallModalButton } from "../../../common/CallModalButton";
 import { AddPostWindow } from "../../../common/ModalWindow/AddPostWindow";
-import { AppIcons } from "../../../styles/variables";
+import { AppIcons, AppColors } from "../../../styles/variables";
+import { AppButton } from "../../../common/AppButton/AppButton";
+import { useState } from "react";
 
 export const Header = () => {
   const user = useAuthState();
   const dispatch = useAuthDispatch();
   const history = useHistory();
+
+  const [isModalOpen, setModalOpen] = useState(false);
+
+  const handleCloseModal = () => {
+    console.log(isModalOpen);
+    setModalOpen(!isModalOpen);
+  };
 
   const handleLogout = () => {
     logout(dispatch);
@@ -21,11 +29,20 @@ export const Header = () => {
 
   return (
     <HeaderStyled>
+      <AddPostWindow
+        isModalOpen={isModalOpen}
+        handleCloseModal={handleCloseModal}
+      />
       <Container>
         <FlexRow>
           <Avatar />
           <FlexRow flexSpacing="flex-end" flexWrap="wrap">
-            <CallModalButton children={<AddPostWindow />} icon={AppIcons.add} />
+            <AppButton
+              content={AppIcons.add}
+              color={AppColors.light}
+              handle={handleCloseModal}
+              position="fixed"
+            />
             <NavLink to="/home">Home</NavLink>
             {!user.isAuth && (
               <>

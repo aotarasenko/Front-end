@@ -9,7 +9,7 @@ export const NavMenu = ({ isSizeForText }) => {
       linkTo: "/home",
       icon: AppIcons.home,
     },
-    { title: "Favorites", linkTo: "/favorites", icon: AppIcons.favorite },
+    { title: "Favorites", linkTo: "/favorites", icon: AppIcons.like },
     {
       title: "Subscriptions",
       linkTo: "/subscriptions",

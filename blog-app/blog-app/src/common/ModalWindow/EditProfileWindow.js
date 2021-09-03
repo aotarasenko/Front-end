@@ -1,12 +1,10 @@
 import { ModalWrapper, ModalForm } from "./ModalWindow.styled";
-import { useState, useContext } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { ROOT_URL } from "../../api/auth/actions";
-import { ModalContext } from "../CallModalButton";
 import { useAuthState } from "../../api/auth/authenticate";
 
-export const EditProfileWindow = () => {
-  const { isActive, handleActive } = useContext(ModalContext);
+export const EditProfileWindow = ({ isModalOpen, handleCloseModal }) => {
   const user = useAuthState();
   console.log(user);
 
@@ -34,15 +32,15 @@ export const EditProfileWindow = () => {
       }
     );
 
-    handleActive(!isActive);
+    handleCloseModal(!isModalOpen);
   };
 
   return (
     <>
-      {isActive ? (
+      {isModalOpen ? (
         <ModalWrapper>
           <ModalForm>
-            <button onClick={handleActive}>x</button>
+            <button onClick={handleCloseModal}>x</button>
             <fieldset>
               <legend>Edit your personal data</legend>
               <label>

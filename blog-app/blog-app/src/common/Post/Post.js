@@ -1,95 +1,140 @@
-import { NavLink, Route, Link, useHistory } from "react-router-dom";
+import { Route, useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { useAuthState } from "../../api/auth/authenticate";
 import { FlexColumn, FlexRow } from "../../styles/generalStyles";
-import { AppColors, AppFontSizes } from "../../styles/variables";
+import { AppColors, AppFontSizes, AppIcons } from "../../styles/variables";
 import { Avatar } from "../Avatar";
-import { LikeButton } from "../LikeButton";
-import { useState } from "react";
 import axios from "axios";
 import { ROOT_URL } from "../../api/auth/actions";
 import { PostView } from "../../components/Layout/PostView/PostView";
-import { DeleteButton } from "../DeleteButton";
-import { Profile } from "../../Pages/Profile";
+import { AppButton } from "../AppButton/AppButton";
+import { useState } from "react";
 
-export const Post = (state) => {
+export const Post = (post) => {
   const user = useAuthState();
-  const [post, setPost] = useState(state);
   const history = useHistory();
+  const [article, setArticle] = useState(post);
 
-  const updatePost = async () => {
-    const res = await axios.get(`${ROOT_URL}/articles/${post.slug}`);
-    setPost(res.data.article);
+  const deleteArticle = async () => {
+    const res = await axios.delete(`${ROOT_URL}/articles/${article.slug}`, {
+      headers: {
+        Authorization: `Token ${localStorage.getItem("token")}`,
+      },
+    });
+    setArticle(res.data.article);
+  };
+
+  const favoriteArticle = async () => {
+    const res = await axios.post(
+      `${ROOT_URL}/articles/${article.slug}/favorite`,
+      {},
+      {
+        headers: {
+          Authorization: `Token ${localStorage.getItem("token")}`,
+        },
+      }
+    );
+    setArticle(res.data.article);
+  };
+  const unfavoriteArticle = async () => {
+    const res = await axios.delete(
+      `${ROOT_URL}/articles/${article.slug}/favorite`,
+      {
+        headers: {
+          Authorization: `Token ${localStorage.getItem("token")}`,
+        },
+      }
+    );
+    setArticle(res.data.article);
   };
 
   return (
-    <PostStyled>
-      <div className="post-heading">
-        <Avatar imgUrl={post.author.image} />
-        <FlexColumn flexSpacing="flex-start">
-          <button
-            type="link"
-            onClick={() => {
-              history.push({
-                pathname: `/profiles/${post.author.username}`,
-                search: `author=${post.author.username}`,
-                state: {
-                  author: post.author.username,
-                  currentUser:
-                    post.author.username === user.user.username ? true : false,
-                },
-              });
-            }}
-          >
-            {state.author.username}
-          </button>
-          <p>{state.createdAt}</p>
-        </FlexColumn>
-        <FlexRow flexSpacing="flex-end">
-          <LikeButton
-            state={state.favorited}
-            postSlug={state.slug}
-            isDisable={user.isAuth ? false : true}
-            update={updatePost}
-          />
-          <p>{post.favoritesCount}</p>
-        </FlexRow>
-      </div>
-      <div className="post-content">
-        <button
-          type="link"
-          onClick={() => {
-            history.push({
-              pathname: `/articles/${post.slug}`,
-              state: {
-                author: post.author.username,
-                currentUser:
-                  post.author.username === user.user.username ? true : false,
-              },
-            });
-          }}
-        >
-          {state.title}
-        </button>
-        <p className="post-body">{post.body}</p>
-      </div>
-      <hr />
-      <FlexRow flexSpacing="space-between">
-        <p className="post-description">{post.description}</p>
-        <div className="post-tags">
-          {post.tagList.map((tag) => {
-            return <span key={post.author + tag}>{"#" + tag}</span>;
-          })}
-        </div>
-      </FlexRow>
-      <FlexRow>
-        <button>
-          Read More...
-          <Route path="/post-view" component={PostView} />
-        </button>
-        {state.author.username === user.user.username ? <DeleteButton /> : null}
-      </FlexRow>
-    </PostStyled>
+    <>
+      {article ? (
+        <PostStyled>
+          <div className="post-heading">
+            <Avatar imgUrl={article.author.image} />
+            <FlexColumn flexSpacing="flex-start">
+              <button
+                type="link"
+                onClick={() => {
+                  history.push({
+                    pathname: `/profiles/${article.author.username}`,
+                    search: `author=${article.author.username}`,
+                    state: {
+                      author: article.author.username,
+                      currentUser:
+                        article.author.username === user.user.username
+                          ? true
+                          : false,
+                    },
+                  });
+                }}
+              >
+                {article.author.username}
+              </button>
+              <p>{article.createdAt}</p>
+            </FlexColumn>
+            <FlexRow flexSpacing="flex-end">
+              <AppButton
+                color={AppColors.light}
+                content={AppIcons.like}
+                handle={article.favorited ? unfavoriteArticle : favoriteArticle}
+                isFavorited={article.favorited}
+                likesCount={article.favoritesCount}
+              />
+            </FlexRow>
+          </div>
+          <div className="post-content">
+            <button
+              type="link"
+              onClick={() => {
+                history.push({
+                  pathname: `/articles/${article.slug}`,
+                  state: {
+                    author: article.author.username,
+                    currentUser:
+                      article.author.username === user.user.username
+                        ? true
+                        : false,
+                  },
+                });
+              }}
+            >
+              {article.title}
+            </button>
+            <p className="post-body">{article.body}</p>
+          </div>
+          <hr />
+          <FlexRow flexSpacing="space-between">
+            <p className="post-description">{article.description}</p>
+            <div className="post-tags">
+              {article.tagList.map((tag) => {
+                return <span key={article.author + tag}>{"#" + tag}</span>;
+              })}
+            </div>
+          </FlexRow>
+          <FlexRow>
+            <button>
+              Read More...
+              <Route path="/post-view" component={PostView} />
+            </button>
+            {article.author.username === user.user.username ? (
+              <FlexRow flexSpacing="flex-end">
+                <AppButton
+                  color={AppColors.error}
+                  content={AppIcons.close}
+                  handle={deleteArticle}
+                />
+                <AppButton color={AppColors.primary} content={AppIcons.edit} />
+              </FlexRow>
+            ) : null}
+          </FlexRow>
+        </PostStyled>
+      ) : (
+        ""
+      )}
+    </>
   );
 };
 

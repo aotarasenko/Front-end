@@ -5,22 +5,21 @@ import { Post } from "../common/Post/Post";
 import axios from "axios";
 import { ROOT_URL } from "../api/auth/actions";
 import { createContext, useEffect, useState } from "react";
-import { CallModalButton } from "../common/CallModalButton";
 import { EditProfileWindow } from "../common/ModalWindow/EditProfileWindow";
-import { AppIcons } from "../styles/variables";
+import { AppButton } from "../common/AppButton/AppButton";
+import { AppIcons, AppColors } from "../styles/variables";
 
 export const EditContext = createContext();
 
 export const Profile = () => {
-  // const currentUser = useAuthState();
   const history = useHistory();
-
-  // if (user.isAuth === false) {
-  //   history.push("/auth/login");
-  // }
-
-  let [articles, setArticles] = useState([]);
   const [user, setUser] = useState({});
+  const [isModalOpen, setModalOpen] = useState(false);
+  let [articles, setArticles] = useState([]);
+
+  const handleCloseModal = () => {
+    setModalOpen(!isModalOpen);
+  };
 
   useEffect(() => {
     const getProfileData = async () => {
@@ -38,17 +37,38 @@ export const Profile = () => {
     getProfileData();
   }, []);
 
-  // const deletePost = async (slug) => {
-  //   await axios.delete(`${ROOT_URL}/articles/${slug}`, {
-  //     headers: {
-  //       Authorization: `Token ${localStorage.getItem("token")}`,
-  //     },
-  //   });
-  //   // articles = articles.filter((item) => item.slug !== slug);
-  // };
+  const followUser = async () => {
+    const res = await axios.post(
+      `${ROOT_URL}/profiles/${user.username}/follow`,
+      {},
+      {
+        headers: {
+          Authorization: `Token ${localStorage.getItem("token")}`,
+        },
+      }
+    );
+    setUser(res);
+  };
+
+  const unfollowUser = async () => {
+    const res = await axios.delete(
+      `${ROOT_URL}/profiles/${user.username}/follow`,
+      {
+        headers: {
+          Authorization: `Token ${localStorage.getItem("token")}`,
+        },
+      }
+    );
+
+    setUser(res);
+  };
 
   return (
     <Container>
+      <EditProfileWindow
+        isModalOpen={isModalOpen}
+        handleCloseModal={handleCloseModal}
+      />
       <section className="user-info">
         <FlexRow>
           <img src={user.image} alt="Avatar" />
@@ -57,11 +77,18 @@ export const Profile = () => {
             <p>{user.createdAt}</p>
             <p>{user.bio}</p>
             {history.location.state.currentUser ? (
-              <CallModalButton
-                children={<EditProfileWindow />}
-                icon={AppIcons.edit}
+              <AppButton
+                content={AppIcons.edit}
+                color={AppColors.light}
+                handle={handleCloseModal}
               />
-            ) : null}
+            ) : (
+              <AppButton
+                content={AppIcons.subscription}
+                color={AppColors.light}
+                handle={user.following ? unfollowUser : followUser}
+              />
+            )}
           </FlexColumn>
         </FlexRow>
       </section>
