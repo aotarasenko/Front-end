@@ -9,11 +9,13 @@ import { ROOT_URL } from "../../api/auth/actions";
 import { PostView } from "../../components/Layout/PostView/PostView";
 import { AppButton } from "../AppButton/AppButton";
 import { useState } from "react";
+import { Formik } from "formik";
 
 export const Post = (post) => {
   const user = useAuthState();
   const history = useHistory();
   const [article, setArticle] = useState(post);
+  // const initialState =
 
   const deleteArticle = async () => {
     const res = await axios.delete(`${ROOT_URL}/articles/${article.slug}`, {
@@ -36,6 +38,7 @@ export const Post = (post) => {
     );
     setArticle(res.data.article);
   };
+
   const unfavoriteArticle = async () => {
     const res = await axios.delete(
       `${ROOT_URL}/articles/${article.slug}/favorite`,
@@ -47,6 +50,8 @@ export const Post = (post) => {
     );
     setArticle(res.data.article);
   };
+
+  const editArticle = () => {};
 
   return (
     <>
@@ -126,7 +131,11 @@ export const Post = (post) => {
                   content={AppIcons.close}
                   handle={deleteArticle}
                 />
-                <AppButton color={AppColors.primary} content={AppIcons.edit} />
+                <AppButton
+                  color={AppColors.primary}
+                  content={AppIcons.edit}
+                  handle={editArticle}
+                />
               </FlexRow>
             ) : null}
           </FlexRow>

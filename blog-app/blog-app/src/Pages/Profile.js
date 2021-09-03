@@ -4,18 +4,23 @@ import { Container, FlexColumn, FlexRow } from "../styles/generalStyles";
 import { Post } from "../common/Post/Post";
 import axios from "axios";
 import { ROOT_URL } from "../api/auth/actions";
-import { createContext, useEffect, useState } from "react";
-import { EditProfileWindow } from "../common/ModalWindow/EditProfileWindow";
+import { useEffect, useState } from "react";
+import EditProfileWindow from "../common/ModalWindow/EditProfileWindow";
 import { AppButton } from "../common/AppButton/AppButton";
 import { AppIcons, AppColors } from "../styles/variables";
-
-export const EditContext = createContext();
 
 export const Profile = () => {
   const history = useHistory();
   const [user, setUser] = useState({});
   const [isModalOpen, setModalOpen] = useState(false);
   let [articles, setArticles] = useState([]);
+  const currentUser = useAuthState();
+
+  const initialState = {
+    bio: currentUser.user.bio,
+    image: currentUser.user.image,
+    username: currentUser.user.username,
+  };
 
   const handleCloseModal = () => {
     setModalOpen(!isModalOpen);
@@ -33,7 +38,6 @@ export const Profile = () => {
       setUser(userData.data.profile);
       setArticles(articleData.data.articles);
     };
-
     getProfileData();
   }, []);
 
@@ -65,10 +69,16 @@ export const Profile = () => {
 
   return (
     <Container>
-      <EditProfileWindow
-        isModalOpen={isModalOpen}
-        handleCloseModal={handleCloseModal}
-      />
+      {user ? (
+        <EditProfileWindow
+          isModalOpen={isModalOpen}
+          handleCloseModal={handleCloseModal}
+          initialState={user}
+          onSubmit={setUser}
+        />
+      ) : (
+        ""
+      )}
       <section className="user-info">
         <FlexRow>
           <img src={user.image} alt="Avatar" />

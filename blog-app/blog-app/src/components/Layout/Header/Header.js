@@ -5,7 +5,7 @@ import { Container, FlexRow } from "../../../styles/generalStyles";
 import { HeaderStyled } from "./Header.styled";
 import { logout } from "../../../api/auth/actions";
 import { useHistory } from "react-router";
-import { AddPostWindow } from "../../../common/ModalWindow/AddPostWindow";
+import AddPostWindow from "../../../common/ModalWindow/AddPostWindow";
 import { AppIcons, AppColors } from "../../../styles/variables";
 import { AppButton } from "../../../common/AppButton/AppButton";
 import { useState } from "react";
@@ -14,8 +14,15 @@ export const Header = () => {
   const user = useAuthState();
   const dispatch = useAuthDispatch();
   const history = useHistory();
-
+  const [formValues, setFormValues] = useState();
   const [isModalOpen, setModalOpen] = useState(false);
+
+  const initialValues = {
+    title: "test",
+    body: "test",
+    description: "test",
+    tags: ["test1", "test2"],
+  };
 
   const handleCloseModal = () => {
     console.log(isModalOpen);
@@ -32,17 +39,13 @@ export const Header = () => {
       <AddPostWindow
         isModalOpen={isModalOpen}
         handleCloseModal={handleCloseModal}
+        onSubmit={setFormValues}
+        initialValues={initialValues}
       />
       <Container>
         <FlexRow>
           <Avatar />
           <FlexRow flexSpacing="flex-end" flexWrap="wrap">
-            <AppButton
-              content={AppIcons.add}
-              color={AppColors.light}
-              handle={handleCloseModal}
-              position="fixed"
-            />
             <NavLink to="/home">Home</NavLink>
             {!user.isAuth && (
               <>
@@ -52,6 +55,12 @@ export const Header = () => {
             )}
             {user.isAuth && (
               <>
+                <AppButton
+                  content={AppIcons.add}
+                  color={AppColors.light}
+                  handle={handleCloseModal}
+                  position="fixed"
+                />
                 <button
                   type="link"
                   onClick={() => {

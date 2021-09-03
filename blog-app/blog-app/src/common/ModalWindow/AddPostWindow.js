@@ -1,58 +1,49 @@
-import { useContext, useState } from "react";
 import axios from "axios";
-import { ModalWrapper, ModalForm } from "./ModalWindow.styled";
-import {
-  Formik,
-  Form,
-  Field,
-  withFormik,
-  FastField,
-  useFormik,
-  FieldArray,
-} from "formik";
-import * as Yup from "yup";
-import { values } from "lodash";
+import { ModalWrapper } from "./ModalWindow.styled";
+import { Form, withFormik } from "formik";
+import { ArticleValidationScheme } from "../../validationSchemas/ValidationScheme";
 
-export const AddPostWindow = ({ isModalOpen, handleCloseModal }) => {
-  const initialValues = {
-    title: "test",
-    body: "test",
-    description: "test",
-    tags: ["test1", "test2"],
-  };
+const DEFAULT_VALUES = {
+  title: "title",
+  body: "body",
+  description: "description",
+};
 
-  const formik = useFormik({
-    initialValues,
-    onSubmit: async (values) => {
-      const baseURL = "https://conduit.productionready.io/api/articles";
+const AddPostWindow = (props) => {
+  const { values, errors, onSubmit, handleSubmit, handleChange, handleBlur } =
+    props;
 
-      let token = localStorage.getItem("token")
-        ? JSON.parse(localStorage.getItem("token"))
-        : "";
+  const handleOnSubmit = async (e) => {
+    e.preventDefault();
+    handleSubmit();
+    const baseURL = "https://conduit.productionready.io/api/articles";
 
-      await axios.post(
-        baseURL,
-        {
-          article: values,
+    let token = localStorage.getItem("token")
+      ? JSON.parse(localStorage.getItem("token"))
+      : "";
+
+    await axios.post(
+      baseURL,
+      {
+        article: values,
+      },
+      {
+        headers: {
+          Authorization: `Token ${token}`,
         },
-        {
-          headers: {
-            Authorization: `Token ${token}`,
-          },
-        }
-      );
+      }
+    );
 
-      handleCloseModal();
-    },
-    validate: (values) => {},
-  });
+    props.handleCloseModal();
+    onSubmit(values);
+  };
 
   return (
     <>
-      {isModalOpen ? (
+      {props.isModalOpen ? (
         <ModalWrapper>
-          <ModalForm onSubmit={formik.handleSubmit}>
-            <button onClick={handleCloseModal}>x</button>
+          <Form onSubmit={handleOnSubmit}>
+            <button onClick={props.handleCloseModal}>x</button>
             <fieldset>
               <legend>Add New Article </legend>
               <label>
@@ -62,8 +53,9 @@ export const AddPostWindow = ({ isModalOpen, handleCloseModal }) => {
                   name="title"
                   type="text"
                   placeholder="Article Title"
-                  onChange={formik.handleChange}
-                  value={formik.values.title}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.title}
                 />
               </label>
               <label>
@@ -73,8 +65,9 @@ export const AddPostWindow = ({ isModalOpen, handleCloseModal }) => {
                   name="description"
                   type="text"
                   placeholder="Article Description"
-                  onChange={formik.handleChange}
-                  value={formik.values.description}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.description}
                 />
               </label>
               <label>
@@ -84,8 +77,9 @@ export const AddPostWindow = ({ isModalOpen, handleCloseModal }) => {
                   name="body"
                   type="text"
                   placeholder="Article Body"
-                  onChange={formik.handleChange}
-                  value={formik.values.body}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.body}
                 />
               </label>
               <label>
@@ -94,13 +88,14 @@ export const AddPostWindow = ({ isModalOpen, handleCloseModal }) => {
                 <input
                   name="tags"
                   placeholder="Tags"
-                  onChange={formik.handleChange}
-                  value={formik.values.tags}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.tags}
                 />
               </label>
               <input type="submit" value="Create Article" />
             </fieldset>
-          </ModalForm>
+          </Form>
         </ModalWrapper>
       ) : (
         ""
@@ -108,3 +103,9 @@ export const AddPostWindow = ({ isModalOpen, handleCloseModal }) => {
     </>
   );
 };
+
+export default withFormik({
+  validationSchema: ArticleValidationScheme,
+  mapPropsToValues: ({ initialValues }) =>
+    initialValues ? initialValues : DEFAULT_VALUES,
+})(AddPostWindow);

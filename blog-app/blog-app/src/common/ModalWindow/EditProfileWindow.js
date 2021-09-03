@@ -1,29 +1,21 @@
-import { ModalWrapper, ModalForm } from "./ModalWindow.styled";
-import { useState } from "react";
+import { ModalWrapper } from "./ModalWindow.styled";
 import axios from "axios";
 import { ROOT_URL } from "../../api/auth/actions";
-import { useAuthState } from "../../api/auth/authenticate";
+import { Form, withFormik } from "formik";
+import { UserProfileValidationScheme } from "../../validationSchemas/ValidationScheme";
 
-export const EditProfileWindow = ({ isModalOpen, handleCloseModal }) => {
-  const user = useAuthState();
-  console.log(user);
-
-  const [username, setName] = useState(user.user.username);
-  const [bio, setBiography] = useState(user.user.bio);
-  const [email, setEmail] = useState(user.user.email);
-  const [image, setImage] = useState(user.user.image);
-  const [password, setPassword] = useState("");
+const EditProfileWindow = (props) => {
+  const { values, errors, onSubmit, handleSubmit, handleChange, handleBlur } =
+    props;
 
   const handleEdit = async (e) => {
     e.preventDefault();
+    handleSubmit();
 
     await axios.put(
       `${ROOT_URL}/user`,
       {
-        image,
-        username,
-        bio,
-        email,
+        ...values,
       },
       {
         headers: {
@@ -32,15 +24,17 @@ export const EditProfileWindow = ({ isModalOpen, handleCloseModal }) => {
       }
     );
 
-    handleCloseModal(!isModalOpen);
+    props.handleCloseModal(!props.isModalOpen);
+    onSubmit(values);
   };
 
+  console.log(values);
   return (
     <>
-      {isModalOpen ? (
+      {props.isModalOpen ? (
         <ModalWrapper>
-          <ModalForm>
-            <button onClick={handleCloseModal}>x</button>
+          <Form onSubmit={handleEdit}>
+            <button onClick={props.handleCloseModal}>x</button>
             <fieldset>
               <legend>Edit your personal data</legend>
               <label>
@@ -48,9 +42,11 @@ export const EditProfileWindow = ({ isModalOpen, handleCloseModal }) => {
                 Avatar
                 <input
                   type="text"
-                  value={image || ""}
+                  name="image"
                   placeholder={`Paste image url here`}
-                  onChange={(e) => setImage(e.target.value)}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.image}
                 />
               </label>
               <label>
@@ -58,9 +54,11 @@ export const EditProfileWindow = ({ isModalOpen, handleCloseModal }) => {
                 Name
                 <input
                   type="text"
-                  value={username}
                   placeholder={`Set new name`}
-                  onChange={(e) => setName(e.target.value)}
+                  name="username"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.username}
                 />
               </label>
               <label>
@@ -68,9 +66,11 @@ export const EditProfileWindow = ({ isModalOpen, handleCloseModal }) => {
                 Biography
                 <input
                   type="text"
-                  value={bio}
                   placeholder="Update  your`s story"
-                  onChange={(e) => setBiography(e.target.value)}
+                  name="bio"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.bio}
                 />
               </label>
               <label>
@@ -78,12 +78,14 @@ export const EditProfileWindow = ({ isModalOpen, handleCloseModal }) => {
                 Email
                 <input
                   type="text"
-                  value={email}
-                  placeholder="Actual email"
-                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Change Email"
+                  name="email"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.email}
                 />
               </label>
-              <label>
+              {/* <label>
                 {" "}
                 Confirm
                 <input
@@ -92,10 +94,10 @@ export const EditProfileWindow = ({ isModalOpen, handleCloseModal }) => {
                   value=""
                   onChange={(e) => setPassword(e.target.value)}
                 />
-              </label>
+              </label>*/}
               <input type="button" value="Save changes" onClick={handleEdit} />
             </fieldset>
-          </ModalForm>
+          </Form>
         </ModalWrapper>
       ) : (
         ""
@@ -103,3 +105,8 @@ export const EditProfileWindow = ({ isModalOpen, handleCloseModal }) => {
     </>
   );
 };
+
+export default withFormik({
+  validationSchema: UserProfileValidationScheme,
+  mapPropsToValues: ({ initialState }) => (initialState ? initialState : ""),
+})(EditProfileWindow);
