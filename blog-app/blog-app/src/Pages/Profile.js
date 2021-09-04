@@ -11,16 +11,9 @@ import { AppIcons, AppColors } from "../styles/variables";
 
 export const Profile = () => {
   const history = useHistory();
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState("");
   const [isModalOpen, setModalOpen] = useState(false);
   let [articles, setArticles] = useState([]);
-  const currentUser = useAuthState();
-
-  const initialState = {
-    bio: currentUser.user.bio,
-    image: currentUser.user.image,
-    username: currentUser.user.username,
-  };
 
   const handleCloseModal = () => {
     setModalOpen(!isModalOpen);
@@ -68,45 +61,47 @@ export const Profile = () => {
   };
 
   return (
-    <Container>
+    <>
       {user ? (
-        <EditProfileWindow
-          isModalOpen={isModalOpen}
-          handleCloseModal={handleCloseModal}
-          initialState={user}
-          onSubmit={setUser}
-        />
+        <Container>
+          <EditProfileWindow
+            isModalOpen={isModalOpen}
+            handleCloseModal={handleCloseModal}
+            initialState={user}
+            onSubmit={setUser}
+          />
+          <section className="user-info">
+            <FlexRow>
+              <img src={user.image} alt="Avatar" />
+              <FlexColumn>
+                <p>{user.username}</p>
+                <p>{user.createdAt}</p>
+                <p>{user.bio}</p>
+                {history.location.state.currentUser ? (
+                  <AppButton
+                    content={AppIcons.edit}
+                    color={AppColors.light}
+                    handle={handleCloseModal}
+                  />
+                ) : (
+                  <AppButton
+                    content={AppIcons.subscription}
+                    color={AppColors.light}
+                    handle={user.following ? unfollowUser : followUser}
+                  />
+                )}
+              </FlexColumn>
+            </FlexRow>
+          </section>
+          <section className="my-articles">
+            {articles.map((article, index) => (
+              <Post key={index + article.title} {...article} />
+            ))}
+          </section>
+        </Container>
       ) : (
         ""
       )}
-      <section className="user-info">
-        <FlexRow>
-          <img src={user.image} alt="Avatar" />
-          <FlexColumn>
-            <p>{user.username}</p>
-            <p>{user.createdAt}</p>
-            <p>{user.bio}</p>
-            {history.location.state.currentUser ? (
-              <AppButton
-                content={AppIcons.edit}
-                color={AppColors.light}
-                handle={handleCloseModal}
-              />
-            ) : (
-              <AppButton
-                content={AppIcons.subscription}
-                color={AppColors.light}
-                handle={user.following ? unfollowUser : followUser}
-              />
-            )}
-          </FlexColumn>
-        </FlexRow>
-      </section>
-      <section className="my-articles">
-        {articles.map((article, index) => (
-          <Post key={index + article.title} {...article} />
-        ))}
-      </section>
-    </Container>
+    </>
   );
 };

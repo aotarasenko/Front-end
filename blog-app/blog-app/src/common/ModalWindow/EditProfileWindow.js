@@ -28,7 +28,6 @@ const EditProfileWindow = (props) => {
     onSubmit(values);
   };
 
-  console.log(values);
   return (
     <>
       {props.isModalOpen ? (

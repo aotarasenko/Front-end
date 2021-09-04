@@ -6,16 +6,19 @@ import { AppColors, AppFontSizes, AppIcons } from "../../styles/variables";
 import { Avatar } from "../Avatar";
 import axios from "axios";
 import { ROOT_URL } from "../../api/auth/actions";
-import { PostView } from "../../components/Layout/PostView/PostView";
 import { AppButton } from "../AppButton/AppButton";
 import { useState } from "react";
 import { Formik } from "formik";
+import EditArticleWindow from "../ModalWindow/EditArticleWindow";
+import PostView from "../../components/Layout/PostView/PostView";
 
 export const Post = (post) => {
   const user = useAuthState();
   const history = useHistory();
   const [article, setArticle] = useState(post);
-  // const initialState =
+  const [isModalOpen, setModalOpen] = useState(false);
+
+  const handleCloseModal = () => setModalOpen(!isModalOpen);
 
   const deleteArticle = async () => {
     const res = await axios.delete(`${ROOT_URL}/articles/${article.slug}`, {
@@ -51,12 +54,16 @@ export const Post = (post) => {
     setArticle(res.data.article);
   };
 
-  const editArticle = () => {};
-
   return (
     <>
       {article ? (
         <PostStyled>
+          <EditArticleWindow
+            initialValues={article}
+            isModalOpen={isModalOpen}
+            setModalOpen={handleCloseModal}
+            onSubmit={setArticle}
+          />
           <div className="post-heading">
             <Avatar imgUrl={article.author.image} />
             <FlexColumn flexSpacing="flex-start">
@@ -120,10 +127,6 @@ export const Post = (post) => {
             </div>
           </FlexRow>
           <FlexRow>
-            <button>
-              Read More...
-              <Route path="/post-view" component={PostView} />
-            </button>
             {article.author.username === user.user.username ? (
               <FlexRow flexSpacing="flex-end">
                 <AppButton
@@ -134,7 +137,7 @@ export const Post = (post) => {
                 <AppButton
                   color={AppColors.primary}
                   content={AppIcons.edit}
-                  handle={editArticle}
+                  handle={setModalOpen}
                 />
               </FlexRow>
             ) : null}
@@ -150,7 +153,7 @@ export const Post = (post) => {
 const PostStyled = styled.section`
   display: flex;
   flex-direction: column;
-  margin: 10px;
+  margin: 40px 10px;
   padding: 12px;
   border-top: 5px solid ${AppColors.neutral};
   border-top-left-radius: 5px;
