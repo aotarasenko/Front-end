@@ -23,6 +23,7 @@ export const AppButtonStyled = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 12px;
   width: 40px;
   height: 40px;
   border: none;

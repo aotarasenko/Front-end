@@ -3,7 +3,7 @@ import { BiWorld } from "react-icons/bi";
 import { BsFillBookmarkFill } from "react-icons/bs";
 import { CgProfile } from "react-icons/cg";
 import { IoMdAdd, IoClose } from "react-icons/io";
-import { MdEdit } from "react-icons/md";
+import { MdEdit, MdRssFeed } from "react-icons/md";
 import { IoMdClose } from "react-icons/io";
 
 export const AppColors = {
@@ -39,4 +39,5 @@ export const AppIcons = {
   add: <IoMdAdd />,
   edit: <MdEdit />,
   close: <IoMdClose />,
+  feed: <MdRssFeed />,
 };

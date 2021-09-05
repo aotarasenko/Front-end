@@ -1,8 +1,9 @@
 import axios from "axios";
-import { Form, withFormik } from "formik";
+import { useFormik } from "formik";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { ROOT_URL } from "../../../api/auth/actions";
+import { Avatar } from "../../../common/Avatar";
 import { Post } from "../../../common/Post/Post";
 import { Container } from "../../../styles/generalStyles";
 import { CommentBlock } from "../../CommentBlock/CommentBlock";
@@ -13,19 +14,42 @@ export const PostView = (props) => {
   const [article, setArticle] = useState("");
   const [comments, setComments] = useState([]);
 
-  const { values, errors, onSubmit, handleSubmit } = props;
+  console.log(comments);
+
+  const commentBody = useFormik({
+    initialValues: {
+      body: "",
+    },
+  });
+
+  const getArticleComments = async () => {
+    const commentsList = await axios.get(
+      `${ROOT_URL}${history.location.pathname}/comments`
+    );
+    setComments(commentsList.data.comments);
+  };
+
+  const addComment = async (e) => {
+    e.preventDefault();
+
+    await axios.post(
+      `${ROOT_URL}/articles/${article.slug}/comments`,
+      {
+        ...commentBody.values,
+      },
+      {
+        headers: {
+          Authorization: `Token ${localStorage.getItem("token")}`,
+        },
+      }
+    );
+    getArticleComments();
+  };
 
   useEffect(() => {
     const getArticle = async () => {
       const res = await axios.get(`${ROOT_URL}${history.location.pathname}`);
       setArticle(res.data.article);
-
-      const getArticleComments = async () => {
-        const commentsList = await axios.get(
-          `${ROOT_URL}${history.location.pathname}/comments`
-        );
-        setComments(commentsList.data.comments);
-      };
 
       getArticleComments();
     };
@@ -33,27 +57,45 @@ export const PostView = (props) => {
     getArticle();
   }, []);
 
-  const addComment = async () => {};
-
-  const deleteComment = async () => {};
-
   return (
-    <Container>
-      <section>{article ? <Post {...article} /> : ""}</section>
-      <section>
-        <form></form>
-      </section>
-      <section>
-        {comments
-          ? comments.map((item, index) => (
-              <CommentBlock {...item} key={item.id + index} />
-            ))
-          : ""}
-      </section>
-    </Container>
+    <>
+      {article ? (
+        <Container>
+          <section>
+            {" "}
+            <Post {...article} />{" "}
+          </section>
+          <section>
+            <form onSubmit={addComment}>
+              <fieldset>
+                <legend>Comments</legend>
+                <Avatar imgUrl={article.author.image} />
+                <input
+                  type="text"
+                  name="body"
+                  onChange={commentBody.handleChange}
+                  value={commentBody.values.body}
+                  placeholder="Write some About Article"
+                />
+                <input type="submit" value="Create Comment" />
+              </fieldset>
+            </form>
+          </section>
+          <section>
+            {comments
+              ? comments.map((item, index) => (
+                  <CommentBlock
+                    {...item}
+                    key={article.slug + item.id}
+                    slug={article.slug}
+                  />
+                ))
+              : ""}
+          </section>
+        </Container>
+      ) : (
+        ""
+      )}
+    </>
   );
 };
-
-export default withFormik({
-  // mapPropsToValues: (),
-})(PostView);

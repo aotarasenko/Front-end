@@ -1,4 +1,4 @@
-import { Route, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { useAuthState } from "../../api/auth/authenticate";
 import { FlexColumn, FlexRow } from "../../styles/generalStyles";
@@ -8,9 +8,7 @@ import axios from "axios";
 import { ROOT_URL } from "../../api/auth/actions";
 import { AppButton } from "../AppButton/AppButton";
 import { useState } from "react";
-import { Formik } from "formik";
 import EditArticleWindow from "../ModalWindow/EditArticleWindow";
-import PostView from "../../components/Layout/PostView/PostView";
 
 export const Post = (post) => {
   const user = useAuthState();

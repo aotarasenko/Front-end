@@ -1,7 +1,9 @@
 import axios from "axios";
 
+const LIMIT_ARTICLES = 10;
+
 export const initGetArticlesApi = (baseUrl) => () => {
-  return axios.get(`${baseUrl}/api/articles`);
+  return axios.get(`${baseUrl}/api/articles?limit=${LIMIT_ARTICLES}`);
 };
 
 // export const initGetArticlesApi = (baseUrl) => () => {

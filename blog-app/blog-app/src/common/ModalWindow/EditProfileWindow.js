@@ -5,8 +5,7 @@ import { Form, withFormik } from "formik";
 import { UserProfileValidationScheme } from "../../validationSchemas/ValidationScheme";
 
 const EditProfileWindow = (props) => {
-  const { values, errors, onSubmit, handleSubmit, handleChange, handleBlur } =
-    props;
+  const { values, onSubmit, handleSubmit, handleChange, handleBlur } = props;
 
   const handleEdit = async (e) => {
     e.preventDefault();

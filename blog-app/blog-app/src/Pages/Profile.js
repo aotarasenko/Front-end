@@ -1,5 +1,4 @@
 import { useHistory } from "react-router-dom";
-import { useAuthState } from "../api/auth/authenticate";
 import { Container, FlexColumn, FlexRow } from "../styles/generalStyles";
 import { Post } from "../common/Post/Post";
 import axios from "axios";
@@ -44,7 +43,7 @@ export const Profile = () => {
         },
       }
     );
-    setUser(res);
+    setUser(res.data.profile);
   };
 
   const unfollowUser = async () => {
@@ -57,7 +56,7 @@ export const Profile = () => {
       }
     );
 
-    setUser(res);
+    setUser(res.data.profile);
   };
 
   return (
@@ -88,6 +87,7 @@ export const Profile = () => {
                     content={AppIcons.subscription}
                     color={AppColors.light}
                     handle={user.following ? unfollowUser : followUser}
+                    isFavorited={user.following}
                   />
                 )}
               </FlexColumn>
