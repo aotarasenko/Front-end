@@ -5,10 +5,10 @@ export const AppButton = (props) => {
   return (
     <AppButtonStyled
       onClick={props.handle}
-      color={props.color}
+      color={props.color || "transparent"}
       position={props.position}
-      isFavorited={props.isFavorited}
-      likesCount={props.likesCount}
+      isFavorited={props.isFavorited || ""}
+      likesCount={props.likesCount || ""}
     >
       {props.content}
       {props.likesCount}
@@ -23,7 +23,6 @@ export const AppButtonStyled = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 12px;
   width: 40px;
   height: 40px;
   border: none;

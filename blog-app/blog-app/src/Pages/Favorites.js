@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { ROOT_URL } from "../api/auth/actions";
 import { useAuthState } from "../api/auth/authenticate";
-import { Post } from "../common/Post/Post";
+import { Post } from "../components/Post/Post";
 import { Container } from "../styles/generalStyles";
 import { useHistory } from "react-router";
 

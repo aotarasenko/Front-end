@@ -1,14 +1,14 @@
 import { useHistory } from "react-router-dom";
-import styled from "styled-components";
 import { useAuthState } from "../../api/auth/authenticate";
 import { FlexColumn, FlexRow } from "../../styles/generalStyles";
-import { AppColors, AppFontSizes, AppIcons } from "../../styles/variables";
+import { AppColors, AppIcons } from "../../styles/variables";
 import { Avatar } from "../Avatar";
 import axios from "axios";
 import { ROOT_URL } from "../../api/auth/actions";
 import { AppButton } from "../AppButton/AppButton";
 import { useState } from "react";
 import EditArticleWindow from "../ModalWindow/EditArticleWindow";
+import { PostStyled } from "./Post.styled";
 
 export const Post = (post) => {
   const user = useAuthState();
@@ -147,51 +147,3 @@ export const Post = (post) => {
     </>
   );
 };
-
-const PostStyled = styled.section`
-  display: flex;
-  flex-direction: column;
-  margin: 40px 10px;
-  padding: 12px;
-  border-top: 5px solid ${AppColors.neutral};
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
-
-  .post-content {
-    margin-top: 20px;
-    border-top: 1px solid ${AppColors.neutral};
-  }
-
-  .post-title {
-    color: ${AppColors.light};
-  }
-
-  .post-body {
-    min-height: 80px;
-    border: 2px solid ${AppColors.primary};
-  }
-
-  .post-description,
-  .post-tags {
-    display: flex;
-    flex-wrap: wrap;
-    color: ${AppColors.neutral};
-    font-style: italic;
-  }
-
-  div.post-heading {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    p {
-      margin: 0;
-      font-size: ${AppFontSizes.small};
-    }
-    .author-name {
-      font-weight: bold;
-      color: ${AppColors.light};
-    }
-  }
-`;

@@ -1,16 +1,26 @@
 import { AppIcons } from "../../../../styles/variables";
-import { NavLink } from "react-router-dom";
+import { useAuthState } from "../../../../api/auth/authenticate";
 import { NavMenuStyled } from "./NavMenu.styled";
+import { useHistory } from "react-router";
+import { AppButton } from "../../../AppButton/AppButton";
 
-export const NavMenu = ({ isSizeForText }) => {
+export const NavMenu = () => {
+  const user = useAuthState();
+  const history = useHistory();
   const menuItems = [
     {
       title: "My Posts",
-      linkTo: "/home",
+      path: "/home",
       icon: AppIcons.home,
+      query: "",
     },
-    { title: "Favorites", linkTo: "/favorites", icon: AppIcons.like },
-    { title: "Profile", linkTo: "/profile", icon: AppIcons.profile },
+    { title: "Favorites", path: "/favorites", query: "", icon: AppIcons.like },
+    {
+      title: "Profile",
+      path: `/profiles/${user.user.username}`,
+      query: `author=${user.user.username}`,
+      icon: AppIcons.profile,
+    },
   ];
 
   return (
@@ -18,9 +28,20 @@ export const NavMenu = ({ isSizeForText }) => {
       {menuItems.map((item) => {
         return (
           <li key={item.title + Math.random()}>
-            <NavLink to={item.linkTo}>
-              {item.icon} {isSizeForText && item.title}
-            </NavLink>
+            <AppButton
+              type="link"
+              content={item.icon}
+              handle={() => {
+                history.push({
+                  pathname: item.path,
+                  search: item.query,
+                  state: {
+                    author: user.user.username,
+                    currentUser: true,
+                  },
+                });
+              }}
+            />
           </li>
         );
       })}

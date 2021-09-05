@@ -1,19 +1,19 @@
 import { NavLink } from "react-router-dom";
 import { useAuthState, useAuthDispatch } from "../../../api/auth/authenticate";
-import { Avatar } from "../../../common/Avatar";
+import { Avatar } from "../../Avatar";
 import { Container, FlexRow } from "../../../styles/generalStyles";
 import { HeaderStyled } from "./Header.styled";
 import { logout } from "../../../api/auth/actions";
 import { useHistory } from "react-router";
-import AddPostWindow from "../../../common/ModalWindow/AddPostWindow";
+import AddPostWindow from "../../ModalWindow/AddPostWindow";
 import { AppIcons, AppColors } from "../../../styles/variables";
-import { AppButton } from "../../../common/AppButton/AppButton";
+import { AppButton } from "../../AppButton/AppButton";
 import { useState } from "react";
 
 export const Header = () => {
   const user = useAuthState();
-  const dispatch = useAuthDispatch();
   const history = useHistory();
+  const dispatch = useAuthDispatch();
   const [formValues, setFormValues] = useState();
   const [isModalOpen, setModalOpen] = useState(false);
 

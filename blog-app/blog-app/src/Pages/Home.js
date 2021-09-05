@@ -1,5 +1,5 @@
 import { Container } from "../styles/generalStyles";
-import { Post } from "../common/Post/Post";
+import { Post } from "../components/Post/Post";
 import { useHome } from "../hooks/useHome";
 
 export const Home = () => {

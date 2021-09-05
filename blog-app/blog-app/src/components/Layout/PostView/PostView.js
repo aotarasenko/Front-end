@@ -3,14 +3,15 @@ import { useFormik } from "formik";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { ROOT_URL } from "../../../api/auth/actions";
-import { Avatar } from "../../../common/Avatar";
-import { Post } from "../../../common/Post/Post";
+import { Avatar } from "../../Avatar";
+import { Post } from "../../Post/Post";
 import { Container } from "../../../styles/generalStyles";
 import { CommentBlock } from "../../CommentBlock/CommentBlock";
+import { useAuthState } from "../../../api/auth/authenticate";
 
 export const PostView = (props) => {
   const history = useHistory();
-
+  const user = useAuthState();
   const [article, setArticle] = useState("");
   const [comments, setComments] = useState([]);
 
@@ -65,33 +66,37 @@ export const PostView = (props) => {
             {" "}
             <Post {...article} />{" "}
           </section>
-          <section>
-            <form onSubmit={addComment}>
-              <fieldset>
-                <legend>Comments</legend>
-                <Avatar imgUrl={article.author.image} />
-                <input
-                  type="text"
-                  name="body"
-                  onChange={commentBody.handleChange}
-                  value={commentBody.values.body}
-                  placeholder="Write some About Article"
-                />
-                <input type="submit" value="Create Comment" />
-              </fieldset>
-            </form>
-          </section>
-          <section>
-            {comments
-              ? comments.map((item, index) => (
-                  <CommentBlock
-                    {...item}
-                    key={article.slug + item.id}
-                    slug={article.slug}
+          {user.isAuth ? (
+            <section>
+              <form onSubmit={addComment}>
+                <fieldset>
+                  <legend>Comments</legend>
+                  <Avatar imgUrl={article.author.image} />
+                  <input
+                    type="text"
+                    name="body"
+                    onChange={commentBody.handleChange}
+                    value={commentBody.values.body}
+                    placeholder="Write some About Article"
                   />
-                ))
-              : ""}
-          </section>
+                  <input type="submit" value="Create Comment" />
+                </fieldset>
+              </form>
+              <section>
+                {comments
+                  ? comments.map((item, index) => (
+                      <CommentBlock
+                        {...item}
+                        key={article.slug + item.id}
+                        slug={article.slug}
+                      />
+                    ))
+                  : ""}
+              </section>
+            </section>
+          ) : (
+            ""
+          )}
         </Container>
       ) : (
         ""

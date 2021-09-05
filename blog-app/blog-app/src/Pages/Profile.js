@@ -1,11 +1,11 @@
 import { useHistory } from "react-router-dom";
 import { Container, FlexColumn, FlexRow } from "../styles/generalStyles";
-import { Post } from "../common/Post/Post";
+import { Post } from "../components/Post/Post";
 import axios from "axios";
 import { ROOT_URL } from "../api/auth/actions";
 import { useEffect, useState } from "react";
-import EditProfileWindow from "../common/ModalWindow/EditProfileWindow";
-import { AppButton } from "../common/AppButton/AppButton";
+import EditProfileWindow from "../components/ModalWindow/EditProfileWindow";
+import { AppButton } from "../components/AppButton/AppButton";
 import { AppIcons, AppColors } from "../styles/variables";
 
 export const Profile = () => {

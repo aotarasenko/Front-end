@@ -1,8 +1,9 @@
 import axios from "axios";
 import { useState } from "react";
 import { ROOT_URL } from "../../api/auth/actions";
-import { AppButton } from "../../common/AppButton/AppButton";
-import { Avatar } from "../../common/Avatar";
+
+import { AppButton } from "../../components/AppButton/AppButton";
+import { Avatar } from "../../components/Avatar";
 import { FlexColumn, FlexRow } from "../../styles/generalStyles";
 import { AppColors, AppIcons } from "../../styles/variables";
 import { CommentBlockStyled } from "./CommentBlock.styled";
