@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useAuthState, useAuthDispatch } from "../../../api/auth/authenticate";
 import { Avatar } from "../../Avatar";
 import { Container, FlexRow } from "../../../styles/generalStyles";
@@ -18,14 +18,13 @@ export const Header = () => {
   const [isModalOpen, setModalOpen] = useState(false);
 
   const initialValues = {
-    title: "test",
-    body: "test",
-    description: "test",
-    tags: ["test1", "test2"],
+    title: "",
+    body: "",
+    description: "",
+    tags: [],
   };
 
   const handleCloseModal = () => {
-    console.log(isModalOpen);
     setModalOpen(!isModalOpen);
   };
 
@@ -66,7 +65,23 @@ export const Header = () => {
                   onClick={() => {
                     history.push({
                       pathname: `/profiles/${user.user.username}`,
-                      search: `author=${user.user.username}`,
+                      search: "",
+                      state: {
+                        author: user.user.username,
+                        currentUser: true,
+                      },
+                    });
+                  }}
+                >
+                  {" "}
+                  Profile
+                </button>
+                {/* <button
+                  type="link"
+                  onClick={() => {
+                    history.push({
+                      pathname: ,
+                      search: "",
                       state: {
                         author: user.user.username,
                         currentUser: true,
@@ -75,7 +90,7 @@ export const Header = () => {
                   }}
                 >
                   Profile
-                </button>
+                </button> */}
                 <button onClick={handleLogout}>Logout</button>
               </>
             )}

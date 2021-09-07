@@ -2,6 +2,7 @@ import axios from "axios";
 import { ModalWrapper } from "./ModalWindow.styled";
 import { Form, withFormik } from "formik";
 import { ArticleValidationScheme } from "../../validationSchemas/ValidationScheme";
+import { useApi } from "../../hooks/useApi";
 
 const DEFAULT_VALUES = {
   title: "title",
@@ -10,30 +11,15 @@ const DEFAULT_VALUES = {
 };
 
 const AddPostWindow = (props) => {
-  const { values, errors, onSubmit, handleSubmit, handleChange, handleBlur } =
-    props;
+  const { values, onSubmit, handleSubmit, handleChange, handleBlur } = props;
+
+  const { createNewArticleApi } = useApi();
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
-    handleSubmit();
-    const baseURL = "https://conduit.productionready.io/api/articles";
+    // handleSubmit();
 
-    let token = localStorage.getItem("token")
-      ? JSON.parse(localStorage.getItem("token"))
-      : "";
-
-    await axios.post(
-      baseURL,
-      {
-        article: values,
-      },
-      {
-        headers: {
-          Authorization: `Token ${token}`,
-        },
-      }
-    );
-
+    await createNewArticleApi(values);
     props.handleCloseModal();
     onSubmit(values);
   };

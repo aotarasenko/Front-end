@@ -1,28 +1,18 @@
 import { ModalWrapper } from "./ModalWindow.styled";
-import axios from "axios";
-import { ROOT_URL } from "../../api/auth/actions";
 import { Form, withFormik } from "formik";
 import { UserProfileValidationScheme } from "../../validationSchemas/ValidationScheme";
+import { useApi } from "../../hooks/useApi";
 
 const EditProfileWindow = (props) => {
   const { values, onSubmit, handleSubmit, handleChange, handleBlur } = props;
+
+  const { updateProfileApi } = useApi();
 
   const handleEdit = async (e) => {
     e.preventDefault();
     handleSubmit();
 
-    await axios.put(
-      `${ROOT_URL}/user`,
-      {
-        ...values,
-      },
-      {
-        headers: {
-          Authorization: `Token ${localStorage.getItem("token")}`,
-        },
-      }
-    );
-
+    await updateProfileApi(values);
     props.handleCloseModal(!props.isModalOpen);
     onSubmit(values);
   };
@@ -83,16 +73,6 @@ const EditProfileWindow = (props) => {
                   value={values.email}
                 />
               </label>
-              {/* <label>
-                {" "}
-                Confirm
-                <input
-                  type="text"
-                  placeholder="Confirm password"
-                  value=""
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </label>*/}
               <input type="button" value="Save changes" onClick={handleEdit} />
             </fieldset>
           </Form>

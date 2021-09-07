@@ -3,7 +3,7 @@ import { useApi } from "./useApi";
 import { useDataFetch } from "./useDataFetch";
 
 export const useHome = () => {
-  const { getArticlesApi, getArticleApi } = useApi();
+  const { getArticlesApi } = useApi();
   const [articles, setArticles] = useState([]);
 
   const [, fetchArticles] = useDataFetch({
@@ -24,5 +24,6 @@ export const useHome = () => {
 
   return {
     articles,
+    setArticles,
   };
 };

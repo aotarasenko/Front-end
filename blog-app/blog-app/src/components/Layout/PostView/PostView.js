@@ -8,14 +8,14 @@ import { Post } from "../../Post/Post";
 import { Container } from "../../../styles/generalStyles";
 import { CommentBlock } from "../../CommentBlock/CommentBlock";
 import { useAuthState } from "../../../api/auth/authenticate";
+import { useApi } from "../../../hooks/useApi";
 
 export const PostView = (props) => {
   const history = useHistory();
   const user = useAuthState();
   const [article, setArticle] = useState("");
   const [comments, setComments] = useState([]);
-
-  console.log(comments);
+  const { getCommentsApi, createNewCommentApi } = useApi();
 
   const commentBody = useFormik({
     initialValues: {
@@ -23,27 +23,17 @@ export const PostView = (props) => {
     },
   });
 
+  console.log(history.location.pathname);
+
   const getArticleComments = async () => {
-    const commentsList = await axios.get(
-      `${ROOT_URL}${history.location.pathname}/comments`
-    );
+    const commentsList = await getCommentsApi(history.location.state.slug);
     setComments(commentsList.data.comments);
   };
 
   const addComment = async (e) => {
     e.preventDefault();
 
-    await axios.post(
-      `${ROOT_URL}/articles/${article.slug}/comments`,
-      {
-        ...commentBody.values,
-      },
-      {
-        headers: {
-          Authorization: `Token ${localStorage.getItem("token")}`,
-        },
-      }
-    );
+    await createNewCommentApi(commentBody.values, history.location.state.slug);
     getArticleComments();
   };
 

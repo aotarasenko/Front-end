@@ -1,27 +1,17 @@
 import { Form, withFormik } from "formik";
 import { ModalWrapper } from "./ModalWindow.styled";
 import { ArticleValidationScheme } from "../../validationSchemas/ValidationScheme";
-import axios from "axios";
+import { useApi } from "../../hooks/useApi";
 
 const EditArticleWindow = (props) => {
-  const { values, errors, onSubmit, handleSubmit, handleChange, handleBlur } =
-    props;
-  const baseURL = "https://conduit.productionready.io/api";
+  const { values, onSubmit, handleSubmit, handleChange, handleBlur } = props;
+
+  const { updateArticleApi } = useApi();
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
-    await axios.put(
-      `${baseURL}/articles/${values.slug}`,
-      {
-        ...values,
-      },
-      {
-        headers: {
-          Authorization: `Token ${localStorage.getItem("token")}`,
-        },
-      }
-    );
-
+    handleSubmit();
+    await updateArticleApi(values.slug, values);
     props.setModalOpen(!props.isModalOpen);
     onSubmit(values);
   };

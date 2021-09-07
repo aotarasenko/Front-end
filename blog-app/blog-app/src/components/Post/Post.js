@@ -3,52 +3,33 @@ import { useAuthState } from "../../api/auth/authenticate";
 import { FlexColumn, FlexRow } from "../../styles/generalStyles";
 import { AppColors, AppIcons } from "../../styles/variables";
 import { Avatar } from "../Avatar";
-import axios from "axios";
-import { ROOT_URL } from "../../api/auth/actions";
 import { AppButton } from "../AppButton/AppButton";
 import { useState } from "react";
 import EditArticleWindow from "../ModalWindow/EditArticleWindow";
 import { PostStyled } from "./Post.styled";
+import { useApi } from "../../hooks/useApi";
 
 export const Post = (post) => {
   const user = useAuthState();
   const history = useHistory();
   const [article, setArticle] = useState(post);
   const [isModalOpen, setModalOpen] = useState(false);
+  const { deleteArticleApi, createNewFollowApi, delereFollowApi } = useApi();
 
   const handleCloseModal = () => setModalOpen(!isModalOpen);
 
   const deleteArticle = async () => {
-    const res = await axios.delete(`${ROOT_URL}/articles/${article.slug}`, {
-      headers: {
-        Authorization: `Token ${localStorage.getItem("token")}`,
-      },
-    });
+    const res = await deleteArticleApi(article.slug);
     setArticle(res.data.article);
   };
 
   const favoriteArticle = async () => {
-    const res = await axios.post(
-      `${ROOT_URL}/articles/${article.slug}/favorite`,
-      {},
-      {
-        headers: {
-          Authorization: `Token ${localStorage.getItem("token")}`,
-        },
-      }
-    );
+    const res = await createNewFollowApi(article.slug);
     setArticle(res.data.article);
   };
 
   const unfavoriteArticle = async () => {
-    const res = await axios.delete(
-      `${ROOT_URL}/articles/${article.slug}/favorite`,
-      {
-        headers: {
-          Authorization: `Token ${localStorage.getItem("token")}`,
-        },
-      }
-    );
+    const res = await delereFollowApi(article.slug);
     setArticle(res.data.article);
   };
 
@@ -70,7 +51,6 @@ export const Post = (post) => {
                 onClick={() => {
                   history.push({
                     pathname: `/profiles/${article.author.username}`,
-                    search: `author=${article.author.username}`,
                     state: {
                       author: article.author.username,
                       currentUser:
@@ -103,6 +83,7 @@ export const Post = (post) => {
                   pathname: `/articles/${article.slug}`,
                   state: {
                     author: article.author.username,
+                    slug: article.slug,
                     currentUser:
                       article.author.username === user.user.username
                         ? true

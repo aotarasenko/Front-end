@@ -4,6 +4,7 @@ import { useHome } from "../hooks/useHome";
 
 export const Home = () => {
   const { articles } = useHome();
+
   return (
     <main>
       <Container>
