@@ -2,16 +2,16 @@ import { useEffect, useState } from "react";
 import { useApi } from "./useApi";
 import { useDataFetch } from "./useDataFetch";
 
-export const useHome = () => {
+export const useArticles = () => {
   const { getArticlesApi } = useApi();
   const [articles, setArticles] = useState([]);
+  const [articlesCount, setArticlesCount] = useState(0);
 
   const [, fetchArticles] = useDataFetch({
     fetchHandler: async () => {
-      const res = await getArticlesApi();
-
+      const res = await getArticlesApi(`?limit=5`);
       setArticles(res.data.articles);
-
+      setArticlesCount(res.data.articlesCount);
       return res;
     },
     isLazy: true,
@@ -25,5 +25,6 @@ export const useHome = () => {
   return {
     articles,
     setArticles,
+    articlesCount,
   };
 };

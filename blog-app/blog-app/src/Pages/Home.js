@@ -1,16 +1,18 @@
 import { Container } from "../styles/generalStyles";
 import { Post } from "../components/Post/Post";
-import { useHome } from "../hooks/useHome";
+import { useArticles } from "../hooks/useArticles";
 
 export const Home = () => {
-  const { articles } = useHome();
-
+  const { articles, articlesCount } = useArticles();
   return (
     <main>
       <Container>
-        {articles.map((article, index) => (
-          <Post key={index} {...article} />
-        ))}
+        <section>
+          {articles.map((article, index) => (
+            <Post key={index} {...article} />
+          ))}
+        </section>
+        {/* <Pagination pages={pages} /> */}
       </Container>
     </main>
   );

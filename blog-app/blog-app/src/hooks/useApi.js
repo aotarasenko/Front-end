@@ -1,6 +1,8 @@
 import axios from "axios";
 import * as api from "../api/articles/articles";
 
+export const ARTICLES_LIMIT = 5;
+
 export const useApi = () => {
   const baseURL = "https://conduit.productionready.io/api";
 
@@ -23,6 +25,7 @@ export const useApi = () => {
     getProfileApi: api.initGetProfileApi(baseURL),
     getUserApi: api.initGetUserApi(authInstance, baseURL),
     getTagsApi: api.initGetTagsApi(baseURL),
+    getFeeds: api.initGetFeedsApi(authInstance, baseURL),
 
     createNewUserApi: api.initPostNewUserApi(authInstance, baseURL),
     createNewCommentApi: api.initPostNewCommentleApi(authInstance, baseURL),

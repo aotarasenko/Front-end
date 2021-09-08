@@ -1,13 +1,14 @@
 import axios from "axios";
 
-const LIMIT_ARTICLES = 10;
-
 // get
 ////articles
 export const initGetArticlesApi =
   (baseUrl) =>
   (additionalParam = "") =>
-    axios.get(`${baseUrl}/articles${additionalParam}`);
+    axios.get(`${baseUrl}/articles/${additionalParam}`);
+
+export const initGetFeedsApi = (axios, baseUrl) => () =>
+  axios.get(`${baseUrl}/articles/feed`);
 
 export const initGetArticleApi = (baseUrl) => (slug) =>
   axios.get(`${baseUrl}/articles/${slug}`);

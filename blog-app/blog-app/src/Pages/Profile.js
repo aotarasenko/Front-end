@@ -13,6 +13,8 @@ export const Profile = () => {
   const [isModalOpen, setModalOpen] = useState(false);
   let [articles, setArticles] = useState([]);
 
+  console.log(user);
+
   const {
     getProfileApi,
     createNewSubscriptionApi,

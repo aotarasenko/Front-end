@@ -33,6 +33,8 @@ export const Header = () => {
     history.push("/home");
   };
 
+  console.log("header user", user);
+
   return (
     <HeaderStyled>
       <AddPostWindow

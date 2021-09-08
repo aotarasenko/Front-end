@@ -6,11 +6,12 @@ import { Header } from "./components/Layout/Header/Header";
 import { Login } from "./Pages/Auth/Login";
 import { Signup } from "./Pages/Auth/Signup";
 import { Profile } from "./Pages/Profile";
-import { useAuthDispatch } from "./api/auth/authenticate";
+import { useAuthDispatch, useAuthState } from "./api/auth/authenticate";
 import axios from "axios";
 import { ROOT_URL } from "./api/auth/actions";
 import { useEffect } from "react";
 import { PostView } from "./components/Layout/PostView/PostView";
+import { Feeds } from "./Pages/Feeds";
 
 export const initialState = {
   user: "",
@@ -25,6 +26,10 @@ export const initialState = {
 
 function App() {
   const dispatch = useAuthDispatch();
+
+  const user = useAuthState();
+
+  console.log(user);
 
   useEffect(() => {
     if (initialState.token) {
@@ -48,6 +53,7 @@ function App() {
       <Route exact path="/auth/login" component={Login} />
       <Route exact path="/auth/signup" component={Signup} />
       <Route exact path="/favorites" component={Favorites} />
+      <Route exact path="/feeds" component={Feeds} />
       <Route path="/profiles" component={Profile} />
       <Route path="/articles" component={PostView} />
     </BrowserRouter>

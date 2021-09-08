@@ -7,11 +7,19 @@ import { AppButton } from "../../../AppButton/AppButton";
 export const NavMenu = () => {
   const user = useAuthState();
   const history = useHistory();
+
+  console.log(user);
   const menuItems = [
     {
       title: "My Posts",
       path: "/home",
       icon: AppIcons.home,
+      query: "",
+    },
+    {
+      title: "Feeds",
+      path: "/feeds",
+      icon: AppIcons.feed,
       query: "",
     },
     { title: "Favorites", path: "/favorites", query: "", icon: AppIcons.like },
