@@ -1,20 +1,20 @@
-import axios from "axios";
-import * as api from "../api/articles/articles";
+import axios from 'axios';
+import * as api from '../api/articles/articles';
 
 export const ARTICLES_LIMIT = 5;
 
 export const useApi = () => {
-  const baseURL = "https://conduit.productionready.io/api";
+  const baseURL = 'https://conduit.productionready.io/api';
 
-  let token = localStorage.getItem("token")
-    ? JSON.parse(localStorage.getItem("token"))
-    : "";
+  let token = localStorage.getItem('token')
+    ? JSON.parse(localStorage.getItem('token'))
+    : '';
 
   const authInstance = axios.create({
     baseURL,
     headers: {
       Authorization: `Token ${token}`,
-      "Content-type": "application/json",
+      'Content-type': 'application/json',
     },
   });
 

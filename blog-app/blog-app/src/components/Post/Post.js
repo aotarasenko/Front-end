@@ -72,6 +72,7 @@ export const Post = (post) => {
                 handle={article.favorited ? unfavoriteArticle : favoriteArticle}
                 isFavorited={article.favorited}
                 likesCount={article.favoritesCount}
+                margin="6px"
               />
             </FlexRow>
           </div>
@@ -112,11 +113,13 @@ export const Post = (post) => {
                   color={AppColors.error}
                   content={AppIcons.close}
                   handle={deleteArticle}
+                  margin="6px"
                 />
                 <AppButton
                   color={AppColors.primary}
                   content={AppIcons.edit}
                   handle={setModalOpen}
+                  margin="6px"
                 />
               </FlexRow>
             ) : null}

@@ -6,12 +6,14 @@ import { AppColors, AppFontSizes } from "../../styles/variables";
 export const PostStyled = styled.section`
   display: flex;
   flex-direction: column;
-  margin: 40px 10px;
-  padding: 12px;
+  margin: 40px 0;
+  padding: 12px 6px;
   border-top: 5px solid ${AppColors.neutral};
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
+  width: 100%;
   box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  box-sizing: border-box;
 
   .post-content {
     margin-top: 20px;

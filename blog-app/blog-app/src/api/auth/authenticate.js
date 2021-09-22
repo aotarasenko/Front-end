@@ -1,6 +1,6 @@
-import { useContext, useReducer, createContext } from "react";
-import { authReducer } from "./authReducer";
-import { initialState } from "../../App";
+import { useContext, useReducer, createContext } from 'react';
+import { authReducer } from './authReducer';
+import { initialState } from '../../App';
 
 const AuthStateContext = createContext();
 const AuthDispatchContext = createContext();
@@ -8,7 +8,7 @@ const AuthDispatchContext = createContext();
 export const useAuthState = () => {
   const ctx = useContext(AuthStateContext);
   if (!ctx) {
-    throw new Error("useAuthState must be used within a AuthProvider");
+    throw new Error('useAuthState must be used within a AuthProvider');
   }
 
   return ctx;
@@ -17,7 +17,7 @@ export const useAuthState = () => {
 export function useAuthDispatch() {
   const ctx = useContext(AuthDispatchContext);
   if (!ctx) {
-    throw new Error("useAuthDispatch must be used within a AuthProvider");
+    throw new Error('useAuthDispatch must be used within a AuthProvider');
   }
 
   return ctx;

@@ -1,30 +1,29 @@
-import { AppIcons } from "../../../../styles/variables";
-import { useAuthState } from "../../../../api/auth/authenticate";
-import { NavMenuStyled } from "./NavMenu.styled";
-import { useHistory } from "react-router";
-import { AppButton } from "../../../AppButton/AppButton";
+import { AppIcons } from '../../../../styles/variables';
+import { useAuthState } from '../../../../api/auth/authenticate';
+import { NavMenuStyled } from './NavMenu.styled';
+import { useHistory } from 'react-router';
+import { AppButton } from '../../../AppButton/AppButton';
 
 export const NavMenu = () => {
   const user = useAuthState();
   const history = useHistory();
 
-  console.log(user);
   const menuItems = [
     {
-      title: "My Posts",
-      path: "/home",
+      title: 'My Posts',
+      path: '/home',
       icon: AppIcons.home,
-      query: "",
+      query: '',
     },
     {
-      title: "Feeds",
-      path: "/feeds",
+      title: 'Feeds',
+      path: '/feeds',
       icon: AppIcons.feed,
-      query: "",
+      query: '',
     },
-    { title: "Favorites", path: "/favorites", query: "", icon: AppIcons.like },
+    { title: 'Favorites', path: '/favorites', query: '', icon: AppIcons.like },
     {
-      title: "Profile",
+      title: 'Profile',
       path: `/profiles/${user.user.username}`,
       query: `author=${user.user.username}`,
       icon: AppIcons.profile,

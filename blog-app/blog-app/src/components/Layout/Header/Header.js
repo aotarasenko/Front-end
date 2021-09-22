@@ -1,14 +1,14 @@
-import { Link, NavLink } from "react-router-dom";
-import { useAuthState, useAuthDispatch } from "../../../api/auth/authenticate";
-import { Avatar } from "../../Avatar";
-import { Container, FlexRow } from "../../../styles/generalStyles";
-import { HeaderStyled } from "./Header.styled";
-import { logout } from "../../../api/auth/actions";
-import { useHistory } from "react-router";
-import AddPostWindow from "../../ModalWindow/AddPostWindow";
-import { AppIcons, AppColors } from "../../../styles/variables";
-import { AppButton } from "../../AppButton/AppButton";
-import { useState } from "react";
+import { Link, NavLink } from 'react-router-dom';
+import { useAuthState, useAuthDispatch } from '../../../api/auth/authenticate';
+import { Avatar } from '../../Avatar';
+import { Container, FlexRow } from '../../../styles/generalStyles';
+import { HeaderStyled } from './Header.styled';
+import { logout } from '../../../api/auth/actions';
+import { useHistory } from 'react-router';
+import AddPostWindow from '../../ModalWindow/AddPostWindow';
+import { AppIcons, AppColors } from '../../../styles/variables';
+import { AppButton } from '../../AppButton/AppButton';
+import { useState } from 'react';
 
 export const Header = () => {
   const user = useAuthState();
@@ -18,9 +18,9 @@ export const Header = () => {
   const [isModalOpen, setModalOpen] = useState(false);
 
   const initialValues = {
-    title: "",
-    body: "",
-    description: "",
+    title: '',
+    body: '',
+    description: '',
     tags: [],
   };
 
@@ -30,10 +30,8 @@ export const Header = () => {
 
   const handleLogout = () => {
     logout(dispatch);
-    history.push("/home");
+    history.push('/home');
   };
-
-  console.log("header user", user);
 
   return (
     <HeaderStyled>
@@ -67,7 +65,7 @@ export const Header = () => {
                   onClick={() => {
                     history.push({
                       pathname: `/profiles/${user.user.username}`,
-                      search: "",
+                      search: '',
                       state: {
                         author: user.user.username,
                         currentUser: true,
@@ -75,24 +73,9 @@ export const Header = () => {
                     });
                   }}
                 >
-                  {" "}
+                  {' '}
                   Profile
                 </button>
-                {/* <button
-                  type="link"
-                  onClick={() => {
-                    history.push({
-                      pathname: ,
-                      search: "",
-                      state: {
-                        author: user.user.username,
-                        currentUser: true,
-                      },
-                    });
-                  }}
-                >
-                  Profile
-                </button> */}
                 <button onClick={handleLogout}>Logout</button>
               </>
             )}

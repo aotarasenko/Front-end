@@ -1,19 +1,24 @@
-import { ModalWrapper } from "./ModalWindow.styled";
-import { Form, withFormik } from "formik";
-import { UserProfileValidationScheme } from "../../validationSchemas/ValidationScheme";
-import { useApi } from "../../hooks/useApi";
+import { ModalWrapper } from './ModalWindow.styled';
+import { Form, withFormik } from 'formik';
+import { UserProfileValidationScheme } from '../../validationSchemas/ValidationScheme';
+import { useApi } from '../../hooks/useApi';
+import { useAuthDispatch, useAuthState } from '../../api/auth/authenticate';
 
 const EditProfileWindow = (props) => {
   const { values, onSubmit, handleSubmit, handleChange, handleBlur } = props;
 
   const { updateProfileApi } = useApi();
+  let { user, setUser } = useAuthState();
+  const dispatch = useAuthDispatch();
 
   const handleEdit = async (e) => {
     e.preventDefault();
     handleSubmit();
 
-    await updateProfileApi(values);
+    let res = await updateProfileApi(values);
+    setUser(res.data.user);
     props.handleCloseModal(!props.isModalOpen);
+
     onSubmit(values);
   };
 
@@ -26,7 +31,7 @@ const EditProfileWindow = (props) => {
             <fieldset>
               <legend>Edit your personal data</legend>
               <label>
-                {" "}
+                {' '}
                 Avatar
                 <input
                   type="text"
@@ -38,7 +43,7 @@ const EditProfileWindow = (props) => {
                 />
               </label>
               <label>
-                {" "}
+                {' '}
                 Name
                 <input
                   type="text"
@@ -50,7 +55,7 @@ const EditProfileWindow = (props) => {
                 />
               </label>
               <label>
-                {" "}
+                {' '}
                 Biography
                 <input
                   type="text"
@@ -62,7 +67,7 @@ const EditProfileWindow = (props) => {
                 />
               </label>
               <label>
-                {" "}
+                {' '}
                 Email
                 <input
                   type="text"
@@ -78,7 +83,7 @@ const EditProfileWindow = (props) => {
           </Form>
         </ModalWrapper>
       ) : (
-        ""
+        ''
       )}
     </>
   );
@@ -86,5 +91,5 @@ const EditProfileWindow = (props) => {
 
 export default withFormik({
   validationSchema: UserProfileValidationScheme,
-  mapPropsToValues: ({ initialState }) => (initialState ? initialState : ""),
+  mapPropsToValues: ({ initialState }) => (initialState ? initialState : ''),
 })(EditProfileWindow);

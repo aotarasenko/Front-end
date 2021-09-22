@@ -1,24 +1,23 @@
-import { Route, BrowserRouter } from "react-router-dom";
-import { NavBar } from "./components/Layout/NavBar/NavBar";
-import { Home } from "./Pages/Home";
-import { Favorites } from "./Pages/Favorites";
-import { Header } from "./components/Layout/Header/Header";
-import { Login } from "./Pages/Auth/Login";
-import { Signup } from "./Pages/Auth/Signup";
-import { Profile } from "./Pages/Profile";
-import { useAuthDispatch, useAuthState } from "./api/auth/authenticate";
-import axios from "axios";
-import { ROOT_URL } from "./api/auth/actions";
-import { useEffect } from "react";
-import { PostView } from "./components/Layout/PostView/PostView";
-import { Feeds } from "./Pages/Feeds";
+import { Route, BrowserRouter } from 'react-router-dom';
+import { NavBar } from './components/Layout/NavBar/NavBar';
+import { Home } from './Pages/Home';
+import { Favorites } from './Pages/Favorites';
+import { Header } from './components/Layout/Header/Header';
+import { Login } from './Pages/Auth/Login';
+import { Signup } from './Pages/Auth/Signup';
+import { Profile } from './Pages/Profile';
+import { useAuthDispatch, useAuthState } from './api/auth/authenticate';
+import { useEffect } from 'react';
+import { PostView } from './components/Layout/PostView/PostView';
+import { Feeds } from './Pages/Feeds';
+import { useApi } from './hooks/useApi';
 
 export const initialState = {
-  user: "",
+  user: '',
   token:
-    "" || localStorage.getItem("token")
-      ? JSON.parse(localStorage.getItem("token"))
-      : "",
+    '' || localStorage.getItem('token')
+      ? JSON.parse(localStorage.getItem('token'))
+      : '',
   isAuth: false,
   loading: false,
   errorMessage: null,
@@ -26,24 +25,18 @@ export const initialState = {
 
 function App() {
   const dispatch = useAuthDispatch();
-
+  const { getUserApi } = useApi();
   const user = useAuthState();
-
-  console.log(user);
 
   useEffect(() => {
     if (initialState.token) {
-      axios
-        .get(`${ROOT_URL}/user`, {
-          headers: {
-            Authorization: `Token ${initialState.token}`,
-          },
-        })
+      getUserApi()
         .then((response) => {
-          dispatch({ payload: response.data, type: "LOGIN_SUCCESS" });
-        });
+          dispatch({ payload: response.data, type: 'LOGIN_SUCCESS' });
+        })
+        .catch(() => console.log('Error arter trying login'));
     }
-  }, [dispatch]);
+  }, []);
 
   return (
     <BrowserRouter>

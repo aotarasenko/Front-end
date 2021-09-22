@@ -2,7 +2,7 @@ import { AiFillHome, AiFillStar, AiFillLike } from "react-icons/ai";
 import { BiWorld } from "react-icons/bi";
 import { BsFillBookmarkFill } from "react-icons/bs";
 import { CgProfile } from "react-icons/cg";
-import { IoMdAdd, IoClose } from "react-icons/io";
+import { IoMdAdd } from "react-icons/io";
 import { MdEdit, MdRssFeed } from "react-icons/md";
 import { IoMdClose } from "react-icons/io";
 

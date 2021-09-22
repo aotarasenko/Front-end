@@ -1,46 +1,46 @@
 export const authReducer = (initialState, action) => {
   console.log(initialState, action);
   switch (action.type) {
-    case "REQUEST_REGISTER":
+    case 'REQUEST_REGISTER':
       return {
         ...initialState,
         loading: true,
       };
-    case "REGISTER_SUCCESS":
+    case 'REGISTER_SUCCESS':
       return {
         ...initialState,
         token: action.payload.token,
         loading: false,
       };
-    case "REGISTER_ERROR":
+    case 'REGISTER_ERROR':
       return {
         ...initialState,
         loading: false,
         errorMessage: action.error,
       };
-    case "REQUEST_LOGIN":
+    case 'REQUEST_LOGIN':
       return {
         ...initialState,
         loading: true,
       };
-    case "LOGIN_SUCCESS":
+    case 'LOGIN_SUCCESS':
       return {
         ...initialState,
-        user: action.payload.user,
+        user: action.payload,
         token: action.payload.token,
         isAuth: true,
         loading: false,
       };
-    case "LOGOUT":
-      localStorage.removeItem("token");
+    case 'LOGOUT':
+      localStorage.removeItem('token');
       return {
         ...initialState,
-        user: "",
-        token: "",
+        user: '',
+        token: '',
         isAuth: false,
       };
 
-    case "LOGIN_ERROR":
+    case 'LOGIN_ERROR':
       return {
         ...initialState,
         loading: false,
