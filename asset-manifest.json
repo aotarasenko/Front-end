@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/summer-weekends/static/css/main.adf3dfd0.chunk.css",
+    "main.js": "/summer-weekends/static/js/main.9dea4fc2.chunk.js",
+    "main.js.map": "/summer-weekends/static/js/main.9dea4fc2.chunk.js.map",
+    "runtime-main.js": "/summer-weekends/static/js/runtime-main.266c1ae8.js",
+    "runtime-main.js.map": "/summer-weekends/static/js/runtime-main.266c1ae8.js.map",
+    "static/js/2.0e4497ff.chunk.js": "/summer-weekends/static/js/2.0e4497ff.chunk.js",
+    "static/js/2.0e4497ff.chunk.js.map": "/summer-weekends/static/js/2.0e4497ff.chunk.js.map",
+    "index.html": "/summer-weekends/index.html",
+    "static/css/main.adf3dfd0.chunk.css.map": "/summer-weekends/static/css/main.adf3dfd0.chunk.css.map",
+    "static/js/2.0e4497ff.chunk.js.LICENSE.txt": "/summer-weekends/static/js/2.0e4497ff.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.266c1ae8.js",
+    "static/js/2.0e4497ff.chunk.js",
+    "static/css/main.adf3dfd0.chunk.css",
+    "static/js/main.9dea4fc2.chunk.js"
+  ]
+}
